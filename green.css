@@ -1,0 +1,8 @@
+    .body {font-family: Lucida Console;background-color: black;}
+    .home {width: 60%; margin: auto;color: whitesmoke;margin-top: 100px;}
+    .home .head {text-align: center;color:whitesmoke; font-size: 20px;margin-bottom: 50px;}
+    .contact p {color: whitesmoke;font-size: 13px;}
+    .contact p  a {color:rgb(161, 206, 56);}
+    .photo {width: 400px;}
+    .navbar {margin-top: 18px;}
+    
