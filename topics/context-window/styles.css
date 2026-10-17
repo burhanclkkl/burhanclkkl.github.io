@@ -542,3 +542,44 @@ button:focus-visible { outline: 3px solid var(--lilac-ink); outline-offset: 4px;
   .masthead-right { gap: 2px; }
   .publication-details summary span[aria-hidden] { margin-left: 0; }
 }
+
+/* Sahne 04: özgün örnekten bağımsız, isteğe bağlı kapasite deneyi. */
+.experiment-launch { position: absolute; top: 2%; right: 9%; z-index: 8; min-height: 44px; padding: 10px 14px; border: 1px solid #D8CAE9; border-radius: 6px; background: var(--lilac-tint); color: var(--lilac-ink); font-size: 11px; font-weight: 600; }
+.experiment-launch:hover { background: #E6DCF4; }
+.context-experiment { width: min(760px,calc(100% - 32px)); max-width: none; max-height: calc(100dvh - 32px); overflow-y: auto; padding: clamp(20px,4vw,34px); border: 1px solid var(--line); border-radius: 12px; background: var(--bg); color: var(--ink); font-family: inherit; }
+.context-experiment::backdrop { background: #27232C66; }
+.experiment-header { display: flex; justify-content: space-between; align-items: start; gap: 14px; }
+.experiment-header > div > span { font-size: 10px; color: var(--lilac-ink); letter-spacing: .07em; }
+.experiment-header h2 { margin: 12px 0 0; font-size: clamp(23px,3vw,32px); line-height: 1.25; letter-spacing: -.06em; }
+.experiment-header button { flex: 0 0 44px; min-height: 44px; border: 1px solid var(--line); border-radius: 6px; background: transparent; color: var(--muted); font-size: 24px; }
+.experiment-intro { margin: 18px 0 24px; font-size: 12px; line-height: 1.85; color: var(--muted); }
+.experiment-inputs { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items: start; }
+.experiment-inputs label { display: block; font-size: 10px; color: var(--muted); letter-spacing: .03em; }
+.experiment-inputs select, .experiment-inputs input[type="number"] { display: block; width: 100%; min-width: 0; min-height: 44px; margin-top: 9px; padding: 10px; border: 1px solid #D8D1DD; border-radius: 6px; background: var(--paper); color: var(--ink); font: inherit; font-size: 13px; }
+.experiment-inputs input[type="range"] { display: block; width: 100%; min-height: 44px; margin: 2px 0 0; accent-color: var(--lilac-ink); cursor: pointer; }
+.experiment-messages { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin: 12px 0 20px; border-block: 1px solid var(--line); padding-block: 14px; }
+.experiment-messages > span { font-size: 11px; color: var(--muted); }
+.experiment-messages output { font-size: 20px; color: var(--ink); font-weight: 600; }
+.experiment-messages > div { display: flex; gap: 8px; }
+.experiment-messages button { min-height: 44px; min-width: 44px; padding: 10px 12px; border: 1px solid #D8D1DD; border-radius: 6px; background: var(--paper); color: var(--ink); font-size: 12px; }
+.experiment-messages button:disabled { opacity: .4; }
+.experiment-stats { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; margin: 22px 0 18px; }
+.experiment-stats span { display: block; font-size: 9px; color: var(--muted); }
+.experiment-stats output { display: block; margin-top: 9px; font-size: clamp(18px,3vw,27px); font-weight: 600; font-variant-numeric: tabular-nums; letter-spacing: -.06em; }
+#experimentRemaining { color: var(--green-ink); }
+.context-experiment.is-overflow #experimentOverflow { color: var(--red-ink); }
+.experiment-meter { display: flex; height: 12px; overflow: hidden; background: #EEEAF0; border-radius: 3px; }
+.experiment-base-fill { background: var(--lilac); }
+.experiment-message-fill { background: var(--orange); }
+.context-experiment.is-overflow .experiment-meter { outline: 1px solid var(--red); outline-offset: 3px; }
+.experiment-calculation { margin: 14px 0; font-size: 11px; color: var(--muted); line-height: 1.8; }
+.experiment-status { font-size: 12px; color: var(--green-ink); line-height: 1.8; }
+.context-experiment.is-overflow .experiment-status { color: var(--red-ink); }
+.experiment-disclaimer { font-size: 10px; line-height: 1.9; color: var(--muted); margin: 20px 0; }
+.experiment-footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding-top: 18px; border-top: 1px solid var(--line); }
+.experiment-footer button { min-height: 44px; padding: 10px 12px; font-size: 11px; border: 1px solid var(--line); border-radius: 6px; background: transparent; color: var(--muted); }
+.experiment-footer button:last-child { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.context-experiment :focus-visible { outline: 2px solid var(--lilac-ink); outline-offset: 3px; }
+@media (max-width: 800px) { .experiment-launch { right: 8%; top: 1%; padding: 8px 10px; font-size: 9px; } }
+@media (max-width: 480px) { .experiment-inputs { grid-template-columns: minmax(0,1fr); gap: 18px; } .experiment-header h2 { font-size: 23px; } }
+@media (max-width: 480px) { .experiment-stats output { font-size: clamp(13px,4vw,18px); } }

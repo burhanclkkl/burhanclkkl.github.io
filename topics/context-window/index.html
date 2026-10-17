@@ -24,7 +24,7 @@
   <meta name="twitter:image" content="https://burhanclkkl.github.io/helloworld/assets/social-card.png">
   <meta name="twitter:image:alt" content="OPEN / NOTES — Merak et. Derinine in.">
   <meta property="article:published_time" content="2026-10-17">
-  <meta property="article:modified_time" content="2026-10-17">
+  <meta property="article:modified_time" content="2026-10-18">
   <link rel="canonical" href="https://burhanclkkl.github.io/helloworld/topics/context-window/index.html">
   <meta property="og:url" content="https://burhanclkkl.github.io/helloworld/topics/context-window/index.html">
   <title>Context Window — OPEN / NOTES</title>
@@ -45,7 +45,7 @@
         <details class="publication-details" id="publicationDetails">
           <summary>Kaynakça<span class="publication-summary-extra"> ve tarihler</span> <span aria-hidden="true">↗</span></summary>
           <section class="publication-panel" aria-labelledby="sources-title">
-<div class="publication-dates"><span>YAYIMLANMA <time datetime="2026-10-17">17 Ekim 2026</time></span><span>SON GÜNCELLEME <time datetime="2026-10-17">17 Ekim 2026</time></span></div>
+<div class="publication-dates"><span>YAYIMLANMA <time datetime="2026-10-17">17 Ekim 2026</time></span><span>SON GÜNCELLEME <time datetime="2026-10-18">18 Ekim 2026</time></span></div>
           <h2 id="sources-title">Kaynakça<span>.</span></h2>
           <p>Bu anlatımın kavramsal dayanakları ve ileri okuma bağlantıları. 32K kapasite ve simülasyondaki sayılar temsilidir.</p>
           <ol class="source-references">
@@ -113,6 +113,7 @@
       </section>
 
       <section class="scene scene-4" data-index="4" aria-labelledby="scene4-title" hidden>
+        <button type="button" class="experiment-launch" id="openExperiment" aria-haspopup="dialog">Kendin dene ↗</button>
         <div class="scene4-heading">
           <div>
             <p class="eyebrow"><span class="eyebrow-index">04</span><span class="eyebrow-rule"></span>CANLI DENEY</p>
@@ -241,6 +242,21 @@
       <div class="notes-content"><p id="notesBody"></p><div class="notes-bottom"><span id="notesDuration">20 SN</span><span>← / → GEZİNMEYE DEVAM</span></div></div>
     </aside>
     <div class="drawer-shade" id="drawerShade" aria-hidden="true"></div>
+    <dialog class="context-experiment" id="contextExperiment" aria-labelledby="experimentTitle" aria-describedby="experimentIntro">
+      <div class="experiment-header"><div><span>04 / KENDİN DENE</span><h2 id="experimentTitle">Pencereni kendin doldur.</h2></div><button type="button" id="closeExperiment" aria-label="Özgün örneğe dön">×</button></div>
+      <p class="experiment-intro" id="experimentIntro">Kapasiteyi ve mesaj başına token miktarını değiştir. Bu deneyde bütün mesajlar eşit uzunluktadır; uzunluk değişince mevcut mesajlar da güncellenir.</p>
+      <div class="experiment-inputs">
+        <label for="experimentCapacity">BAĞLAM KAPASİTESİ<select id="experimentCapacity"><option value="8192">8K · 8.192 token</option><option value="32768" selected>32K · 32.768 token</option><option value="131072">128K · 131.072 token</option></select></label>
+        <div class="experiment-message"><label for="experimentLength">MESAJ BAŞINA TOKEN</label><input id="experimentLength" type="number" min="1" max="32768" step="1" value="2000" inputmode="numeric"><label class="sr-only" for="experimentLengthRange">Mesaj başına token miktarını kaydırarak değiştir</label><input id="experimentLengthRange" type="range" min="1" max="32768" step="1" value="2000"></div>
+      </div>
+      <div class="experiment-messages"><span><output id="experimentMessageCount">3</output> MESAJ</span><div><button type="button" id="removeExperimentMessage" aria-label="Bir mesaj çıkar">−</button><button type="button" id="addExperimentMessage">+ Mesaj ekle</button></div></div>
+      <div class="experiment-stats"><div><span>KULLANILAN</span><output id="experimentUsed">8.500</output></div><div><span>KALAN</span><output id="experimentRemaining">24.268</output></div><div><span>AŞIM</span><output id="experimentOverflow">0</output></div></div>
+      <div class="experiment-meter" id="experimentMeter" role="progressbar" aria-label="Kullanılan bağlam kapasitesi" aria-valuemin="0" aria-valuemax="32768" aria-valuenow="8500"><span class="experiment-base-fill" id="experimentBaseFill"></span><span class="experiment-message-fill" id="experimentMessageFill"></span></div>
+      <p class="experiment-calculation" id="experimentCalculation">2.500 başlangıç + 3 × 2.000 mesaj = 8.500 token</p>
+      <p class="experiment-status" id="experimentStatus" role="status" aria-live="polite">Kapasite uygun.</p>
+      <p class="experiment-disclaimer">Temsili hesap: başlangıç yükü 2.500 token sabittir. Gerçek metin tokenleştirilmez; yanıt için ayrıca pay ayrılmamıştır. 8K, 32K ve 128K bu deneyin örnek kapasiteleridir.</p>
+      <div class="experiment-footer"><button type="button" id="clearExperimentMessages">Mesajları temizle</button><button type="button" id="returnOriginalExample">Özgün örneğe dön →</button></div>
+    </dialog>
     <div class="announcer sr-only" id="announcer" role="status" aria-live="polite" aria-atomic="true"></div>
   </div>
 </body>

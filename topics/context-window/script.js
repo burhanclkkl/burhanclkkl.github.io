@@ -316,6 +316,7 @@ $('#fullscreenToggle').addEventListener('click',async() => {
 });
 
 window.addEventListener('keydown',event => {
+  if ($('#contextExperiment').open) return;
   if (event.altKey || event.ctrlKey || event.metaKey) return;
   const publication = $('#publicationDetails');
   if (publication?.open) {
@@ -342,3 +343,56 @@ window.addEventListener('keydown',event => {
 const fragment = window.location.hash.match(/^#0?([1-7])$/);
 if (fragment) currentScene = Number(fragment[1]) - 1;
 render();
+
+
+// Bağımsız deney, kanonik sunumun limitini veya adımlarını değiştirmez.
+const experiment = $('#contextExperiment');
+const experimentCapacity = $('#experimentCapacity');
+const experimentLength = $('#experimentLength');
+const experimentRange = $('#experimentLengthRange');
+const EXPERIMENT_BASE = 2500;
+let experimentMessages = 3;
+let experimentTokens = 2000;
+function renderExperiment() {
+  const capacity = Number(experimentCapacity.value);
+  const used = EXPERIMENT_BASE + experimentMessages * experimentTokens;
+  const remaining = Math.max(0, capacity - used);
+  const overflow = Math.max(0, used - capacity);
+  const baseWidth = Math.min(EXPERIMENT_BASE, capacity) / capacity * 100;
+  const messageWidth = Math.min(experimentMessages * experimentTokens, Math.max(0, capacity - EXPERIMENT_BASE)) / capacity * 100;
+  $('#experimentMessageCount').textContent = String(experimentMessages);
+  $('#experimentUsed').textContent = format(used);
+  $('#experimentRemaining').textContent = format(remaining);
+  $('#experimentOverflow').textContent = format(overflow);
+  $('#experimentBaseFill').style.width = `${baseWidth}%`;
+  $('#experimentMessageFill').style.width = `${messageWidth}%`;
+  $('#experimentMeter').setAttribute('aria-valuemax', String(capacity));
+  $('#experimentMeter').setAttribute('aria-valuenow', String(Math.min(used, capacity)));
+  $('#experimentMeter').setAttribute('aria-valuetext', `${format(used)} token kullanılıyor; kapasite ${format(capacity)}, kalan ${format(remaining)}, aşım ${format(overflow)} token.`);
+  $('#experimentCalculation').textContent = `${format(EXPERIMENT_BASE)} başlangıç + ${experimentMessages} × ${format(experimentTokens)} mesaj = ${format(used)} token`;
+  experiment.classList.toggle('is-overflow', overflow > 0);
+  $('#experimentStatus').textContent = overflow > 0 ? `Sınır aşıldı: ${format(overflow)} token kapasitenin dışında.` : remaining === 0 ? 'Pencere tam dolu. Yeni mesaj kapasiteyi aşacak.' : `Kapasite uygun. ${format(remaining)} token boş alan var.`;
+  $('#removeExperimentMessage').disabled = experimentMessages === 0;
+  $('#addExperimentMessage').disabled = experimentMessages >= 1000;
+}
+function updateExperimentLength(value, commit = false) {
+  // Boş veya geçersiz ara girişler mevcut hesabı bozmaz.
+  if (value === '' || !Number.isFinite(Number(value))) {
+    if (commit) experimentLength.value = String(experimentTokens);
+    return;
+  }
+  experimentTokens = Math.min(32768, Math.max(1, Math.round(Number(value))));
+  experimentLength.value = String(experimentTokens);
+  experimentRange.value = String(experimentTokens);
+  renderExperiment();
+}
+$('#openExperiment').addEventListener('click', () => { renderExperiment(); experiment.showModal(); });
+experimentCapacity.addEventListener('change', renderExperiment);
+experimentLength.addEventListener('input', () => updateExperimentLength(experimentLength.value));
+experimentLength.addEventListener('change', () => updateExperimentLength(experimentLength.value, true));
+experimentRange.addEventListener('input', () => updateExperimentLength(experimentRange.value));
+$('#addExperimentMessage').addEventListener('click', () => { experimentMessages = Math.min(1000, experimentMessages + 1); renderExperiment(); });
+$('#removeExperimentMessage').addEventListener('click', () => { experimentMessages = Math.max(0, experimentMessages - 1); renderExperiment(); });
+$('#clearExperimentMessages').addEventListener('click', () => { experimentMessages = 0; renderExperiment(); });
+$('#returnOriginalExample').addEventListener('click', () => experiment.close());
+$('#closeExperiment').addEventListener('click', () => experiment.close());
