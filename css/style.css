@@ -94,13 +94,24 @@ html[data-theme="dark"] .theme-toggle .moon-icon { display: none; }
 .explore-link { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 26px; border-bottom: 1px solid var(--ink); padding-bottom: 8px; font-size: 12px; font-weight: 600; white-space: nowrap; }
 .explore-link span { color: var(--orange-ink); font-size: 21px; transition: transform .2s var(--ease); }
 .explore-link:hover span { transform: translate(3px,3px); }
-.hero-graphic { position: absolute; z-index: -1; width: 340px; height: 340px; right: -49px; top: 39px; pointer-events: none; opacity: .87; }
-.orbit { position: absolute; border: 1px solid var(--rule); border-radius: 50%; }
-.orbit-1 { width: 252px; height: 252px; top: 36px; left: 48px; }
-.orbit-2 { width: 340px; height: 340px; inset: 0; border-style: dashed; opacity: .7; }
-.orbit-core { display: block; width: 113px; height: 113px; position: absolute; left: 118px; top: 113px; background: var(--lilac-tint); border-radius: 50%; }
-.orbit-core::before { content: ''; position: absolute; inset: 43px; background: var(--lilac); border-radius: 50%; }
-.orbit-satellite { position: absolute; top: 64px; left: 72px; width: 30px; height: 30px; background: var(--orange); border-radius: 50%; }
+.hero-graphic { position: absolute; z-index: -1; width: 400px; height: 400px; right: -48px; top: 28px; pointer-events: none; }
+.solar-orbit { position: absolute; border: 1px solid var(--rule); border-radius: 50%; }
+.solar-orbit-inner { inset: 118px; }
+.solar-orbit-middle { inset: 70px; border-color: color-mix(in srgb, var(--lilac) 28%, var(--rule)); }
+.solar-orbit-outer { inset: 24px; border-style: dashed; opacity: .8; }
+.solar-sun { position: absolute; left: 50%; top: 50%; width: 44px; height: 44px; transform: translate(-50%,-50%); background: var(--orange); border-radius: 50%; box-shadow: 0 0 0 10px color-mix(in srgb, var(--orange) 9%, transparent); }
+.solar-sun::after { content: ''; position: absolute; inset: -18px; border: 1px solid color-mix(in srgb, var(--orange) 24%, transparent); border-radius: 50%; }
+.solar-planet { position: absolute; transform: translate(-50%,-50%); border-radius: 50%; }
+.solar-planet-inner { left: 67.8%; top: 60.2%; width: 10px; height: 10px; background: var(--orange-ink); opacity: .7; }
+.solar-planet-middle { left: 29.25%; top: 25%; width: 18px; height: 18px; background: var(--lilac); }
+.solar-planet-ringed { left: 80.5%; top: 81.5%; width: 22px; height: 22px; background: var(--green); }
+.solar-planet-ringed::after { content: ''; position: absolute; inset: 5px -10px; border: 1px solid var(--green-ink); border-radius: 50%; transform: rotate(-28deg); }
+.solar-star { position: absolute; left: var(--x); top: var(--y); width: var(--size); height: var(--size); color: var(--lilac-ink); opacity: .6; transform: translate(-50%,-50%) translate3d(var(--push-x, 0px), var(--push-y, 0px), 0); transition: transform .55s var(--ease); }
+.solar-star::before { content: ''; display: block; width: 100%; height: 100%; background: currentColor; clip-path: polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%); }
+.solar-star-dot { opacity: .4; color: var(--muted); }
+.solar-star-dot::before { clip-path: none; border-radius: 50%; }
+html[data-theme="dark"] .solar-orbit { border-color: #39353E; }
+html[data-theme="dark"] .solar-orbit-middle { border-color: #51415F; }
 
 /* Shared sections */
 .topics-section { padding: 88px 0 86px; }
@@ -213,7 +224,7 @@ html[data-theme="dark"] .easter-egg-photo img { filter: grayscale(1) brightness(
 @media (max-width: 800px) {
   .site-shell { width: min(100% - 42px, 700px); }
   .hero { min-height: 460px; }
-  .hero-graphic { transform: scale(.68); transform-origin: top right; opacity: .5; right: -25px; top: 27px; }
+  .hero-graphic { transform: scale(.68); transform-origin: top right; opacity: .75; right: -25px; top: 27px; }
   .hero-lower { flex-direction: column; align-items: flex-start; gap: 20px; }
   .how-layout, .about-content { gap: 40px; }
 }
@@ -226,7 +237,7 @@ html[data-theme="dark"] .easter-egg-photo img { filter: grayscale(1) brightness(
   .theme-toggle { padding: 9px 10px; }
   .hero { min-height: 485px; padding: 60px 0 53px; justify-content: center; }
   .hero h1 { font-size: clamp(40px,10.4vw,66px); letter-spacing: -.085em; }
-  .hero-graphic { opacity: .37; transform: scale(.51); top: 0; right: -12px; }
+  .hero-graphic { opacity: .55; transform: scale(.51); top: -24px; right: 0; }
   .hero-eyebrow { font-size: 8px; gap: 9px; }
   .hero-lower { margin-top: 30px; }
   .hero-lower p { font-size: 11px; }
@@ -270,6 +281,7 @@ html[data-theme="dark"] .easter-egg-photo img { filter: grayscale(1) brightness(
   .king-link { font-size: 7px; }
 }
 @media (prefers-reduced-motion: reduce) {
+  .solar-star { transform: translate(-50%,-50%); }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }

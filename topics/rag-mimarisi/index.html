@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#FAF9F7">
+  <meta name="description" content="RAG Mimarisi nedir? 7 sahnede, 5 dakikalık etkileşimli Türkçe teknoloji anlatımı.">
+  <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../assets/apple-touch-icon.png">
+  <meta property="og:locale" content="tr_TR">
+  <meta property="og:site_name" content="OPEN / NOTES">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="RAG Mimarisi — OPEN / NOTES">
+  <meta property="og:description" content="Modelin yanıtına dış bilgi nasıl eklenir?">
+  <meta property="og:image" content="https://burhanclkkl.github.io/helloworld/assets/social-card.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="OPEN / NOTES — Merak et. Derinine in. Yapay zekâ, yazılım ve sistemler.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="RAG Mimarisi — OPEN / NOTES">
+  <meta name="twitter:description" content="Modelin yanıtına dış bilgi nasıl eklenir?">
+  <meta name="twitter:image" content="https://burhanclkkl.github.io/helloworld/assets/social-card.png">
+  <meta name="twitter:image:alt" content="OPEN / NOTES — Merak et. Derinine in.">
+  <meta property="article:published_time" content="2026-10-17">
+  <meta property="article:modified_time" content="2026-10-17">
+  <link rel="canonical" href="https://burhanclkkl.github.io/helloworld/topics/rag-mimarisi/index.html">
+  <meta property="og:url" content="https://burhanclkkl.github.io/helloworld/topics/rag-mimarisi/index.html">
+  <title>RAG Mimarisi — OPEN / NOTES</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./script.js" defer></script>
+</head>
+<body>
+  <noscript><p class="noscript-note">Etkileşimli sunum için JavaScript’i etkinleştirin. <a href="../../index.html#topics">Konu arşivine dön →</a></p></noscript>
+  <div class="app" id="app" data-scene="1">
+    <header class="masthead" aria-label="Sunum üst menüsü">
+      <a href="../../index.html#topics" class="brand" aria-label="Konu arşivine dön">
+        <span class="brand-sign" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+        <span>RAG <span class="brand-slash">/</span> MİMARİSİ</span>
+      </a>
+      <div class="masthead-right">
+        <details class="publication-details" id="publicationDetails">
+          <summary>Kaynakça<span class="publication-summary-extra"> ve tarihler</span> <span aria-hidden="true">↗</span></summary>
+          <section class="publication-panel" aria-labelledby="sources-title">
+<div class="publication-dates"><span>YAYIMLANMA <time datetime="2026-10-17">17 Ekim 2026</time></span><span>SON GÜNCELLEME <time datetime="2026-10-17">17 Ekim 2026</time></span></div>
+          <h2 id="sources-title">Kaynakça<span>.</span></h2>
+          <p>Kavramlar ve ileri okuma. Atlas belgeleri ve yanıtlar bu sunuma özel kurgusal örneklerdir; gerçek bir arama veya model çağrısı yapılmaz.</p>
+          <ol class="source-references">
+            <li><a href="https://arxiv.org/abs/2005.11401" target="_blank" rel="noopener noreferrer">Lewis ve diğerleri — RAG (2020) ↗</a><p>Retrieval-Augmented Generation yaklaşımının temel araştırması.</p></li>
+            <li><a href="https://learn.microsoft.com/en-us/azure/search/retrieval-augmented-generation-overview" target="_blank" rel="noopener noreferrer">Microsoft Learn — RAG mimarisi ↗</a><p>Bilgi getirme, bağlam seçimi, kaynaklar ve erişim kontrolü.</p></li>
+            <li><a href="https://learn.microsoft.com/en-us/azure/search/vector-search-overview" target="_blank" rel="noopener noreferrer">Microsoft Learn — Vektör ve hibrit arama ↗</a><p>Embedding, benzerlik araması ve anahtar kelime aramasıyla birleşimi.</p></li>
+          </ol>
+          <a class="archive-return" href="../../index.html#topics">← Konu arşivine dön</a>
+          </section>
+        </details>
+        <span class="header-meta">INTERACTIVE EXPLAINER <span class="meta-sep">/</span> 05:00</span>
+        <button type="button" class="header-control" id="notesToggle" aria-label="Konuşmacı notlarını aç (N)" aria-expanded="false" title="Konuşmacı notları (N)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h12a1.5 1.5 0 0 1 1.5 1.5v14a1.5 1.5 0 0 1-1.5 1.5h-12A1.5 1.5 0 0 1 5 19V5A1.5 1.5 0 0 1 6.5 3.5Z"/><path d="M9 9h7M9 13h7M9 17h4"/></svg>
+        </button>
+        <button type="button" class="header-control" id="fullscreenToggle" aria-label="Tam ekran modunu aç (F)" title="Tam ekran (F)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3.5H3.5V8m12.5-4.5h4.5V8M3.5 16v4.5H8m12.5-4.5v4.5H16"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <main class="presentation" id="presentation" aria-label="RAG Mimarisi etkileşimli sunumu">
+      <section class="scene scene-1 active" data-index="1" aria-labelledby="scene1-title">
+        <div class="cover-copy">
+          <p class="eyebrow"><span>01</span><i></i>BİR SORU</p>
+          <h1 id="scene1-title">Cevap,<br>modelde <span class="underline">yoksa</span><span class="question-mark">?</span></h1>
+          <p class="lead">Şirketinin belgelerini hiç görmemiş bir model,<br>onlara dayanarak nasıl yanıt verir?</p>
+        </div>
+        <div class="cover-document" aria-hidden="true"><div class="document-meta">ATLAS / EKİP NOTLARI <span>↗</span></div><div class="document-line"></div><div class="document-line short"></div><div class="document-line"></div><div class="document-highlight">YANIT BURADA.</div><div class="document-line short"></div><span class="document-page">01 / KAYNAK</span></div>
+        <p class="cover-footnote">Önce bul. Sonra yanıtla.</p>
+      </section>
+
+      <section class="scene scene-2" data-index="2" aria-labelledby="scene2-title" hidden>
+        <div class="split-copy"><p class="eyebrow"><span>02</span><i></i>TANIM</p><h2 id="scene2-title">RAG<br>nedir<span class="question-mark">?</span></h2><p class="statement">Yanıtı, <strong>bulunan bilgiyle</strong> besleyen bir mimari.</p><p class="small-note">Retrieval-Augmented Generation<br>Bilgi getirmeyle desteklenen üretim.</p><p class="boundary">Kütüphaneden ilgili sayfayı<br>çalışma masasına getirmek gibi.</p></div>
+      </section>
+
+      <section class="scene scene-3" data-index="3" aria-labelledby="scene3-title" hidden>
+        <div class="split-copy"><p class="eyebrow"><span>03</span><i></i>HAZIRLIK</p><h2 id="scene3-title">Bilgiyi<br>bulunabilir yap.</h2><div class="prep-steps" role="group" aria-label="İndeksleme adımları"><button type="button" data-prep="0" aria-pressed="true"><span>01</span>Parçala</button><button type="button" data-prep="1" aria-pressed="false"><span>02</span>Vektörleştir</button><button type="button" data-prep="2" aria-pressed="false"><span>03</span>İndeksle</button></div><p class="step-explanation" id="prepExplanation">Belgeler, anlamını koruyan küçük parçalara ayrılır.</p><p class="small-note">Vektör, içeriğin sayısal temsilidir.<br>Benzerlik, doğruluk garantisi değildir.</p></div>
+      </section>
+
+      <section class="scene scene-4" data-index="4" aria-labelledby="scene4-title" hidden>
+        <div class="experiment-heading"><div><p class="eyebrow"><span>04</span><i></i>CANLI DENEY</p><h2 id="scene4-title">Bir soru,<br>dört adım.</h2></div><div class="question"><span>ÖRNEK SORU</span><p>Atlas yedekleri<br>ne zaman alınır?</p></div></div>
+        <div class="experiment-controls"><div class="query-steps" role="group" aria-label="RAG akışının adımları"><button type="button" data-query="0" aria-pressed="true"><span>01</span>Soruyu al</button><button type="button" data-query="1" aria-pressed="false"><span>02</span>Bul</button><button type="button" data-query="2" aria-pressed="false"><span>03</span>Bağlama ekle</button><button type="button" data-query="3" aria-pressed="false"><span>04</span>Yanıtla</button></div><button type="button" class="reset-control" id="resetQuery">SIFIRLA ↺</button></div>
+        <p class="simulation-note">KURGUSAL BELGELER · ADIMLAR TEMSİLİDİR · GERÇEK MODEL ÇAĞRISI YOKTUR</p>
+      </section>
+
+      <section class="scene scene-5" data-index="5" aria-labelledby="scene5-title" hidden>
+        <div class="split-copy"><p class="eyebrow"><span>05</span><i></i>KAYNAK KALİTESİ</p><h2 id="scene5-title">Kaynak zayıfsa,<br>yanıt da zayıf.</h2><div class="quality-choices" role="group" aria-label="Kaynak durumunu değiştir"><button type="button" data-quality="current" aria-pressed="true"><span>01</span>Doğru kaynak <b>↗</b></button><button type="button" data-quality="stale" aria-pressed="false"><span>02</span>Eski kayıt <b>↗</b></button><button type="button" data-quality="missing" aria-pressed="false"><span>03</span>Kaynak yok <b>↗</b></button></div><p class="step-explanation" id="qualityExplanation">İlgili ve güncel kaynak, yanıtın dayanağını sağlar.</p><p class="small-note">RAG, hatalı yanıtları tamamen önlemez.<br>Belirsizliği açıkça belirtmek gerekir.</p></div>
+      </section>
+
+      <section class="scene scene-6" data-index="6" aria-labelledby="scene6-title" hidden>
+        <div class="technical-heading"><p class="eyebrow"><span>06</span><i></i>MİMARİYE YAKINDAN</p><h2 id="scene6-title">İki akış.<br>Bir mimari.</h2><p class="statement">Arşivi hazırla. Soru geldiğinde ilgili parçayı getir.</p></div>
+        <div class="architecture"><div class="architecture-lane"><span class="lane-label">ÖNCEDEN / HAZIRLIK</span><div class="flow"><span>Belge</span><b>→</b><span>Parçalar</span><b>→</b><span>Embedding</span><b>→</b><strong>İndeks</strong></div></div><div class="architecture-bridge" aria-hidden="true">↓</div><div class="architecture-lane"><span class="lane-label">HER SORUDA / SORGU</span><div class="flow"><span>Soru</span><b>→</b><strong id="searchMethod">Vektör arama</strong><b>→</b><span>Bağlam</span><b>→</b><span>LLM yanıtı</span></div></div><div class="search-switch" role="group" aria-label="Arama yaklaşımı"><button type="button" data-search="vector" aria-pressed="true">Vektör</button><button type="button" data-search="hybrid" aria-pressed="false">Hibrit</button><p id="searchExplanation">Anlam yakınlığıyla ilgili parçaları ara.</p></div><p class="architecture-note">Şema yaygın bir vektör tabanlı RAG örneğidir; vektör veritabanı zorunlu değildir.</p></div>
+        <p class="context-connection">Getirilen parçalar bağlam penceresinde yer kaplar. <strong>Modelin ağırlıkları bu işlemle değişmez.</strong></p>
+      </section>
+
+      <section class="scene scene-7" data-index="7" aria-labelledby="scene7-title" hidden>
+        <div class="closing-copy"><p class="eyebrow"><span>07</span><i></i>AKLINDA KALSIN</p><h2 id="scene7-title">Her şeyi yükleme.<br><span>Doğru bilgiyi,</span><br>doğru anda getir.</h2><ol class="lessons"><li><span>01</span>İlgili bilgiyi bul.</li><li><span>02</span>Yanıtı kaynakla destekle.</li><li><span>03</span>Kaynağı ve sınırlarını göster.</li></ol><div class="closing-actions"><button type="button" id="replayPresentation">YENİDEN BAŞLAT ↺</button><a href="../context-window/index.html">Bağlam penceresini keşfet ↗</a></div></div><div class="closing-motif" aria-hidden="true"><span>ARA</span><i>↓</i><span>BUL</span><i>↓</i><strong>YANITLA</strong></div>
+      </section>
+
+      <div class="knowledge-board" id="knowledgeBoard" role="region" aria-label="Belgelerden yanıt üretimine ortak çalışma alanı" hidden>
+        <div class="board-header"><span><i></i>BİLGİ / ÇALIŞMA ALANI</span><span id="boardPhase">KAYNAK → YANIT</span></div>
+        <div class="board-body"><div class="corpus"><div class="column-label" id="corpusLabel">ÖRNEK ARŞİV</div><div class="document-rows" id="documentRows">
+          <div class="source-row" data-document="0"><span class="source-number">01</span><div><strong id="sourceTitle">Yedekleme / v3</strong><p id="sourceText">Atlas yedekleri her gece 02.00’de alınır.</p></div><span class="vector-mark" aria-hidden="true">▂▅▃▆</span><span class="source-badge" id="sourceBadge">BELGE</span></div>
+          <div class="source-row" data-document="1"><span class="source-number">02</span><div><strong>Günlükler / v2</strong><p>Uygulama günlükleri 30 gün saklanır.</p></div><span class="vector-mark" aria-hidden="true">▅▂▆▃</span><span class="source-badge">BELGE</span></div>
+          <div class="source-row" data-document="2"><span class="source-number">03</span><div><strong>Erişim / v1</strong><p>Yeni ekip üyeleri erişimi yöneticiden ister.</p></div><span class="vector-mark" aria-hidden="true">▃▆▂▅</span><span class="source-badge">BELGE</span></div>
+        </div><p class="corpus-caption" id="corpusCaption">Bilgi, modelin dışında tutulur.</p></div>
+        <div class="transfer" aria-hidden="true">→</div>
+        <div class="context-packet"><div class="column-label" id="packetLabel">YANIT İÇİN BAĞLAM</div><div class="packet-instructions">Talimat + kullanıcı sorusu</div><div class="retrieved-passage" id="retrievedPassage" hidden><span>SEÇİLEN PARÇA / [1]</span><p>Atlas yedekleri her gece 02.00’de alınır.</p></div><p class="packet-placeholder" id="packetPlaceholder">Önce ilgili parçayı bul.</p><div class="answer-block" id="answerBlock" hidden><span id="answerLabel">KAYNAKLI YANIT</span><p id="answerText">Atlas yedekleri her gece 02.00’de alınır. [1]</p><details class="evidence" id="evidence"><summary>[1] Kaynağı gör</summary><p id="evidenceText">Kurgusal Atlas ekip notları · Yedekleme / v3. Kaynak metni: “Atlas yedekleri her gece 02.00’de alınır.”</p></details></div></div></div>
+        <div class="board-status" id="boardStatus" role="status" aria-live="polite">BUL → BAĞLAMA EKLE → YANITLA</div>
+      </div>
+    </main>
+    <footer class="navigation" aria-label="Sunum gezinme">
+      <div class="nav-instructions"><span class="nav-key">←</span><span class="nav-key">→</span><span>GEZİN</span><span class="nav-divider"></span><span class="notes-tip">N <span>NOTLAR</span></span></div>
+      <div class="nav-right">
+        <span class="scene-count"><strong id="currentSceneCount">01</strong><span> / 07</span></span>
+        <div class="progress-track" aria-hidden="true"><div class="progress-line" id="progressLine"></div></div>
+        <button type="button" class="nav-button" id="prevButton" aria-label="Önceki adım" title="Önceki adım (←)" disabled>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6"/></svg>
+        </button>
+        <button type="button" class="nav-button next-button" id="nextButton" aria-label="Sonraki adım" title="Sonraki adım (→)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+        </button>
+      </div>
+    </footer>
+
+    <dialog class="notes-drawer" id="notesDrawer" aria-labelledby="notesSceneTitle">
+      <div class="notes-head"><div><span>KONUŞMACI / NOTLAR</span><h2 id="notesSceneTitle">01 — Soru</h2></div><button type="button" id="notesClose" aria-label="Notları kapat">×</button></div>
+      <div class="notes-content"><p id="notesBody"></p><p class="notes-action" id="notesAction"></p><div class="notes-bottom"><span id="notesDuration">20 SN / HEDEF</span><span>← / → GEZİN</span></div></div>
+    </dialog>
+    <div class="sr-only" id="announcer" role="status" aria-live="polite" aria-atomic="true"></div>
+  </div>
+</body>
+</html>

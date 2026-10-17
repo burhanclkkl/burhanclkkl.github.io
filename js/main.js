@@ -24,6 +24,66 @@
     if (!saved) setTheme(event.matches ? 'dark' : 'light', false);
   });
 
+  // Yıldızlar sabit başlangıç noktalarından itilir; sürekli çalışan bir animasyon yoktur.
+  const hero = document.querySelector('.hero');
+  const solar = document.querySelector('.hero-graphic');
+  if (hero && solar) {
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
+    const stars = [...solar.querySelectorAll('.solar-star')].map((element, index) => ({
+      element,
+      x: parseFloat(element.style.getPropertyValue('--x')) / 100,
+      y: parseFloat(element.style.getPropertyValue('--y')) / 100,
+      angle: index * 2.399963
+    }));
+    let pointer = null;
+    let frame = 0;
+    let displaced = false;
+    function resetStars() {
+      cancelAnimationFrame(frame);
+      frame = 0;
+      pointer = null;
+      if (!displaced) return;
+      stars.forEach(({ element }) => {
+        element.style.removeProperty('--push-x');
+        element.style.removeProperty('--push-y');
+      });
+      displaced = false;
+    }
+    function repelStars() {
+      frame = 0;
+      if (!pointer) return;
+      if (reducedMotion.matches || !finePointer.matches) { resetStars(); return; }
+      const rect = solar.getBoundingClientRect();
+      if (!rect.width || !rect.height) return;
+      const width = solar.offsetWidth;
+      const height = solar.offsetHeight;
+      const px = (pointer.x - rect.left) * width / rect.width;
+      const py = (pointer.y - rect.top) * height / rect.height;
+      stars.forEach(({ element, x, y, angle }) => {
+        const dx = x * width - px;
+        const dy = y * height - py;
+        const distance = Math.hypot(dx, dy);
+        const force = Math.max(0, 1 - distance / 105) ** 2 * 42;
+        const pushX = force * (distance > .1 ? dx / distance : Math.cos(angle));
+        const pushY = force * (distance > .1 ? dy / distance : Math.sin(angle));
+        element.style.setProperty('--push-x', `${pushX.toFixed(2)}px`);
+        element.style.setProperty('--push-y', `${pushY.toFixed(2)}px`);
+      });
+      displaced = true;
+    }
+    hero.addEventListener('pointermove', event => {
+      if (event.pointerType !== 'mouse' || reducedMotion.matches || !finePointer.matches) return;
+      pointer = { x: event.clientX, y: event.clientY };
+      if (!frame) frame = requestAnimationFrame(repelStars);
+    }, { passive: true });
+    hero.addEventListener('pointerleave', resetStars);
+    window.addEventListener('blur', resetStars);
+    window.addEventListener('scroll', resetStars, { passive: true });
+    reducedMotion.addEventListener?.('change', resetStars);
+    finePointer.addEventListener?.('change', resetStars);
+  }
+
   const search = document.getElementById('topic-search');
   const list = document.getElementById('topic-list');
   const empty = document.getElementById('topic-empty');

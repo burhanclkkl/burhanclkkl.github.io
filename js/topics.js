@@ -13,7 +13,7 @@ window.SITE_TOPICS = [
     id: '02', title: 'RAG Mimarisi',
     description: 'Modelin yanıtına dış bilgi nasıl eklenir?',
     category: 'ai', categoryLabel: 'AI / BİLGİ',
-    accent: 'green', status: 'planned', href: ''
+    accent: 'green', status: 'published', href: 'topics/rag-mimarisi/index.html'
   },
   {
     id: '03', title: 'AI Agents',
