@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#FAF9F7">
+  <meta name="description" content="Yapay zekâ, yazılım ve sistemler üzerine araştırmalar, deneyler ve etkileşimli teknik anlatımlar.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+  <meta property="og:locale" content="tr_TR">
+  <meta property="og:site_name" content="OPEN / NOTES">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="OPEN / NOTES — İnteraktif Bilgi Arşivi">
+  <meta property="og:description" content="Yapay zekâ, yazılım ve sistemler üzerine araştırmalar, deneyler ve etkileşimli teknik anlatımlar.">
+  <meta property="og:image" content="https://burhanclkkl.github.io/helloworld/assets/social-card.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="OPEN / NOTES — Merak et. Derinine in. Yapay zekâ, yazılım ve sistemler.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="OPEN / NOTES — İnteraktif Bilgi Arşivi">
+  <meta name="twitter:description" content="Yapay zekâ, yazılım ve sistemler üzerine araştırmalar, deneyler ve etkileşimli teknik anlatımlar.">
+  <meta name="twitter:image" content="https://burhanclkkl.github.io/helloworld/assets/social-card.png">
+  <meta name="twitter:image:alt" content="OPEN / NOTES — Merak et. Derinine in.">
+  <link rel="canonical" href="https://burhanclkkl.github.io/helloworld/">
+  <meta property="og:url" content="https://burhanclkkl.github.io/helloworld/">
+  <title>OPEN / NOTES — İnteraktif Bilgi Arşivi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+    (function () {
+      try {
+        const saved = localStorage.getItem('open-notes-theme');
+        const theme = saved === 'light' || saved === 'dark' ? saved : (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.dataset.theme = theme;
+      } catch (e) { document.documentElement.dataset.theme = 'light'; }
+    }());
+  </script>
+  <script defer src="js/config.js"></script>
+  <script defer src="js/topics.js"></script>
+  <script defer src="js/main.js"></script>
+</head>
+<body>
+  <a href="#main" class="skip-link">İçeriğe geç</a>
+  <div class="site-shell">
+    <header class="site-header" aria-label="Üst gezinme">
+      <a class="brand" href="./index.html" aria-label="Open Notes ana sayfa">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+        <span>OPEN<span class="brand-sep">/</span>NOTES<span class="brand-stop">.</span></span>
+      </a>
+      <nav class="header-nav" aria-label="Sayfa bölümleri">
+        <a href="#topics">Konular</a>
+        <a href="#about">Hakkımda</a>
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Koyu temaya geç" title="Açık / koyu tema">
+          <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.1 15.6A8.5 8.5 0 0 1 8.4 3.9 8.5 8.5 0 1 0 20.1 15.6Z"/></svg>
+          <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <span class="theme-toggle-text">Tema</span>
+        </button>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-eyebrow"><span class="live-dot" aria-hidden="true"></span> KİŞİSEL ARAŞTIRMA DEFTERİ <span class="hero-eyebrow-line"></span> 2026—</div>
+        <div class="hero-graphic" aria-hidden="true">
+          <span class="orbit orbit-1"></span><span class="orbit orbit-2"></span><span class="orbit-core"></span><span class="orbit-satellite"></span>
+        </div>
+        <h1 id="hero-title">Merak et<span class="title-period">.</span><br><span class="hero-outline">Derinine in.</span></h1>
+        <div class="hero-lower">
+          <p>Yapay zekâ, yazılım ve sistemler üzerine araştırmalar. Karmaşık fikirleri <strong>anlaşılır, görsel ve etkileşimli</strong> hâle getiren bir not arşivi.</p>
+          <a href="#topics" class="explore-link">Konuları keşfet <span aria-hidden="true">↘</span></a>
+        </div>
+      </section>
+
+      <section id="topics" class="topics-section" aria-labelledby="topics-title">
+        <div class="section-topline"><span>01 / KEŞFET</span><span>ARŞİV <span aria-hidden="true">↗</span></span></div>
+        <div class="section-heading">
+          <div>
+            <h2 id="topics-title">Konu arşivi<span class="title-period">.</span></h2>
+            <p>Okumakla kalma, fikrin nasıl çalıştığını da gör.</p>
+          </div>
+          <div class="archive-counter" aria-live="polite"><span id="filtered-count">05</span> <span class="archive-counter-slash">/</span> <span id="total-count">05</span></div>
+        </div>
+        <div class="topic-tools" hidden>
+          <label class="search-field" for="topic-search">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.6"/><path d="m16 16 4.5 4.5"/></svg>
+            <input id="topic-search" type="search" aria-label="Konularda ara" placeholder="Konu ara..." autocomplete="off">
+            <kbd>/</kbd>
+          </label>
+          <div class="filters" role="group" aria-label="Kategoriye göre filtrele">
+            <button type="button" class="filter-button active" data-filter="all" aria-pressed="true">Tümü</button>
+            <button type="button" class="filter-button" data-filter="ai" aria-pressed="false">Yapay zekâ</button>
+            <button type="button" class="filter-button" data-filter="system" aria-pressed="false">Sistemler</button>
+            <button type="button" class="filter-button" data-filter="software" aria-pressed="false">Yazılım</button>
+          </div>
+        </div>
+        <div id="topic-list" class="topic-list" aria-live="polite" aria-label="Konu sonuçları">
+          <a class="topic-row featured ready accent-lilac" href="topics/context-window/index.html" aria-label="Context Window: anlatımı aç">
+            <span class="topic-number">01</span>
+            <div class="topic-info"><div class="topic-type">LLM / TEMELLER</div><h3>Context Window</h3><p>Bir dil modeli aynı anda ne kadar bilgiyi değerlendirebilir?</p></div>
+            <div class="topic-side"><span class="topic-status published">İNCELE</span><span class="topic-arrow" aria-hidden="true">↗</span></div>
+          </a>
+          <div class="topic-row planned accent-green">
+            <span class="topic-number">02</span>
+            <div class="topic-info"><div class="topic-type">AI / BİLGİ</div><h3>RAG Mimarisi</h3><p>Modelin yanıtına dış bilgi nasıl eklenir?</p></div>
+            <div class="topic-side"><span class="topic-status coming">YAKINDA</span><span class="topic-arrow" aria-hidden="true">·</span></div>
+          </div>
+          <div class="topic-row planned accent-orange">
+            <span class="topic-number">03</span>
+            <div class="topic-info"><div class="topic-type">AI / AJANLAR</div><h3>AI Agents</h3><p>Bir model ne zaman araç kullanan bir sisteme dönüşür?</p></div>
+            <div class="topic-side"><span class="topic-status coming">YAKINDA</span><span class="topic-arrow" aria-hidden="true">·</span></div>
+          </div>
+          <div class="topic-row planned accent-lilac">
+            <span class="topic-number">04</span>
+            <div class="topic-info"><div class="topic-type">SİSTEM / PROTOKOL</div><h3>MCP Nedir?</h3><p>Modeller ve araçlar arasında ortak bir bağlam protokolü.</p></div>
+            <div class="topic-side"><span class="topic-status coming">YAKINDA</span><span class="topic-arrow" aria-hidden="true">·</span></div>
+          </div>
+          <div class="topic-row planned accent-red">
+            <span class="topic-number">05</span>
+            <div class="topic-info"><div class="topic-type">YAZILIM / ALTYAPI</div><h3>API Gateway</h3><p>İstek yönetimi, gözlemlenebilirlik ve erişim kontrolü.</p></div>
+            <div class="topic-side"><span class="topic-status coming">YAKINDA</span><span class="topic-arrow" aria-hidden="true">·</span></div>
+          </div>
+        </div>
+        <p id="topic-empty" class="empty-state" hidden>Bu aramaya uygun konu bulunamadı. Başka bir kelime deneyin.</p>
+        <div class="archive-end"><span>DAHA FAZLA KONU ÜZERİNDE ÇALIŞILIYOR</span><span aria-hidden="true">↗</span></div>
+      </section>
+
+      <section class="how-section" aria-labelledby="how-title">
+        <div class="section-topline"><span>02 / YAKLAŞIM</span><span>NASIL ÇALIŞIYOR?</span></div>
+        <div class="how-layout">
+          <h2 id="how-title">Bir fikir,<br><em>birkaç katman.</em></h2>
+          <div class="how-description">
+            <p>Her konu önce anlaşılır bir soruyla başlar. Ardından mekanizmasına iner, bir örnekle somutlaşır ve mümkün olduğunda etkileşimli bir deneye dönüşür.</p>
+            <div class="approach-flow" aria-label="İçerik üretim akışı"><span>ARAŞTIR</span><b>→</b><span>ANLAT</span><b>→</b><span>DENE</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="about-section" aria-labelledby="about-title">
+        <div class="section-topline"><span>03 / ARKASINDAKİ KİŞİ</span><span>MERHABA <span aria-hidden="true">✳</span></span></div>
+        <div class="about-content">
+          <div class="about-heading"><span class="about-symbol" aria-hidden="true">{ }</span><h2 id="about-title">Biraz da<br>benden.</h2></div>
+          <div class="about-copy">
+            <p>Bilgisayar mühendisliği, yapay zekâ sistemleri ve yazılım üzerine çalışıyorum. Burada merak ettiğim konuları araştırıyor; öğrendiklerimi anlaşılır anlatımlara ve küçük deneylere dönüştürüyorum.</p>
+            <div class="social-links">
+              <a data-social="github" aria-label="GitHub profili" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4.3 1.3-4.3-2.2-6-2.6M15 21v-3.4a3 3 0 0 0-.8-2.3c2.7-.3 5.6-1.3 5.6-6A4.7 4.7 0 0 0 18.5 6a4.3 4.3 0 0 0-.1-3s-1 0-3.2 1.7a11 11 0 0 0-6.4 0C6.6 3 5.6 3 5.6 3A4.3 4.3 0 0 0 5.5 6a4.7 4.7 0 0 0-1.3 3.3c0 4.7 2.9 5.7 5.6 6A3 3 0 0 0 9 17.6V21"/></svg><span>GitHub</span><span aria-hidden="true">↗</span></a>
+              <a data-social="linkedin" aria-label="LinkedIn profili" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v11m0-15v.2M9 20v-11h4v1.6a4.3 4.3 0 0 1 3.7-1.9C20 8.7 20 11 20 14v6M9 20H5m4 0h4"/></svg><span>LinkedIn</span><span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-main">
+        <div class="footer-identity"><span class="footer-sign">O/N<span class="title-period">.</span></span><span>MERAK ETMEYE<br>DEVAM.</span></div>
+        <div class="footer-right">
+          <div class="visitor-line" title="Ziyaret sayacı hesabı bağlandığında güncellenecek"><span class="visitor-dot" aria-hidden="true"></span> ZİYARETLER <span class="visitor-count" id="visitor-count" aria-live="polite">—</span></div>
+          <a href="#main" class="back-top">Başa dön ↑</a>
+        </div>
+      </div>
+      <div class="footer-baseline"><span>© <span id="year">2026</span> · OPEN / NOTES</span><span>DESIGNED TO EXPLORE, NOT TO IMPRESS.</span></div>
+      <div class="eminem-easter-egg" aria-label="Eminem fotoğrafı ve be a King? yazısı">
+        <div class="easter-egg-photo"><img id="eminem-photo" alt="Eminem fotoğrafından küçük kırpılmış bir bölüm" loading="lazy" decoding="async"></div>
+        <a class="king-link" href="https://youtu.be/XbGs_qK2PQA?list=RDXbGs_qK2PQA" target="_blank" rel="noopener noreferrer" aria-label="be a King? — YouTube videosunu aç (yeni sekme)">be a King?</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
