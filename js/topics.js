@@ -32,5 +32,11 @@ window.SITE_TOPICS = [
     description: 'İstek yönetimi, gözlemlenebilirlik ve erişim kontrolü.',
     category: 'software', categoryLabel: 'YAZILIM / ALTYAPI',
     accent: 'red', status: 'planned', href: ''
+  },
+  {
+    id: '06', title: 'Token Nedir?',
+    description: 'Bir dil modeli metni nasıl parçalara ve sayılara dönüştürür?',
+    category: 'ai', categoryLabel: 'LLM / TOKENİZASYON',
+    accent: 'lilac', status: 'published', href: 'topics/token-nedir/index.html'
   }
 ];

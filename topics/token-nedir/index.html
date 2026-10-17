@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#FAF9F7">
+  <meta name="description" content="Token nedir? 7 sahnede, 5 dakikalık etkileşimli Türkçe teknoloji anlatımı.">
+  <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../assets/apple-touch-icon.png">
+  <meta property="og:locale" content="tr_TR">
+  <meta property="og:site_name" content="OPEN / NOTES">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Token Nedir? — OPEN / NOTES">
+  <meta property="og:description" content="Bir dil modeli metni nasıl parçalara ve sayılara dönüştürür?">
+  <meta property="og:image" content="https://burhanclkkl.github.io/helloworld/assets/social-card.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="OPEN / NOTES — Merak et. Derinine in. Yapay zekâ, yazılım ve sistemler.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Token Nedir? — OPEN / NOTES">
+  <meta name="twitter:description" content="Bir dil modeli metni nasıl parçalara ve sayılara dönüştürür?">
+  <meta name="twitter:image" content="https://burhanclkkl.github.io/helloworld/assets/social-card.png">
+  <meta name="twitter:image:alt" content="OPEN / NOTES — Merak et. Derinine in.">
+  <meta property="article:published_time" content="2026-10-18">
+  <meta property="article:modified_time" content="2026-10-18">
+  <link rel="canonical" href="https://burhanclkkl.github.io/helloworld/topics/token-nedir/index.html">
+  <meta property="og:url" content="https://burhanclkkl.github.io/helloworld/topics/token-nedir/index.html">
+  <title>Token Nedir? — OPEN / NOTES</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" >
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./script.js" defer></script>
+</head>
+<body>
+  <noscript><p class="noscript-note">Etkileşimli sunum için JavaScript’i etkinleştirin. <a href="../../index.html#topics">Konu arşivine dön →</a></p></noscript>
+  <div class="app" id="app" data-scene="1">
+    <header class="masthead" aria-label="Sunum üst menüsü">
+      <a href="../../index.html#topics" class="brand" aria-label="Konu arşivine dön">
+        <span class="brand-sign" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+        <span>TOKEN <span class="brand-slash">/</span> NEDİR?</span>
+      </a>
+      <div class="masthead-right">
+        <details class="publication-details" id="publicationDetails">
+          <summary>Kaynakça<span class="publication-summary-extra"> ve tarihler</span> <span aria-hidden="true">↗</span></summary>
+          <section class="publication-panel" aria-labelledby="sources-title">
+<div class="publication-dates"><span>YAYIMLANMA <time datetime="2026-10-18">18 Ekim 2026</time></span><span>SON GÜNCELLEME <time datetime="2026-10-18">18 Ekim 2026</time></span></div>
+          <h2 id="sources-title">Kaynakça<span>.</span></h2>
+          <p>Token, alt sözcükler ve BPE için kaynaklar. Canlı deneydeki küçük sözlük bu anlatıma özeldir; gerçek modellerin token sayımı veya fiyat hesabı değildir.</p>
+          <ol class="source-references">
+            <li><a href="https://huggingface.co/docs/transformers/main/en/tokenizer_summary" target="_blank" rel="noopener noreferrer">Hugging Face — Tokenization algorithms ↗</a><p>Kelime, karakter ve alt sözcük tabanlı parçalama yaklaşımları.</p></li>
+            <li><a href="https://huggingface.co/learn/llm-course/en/chapter6/5" target="_blank" rel="noopener noreferrer">Hugging Face — Byte-Pair Encoding ↗</a><p>Sözlükler, byte düzeyinde temsil ve sıralı birleştirme kuralları.</p></li>
+          </ol>
+          <a class="archive-return" href="../../index.html#topics">← Konu arşivine dön</a>
+          </section>
+        </details>
+        <span class="header-meta">INTERACTIVE EXPLAINER <span class="meta-sep">/</span> 05:00</span>
+        <button type="button" class="header-control" id="notesToggle" aria-label="Konuşmacı notlarını aç (N)" aria-expanded="false" title="Konuşmacı notları (N)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h12a1.5 1.5 0 0 1 1.5 1.5v14a1.5 1.5 0 0 1-1.5 1.5h-12A1.5 1.5 0 0 1 5 19V5A1.5 1.5 0 0 1 6.5 3.5Z"/><path d="M9 9h7M9 13h7M9 17h4"/></svg>
+        </button>
+        <button type="button" class="header-control" id="fullscreenToggle" aria-label="Tam ekran modunu aç (F)" title="Tam ekran (F)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3.5H3.5V8m12.5-4.5h4.5V8M3.5 16v4.5H8m12.5-4.5v4.5H16"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <main class="presentation" id="presentation" aria-label="Token Nedir etkileşimli sunumu">
+      <section class="scene scene-1 active" data-index="1" aria-labelledby="scene1-title">
+        <div class="cover-copy"><p class="eyebrow"><span>01</span><i></i>BİR SORU</p><h1 id="scene1-title">Bir kelime,<br><span>tek token mı</span><b>?</b></h1><p class="cover-lead">Modelin gördüğü parçalar,<br>bizim saydığımız kelimelerle aynı olmayabilir.</p></div>
+        <div class="cover-word" aria-hidden="true"><span>TEK KELİME</span><strong>Kitaplarımızdan</strong><div><i>Kitap</i><i>larımız</i><i>dan</i></div><small>PARÇALAMA ÖRNEĞİ · SÖZLÜĞE BAĞLI</small></div>
+      </section>
+      <section class="scene scene-2" data-index="2" aria-labelledby="scene2-title" hidden>
+        <div class="split-copy"><p class="eyebrow"><span>02</span><i></i>TANIM</p><h2 id="scene2-title">Token,<br>bir yapı taşı.</h2><p class="statement">Metni işlemek için kullanılan, <strong>kimliği olan bir parça.</strong></p><p class="small-note">Bir kelime, kelime parçası,<br>noktalama veya byte dizisi olabilir.</p><p class="analogy">Aynı yazıyı farklı boyuttaki<br>yapı taşlarıyla kurmak gibi.</p></div>
+      </section>
+      <section class="scene scene-3" data-index="3" aria-labelledby="scene3-title" hidden>
+        <div class="split-copy"><p class="eyebrow"><span>03</span><i></i>METİNDEN SAYIYA</p><h2 id="scene3-title">Önce parçala.<br>Sonra numarala.</h2><div class="pipeline" role="group" aria-label="Tokenleştirme adımları"><button type="button" data-step="0" aria-pressed="true"><span>01</span>Metin</button><button type="button" data-step="1" aria-pressed="false"><span>02</span>Parçalar</button><button type="button" data-step="2" aria-pressed="false"><span>03</span>Kimlikler</button></div><p class="step-note" id="pipelineNote">Başlangıçta okunabilir bir metin var.</p><p class="small-note">Tokenizer, metni parçalara ve token kimliklerine dönüştürür.</p></div>
+      </section>
+      <section class="scene scene-4" data-index="4" aria-labelledby="scene4-title" hidden>
+        <div class="lab-heading"><p class="eyebrow"><span>04</span><i></i>KENDİN DENE</p><h2 id="scene4-title">Metni yaz.<br>Parçalarını gör.</h2></div>
+        <div class="lab-input"><label for="tokenInput">SENİN METNİN <span>EN FAZLA 120 KARAKTER BİRİMİ</span></label><textarea id="tokenInput" maxlength="120" rows="3" spellcheck="false">Merhaba dünya!</textarea><div class="sample-buttons" role="group" aria-label="Örnek metinler"><button type="button" data-sample="sentence">Cümle</button><button type="button" data-sample="compound">Ekli sözcük</button><button type="button" data-sample="emoji">Emoji</button></div><div class="lab-options"><label><input type="checkbox" id="showTokenIds"> Kimlikleri göster</label><button type="button" id="resetTokens">Sıfırla ↺</button></div></div>
+        <p class="lab-disclaimer">ÖĞRETİCİ BPE SÖZLÜĞÜ · GERÇEK MODEL SAYACI DEĞİLDİR · METİN BU SAYFADA İŞLENİR</p>
+      </section>
+      <section class="scene scene-5" data-index="5" aria-labelledby="scene5-title" hidden>
+        <div class="split-copy"><p class="eyebrow"><span>05</span><i></i>SÖZLÜK FARKI</p><h2 id="scene5-title">Aynı metin.<br>Farklı parçalar.</h2><p class="statement">Sözlük değişirse token sayısı da değişebilir.</p><div class="vocabulary-choice" role="group" aria-label="Öğretici sözlük seçimi"><button type="button" data-vocab="a" aria-pressed="true">Sözlük A</button><button type="button" data-vocab="b" aria-pressed="false">Sözlük B</button></div><p class="step-note" id="vocabularyNote">Aynı kelime, A sözlüğünde üç parçayla temsil ediliyor.</p><p class="small-note">Az token, tek başına daha iyi model demek değildir. Dil, yazım ve kullanılan sözlük sonucu etkiler.</p></div>
+      </section>
+      <section class="scene scene-6" data-index="6" aria-labelledby="scene6-title" hidden>
+        <div class="split-copy"><p class="eyebrow"><span>06</span><i></i>BAĞLAMA BAĞLA</p><h2 id="scene6-title">Girdi de çıktı da<br>token.</h2><p class="statement">Soru kadar, yanıt için ayırdığın alan da önemli.</p><p class="small-note">Bu şemada 20 tokenlık temsili bir alan kullanılıyor. Gerçek girdi ve çıktı sınırları modele göre değişir.</p></div>
+        <div class="budget-view"><div class="budget-title"><span>TEMSİLİ BAĞLAM</span><strong>20 TOKEN</strong></div><div class="budget-formula"><span>4 talimat</span><b>+</b><span>3 soru</span><b>+</b><strong id="responseBudgetLabel">8 yanıt payı</strong></div><div class="budget-track" role="progressbar" aria-label="Temsili bağlam bütçesi" aria-valuemin="0" aria-valuemax="20" aria-valuenow="15" id="budgetMeter"><span class="budget-input-fill"></span><span class="budget-output-fill" id="responseBudgetFill"></span></div><p class="budget-result" id="budgetResult" role="status" aria-live="polite">15 / 20 token ayrıldı. 5 token boş.</p><div class="budget-buttons" role="group" aria-label="Yanıt için ayrılan pay"><button type="button" data-budget="8" aria-pressed="true">Kısa yanıt payı</button><button type="button" data-budget="18" aria-pressed="false">Uzun yanıt payı</button></div><p class="small-note">Burada bir yanıt üretilmez; yalnızca bütçe ayrılır. Ücret hesabında modelin kendi sayacı ve tarifesi kullanılır.</p></div>
+      </section>
+      <section class="scene scene-7" data-index="7" aria-labelledby="scene7-title" hidden>
+        <div class="closing-copy"><p class="eyebrow"><span>07</span><i></i>AKLINDA KALSIN</p><h2 id="scene7-title">Kelime sayma.<br><span>Modelin parçalarını</span><br>hesaba kat.</h2><ol class="lessons"><li><span>01</span>Token, kelimeyle aynı şey değildir.</li><li><span>02</span>Parçalama, kullanılan sözlüğe bağlıdır.</li><li><span>03</span>Bağlamı gerçek token sayısıyla planla.</li></ol><div class="closing-actions"><button type="button" id="replayPresentation">YENİDEN BAŞLAT ↺</button><a href="../context-window/index.html">Context Window’u keşfet ↗</a></div></div><div class="closing-motif" aria-hidden="true"><span>METİN</span><i>↓</i><span>PARÇALAR</span><i>↓</i><strong>KİMLİKLER</strong></div>
+      </section>
+      <div class="token-workbench" id="tokenWorkbench" role="region" aria-label="Metinden tokenlara ortak çalışma alanı" hidden>
+        <div class="workbench-header"><span>TOKEN / ÇALIŞMA ALANI</span><span id="workbenchPhase">ÖĞRETİCİ SÖZLÜK A</span></div>
+        <div class="workbench-body"><div class="raw-caption">METİN</div><p class="raw-text" id="rawText">Merhaba dünya!</p><div class="token-direction" aria-hidden="true">↓</div><div class="token-pieces" id="tokenPieces" role="list" aria-label="Token parçaları"></div><p class="empty-tokens" id="emptyTokens" hidden>Henüz metin yok. Soldaki alana bir şey yaz.</p><div class="token-stats"><span><b id="characterCount">14</b><small id="characterLabel">GÖRÜNÜR KARAKTER</small></span><span><b id="wordCount">2</b><small>KELİME</small></span><span><b id="tokenCount">3</b><small>ÖRNEK TOKEN</small></span></div></div>
+        <div class="workbench-footer" id="workbenchNote">Bu sunumun küçük sözlüğü; gerçek modellerin token sayımı değildir.</div>
+      </div>
+    </main>
+    <footer class="navigation" aria-label="Sunum gezinme">
+      <div class="nav-instructions"><span class="nav-key">←</span><span class="nav-key">→</span><span>GEZİN</span><span class="nav-divider"></span><span class="notes-tip">N <span>NOTLAR</span></span></div>
+      <div class="nav-right">
+        <span class="scene-count"><strong id="currentSceneCount">01</strong><span> / 07</span></span>
+        <div class="progress-track" aria-hidden="true"><div class="progress-line" id="progressLine"></div></div>
+        <button type="button" class="nav-button" id="prevButton" aria-label="Önceki adım" title="Önceki adım (←)" disabled>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6"/></svg>
+        </button>
+        <button type="button" class="nav-button next-button" id="nextButton" aria-label="Sonraki adım" title="Sonraki adım (→)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+        </button>
+      </div>
+    </footer>
+
+    <dialog class="notes-drawer" id="notesDrawer" aria-labelledby="notesSceneTitle">
+      <div class="notes-head"><div><span>KONUŞMACI / NOTLAR</span><h2 id="notesSceneTitle">01 — Soru</h2></div><button type="button" id="notesClose" aria-label="Notları kapat">×</button></div>
+      <div class="notes-content"><p id="notesBody"></p><p class="notes-action" id="notesAction"></p><div class="notes-bottom"><span id="notesDuration">20 SN / HEDEF</span><span>← / → GEZİN</span></div></div>
+    </dialog>
+    <div class="sr-only" id="announcer" role="status" aria-live="polite" aria-atomic="true"></div>
+  </div>
+</body>
+</html>
