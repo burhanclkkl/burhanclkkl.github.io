@@ -65,40 +65,42 @@
     <main id="main">
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-eyebrow"><span class="live-dot" aria-hidden="true"></span> KİŞİSEL ARAŞTIRMA DEFTERİ <span class="hero-eyebrow-line"></span> 2026—</div>
-        <div class="hero-graphic" aria-hidden="true">
-          <span class="solar-orbit solar-orbit-inner"></span>
-          <span class="solar-orbit solar-orbit-middle"></span>
-          <span class="solar-orbit solar-orbit-outer"></span>
-          <span class="solar-sun"></span>
-          <span class="solar-planet solar-planet-inner"></span>
-          <span class="solar-planet solar-planet-middle"></span>
-          <span class="solar-planet solar-planet-ringed"></span>
-          <span class="solar-star solar-star-dot" style="--x: 6%; --y: 28%; --size: 4px"></span>
-          <span class="solar-star" style="--x: 16%; --y: 9%; --size: 8px"></span>
-          <span class="solar-star solar-star-dot" style="--x: 37%; --y: 5%; --size: 3px"></span>
-          <span class="solar-star" style="--x: 64%; --y: 7%; --size: 6px"></span>
-          <span class="solar-star" style="--x: 88%; --y: 14%; --size: 9px"></span>
-          <span class="solar-star solar-star-dot" style="--x: 98%; --y: 36%; --size: 3px"></span>
-          <span class="solar-star" style="--x: 91%; --y: 58%; --size: 7px"></span>
-          <span class="solar-star solar-star-dot" style="--x: 97%; --y: 80%; --size: 3px"></span>
-          <span class="solar-star" style="--x: 78%; --y: 97%; --size: 8px"></span>
-          <span class="solar-star solar-star-dot" style="--x: 53%; --y: 93%; --size: 3px"></span>
-          <span class="solar-star" style="--x: 30%; --y: 96%; --size: 7px"></span>
-          <span class="solar-star solar-star-dot" style="--x: 9%; --y: 86%; --size: 3px"></span>
-          <span class="solar-star" style="--x: 3%; --y: 63%; --size: 7px"></span>
-          <span class="solar-star solar-star-dot" style="--x: 21%; --y: 49%; --size: 3px"></span>
-          <span class="solar-star solar-star-dot" style="--x: 52%; --y: 19%; --size: 3px"></span>
-          <span class="solar-star" style="--x: 76%; --y: 33%; --size: 7px"></span>
-          <span class="solar-star solar-star-dot" style="--x: 62%; --y: 76%; --size: 3px"></span>
-          <span class="solar-star" style="--x: 37%; --y: 72%; --size: 6px"></span>
-          <span class="solar-star" style="--x: 15%; --y: 69%; --size: 7px"></span>
-          <span class="solar-star solar-star-dot" style="--x: 67%; --y: 50%; --size: 3px"></span>
+        <div class="hero-graphic" role="group" aria-label="Konuları keşfet: güneş sistemi">
+          <span class="solar-orbit solar-orbit-inner" aria-hidden="true"></span>
+          <span class="solar-orbit solar-orbit-middle" aria-hidden="true"></span>
+          <span class="solar-orbit solar-orbit-outer" aria-hidden="true"></span>
+          <span class="solar-sun" aria-hidden="true"></span>
+          <div class="solar-route solar-route-token"><a class="planet-link" href="topics/token-nedir/index.html"><span class="solar-planet solar-planet-inner" aria-hidden="true"></span><span class="planet-label">Token <span aria-hidden="true">↗</span></span></a></div>
+          <div class="solar-route solar-route-context"><a class="planet-link" href="topics/context-window/index.html"><span class="solar-planet solar-planet-middle" aria-hidden="true"></span><span class="planet-label">Context Window <span aria-hidden="true">↗</span></span></a></div>
+          <div class="solar-route solar-route-rag"><a class="planet-link" href="topics/rag-mimarisi/index.html"><span class="solar-planet solar-planet-ringed" aria-hidden="true"></span><span class="planet-label">RAG <span aria-hidden="true">↗</span></span></a></div>
+          <button class="solar-motion-toggle" id="solar-motion-toggle" type="button" aria-pressed="false" hidden>Hareketi duraklat <span aria-hidden="true">Ⅱ</span></button>
+          <span aria-hidden="true" class="solar-star solar-star-dot" style="--x: 6%; --y: 28%; --size: 4px"></span>
+          <span aria-hidden="true" class="solar-star" style="--x: 16%; --y: 9%; --size: 8px"></span>
+          <span aria-hidden="true" class="solar-star solar-star-dot" style="--x: 37%; --y: 5%; --size: 3px"></span>
+          <span aria-hidden="true" class="solar-star" style="--x: 64%; --y: 7%; --size: 6px"></span>
+          <span aria-hidden="true" class="solar-star" style="--x: 88%; --y: 14%; --size: 9px"></span>
+          <span aria-hidden="true" class="solar-star solar-star-dot" style="--x: 98%; --y: 36%; --size: 3px"></span>
+          <span aria-hidden="true" class="solar-star" style="--x: 91%; --y: 58%; --size: 7px"></span>
+          <span aria-hidden="true" class="solar-star solar-star-dot" style="--x: 97%; --y: 80%; --size: 3px"></span>
+          <span aria-hidden="true" class="solar-star" style="--x: 78%; --y: 97%; --size: 8px"></span>
+          <span aria-hidden="true" class="solar-star solar-star-dot" style="--x: 53%; --y: 93%; --size: 3px"></span>
+          <span aria-hidden="true" class="solar-star" style="--x: 30%; --y: 96%; --size: 7px"></span>
+          <span aria-hidden="true" class="solar-star solar-star-dot" style="--x: 9%; --y: 86%; --size: 3px"></span>
+          <span aria-hidden="true" class="solar-star" style="--x: 3%; --y: 63%; --size: 7px"></span>
+          <span aria-hidden="true" class="solar-star solar-star-dot" style="--x: 21%; --y: 49%; --size: 3px"></span>
+          <span aria-hidden="true" class="solar-star solar-star-dot" style="--x: 52%; --y: 19%; --size: 3px"></span>
+          <span aria-hidden="true" class="solar-star" style="--x: 76%; --y: 33%; --size: 7px"></span>
+          <span aria-hidden="true" class="solar-star solar-star-dot" style="--x: 62%; --y: 76%; --size: 3px"></span>
+          <span aria-hidden="true" class="solar-star" style="--x: 37%; --y: 72%; --size: 6px"></span>
+          <span aria-hidden="true" class="solar-star" style="--x: 15%; --y: 69%; --size: 7px"></span>
+          <span aria-hidden="true" class="solar-star solar-star-dot" style="--x: 67%; --y: 50%; --size: 3px"></span>
         </div>
         <h1 id="hero-title">Merak et<span class="title-period">.</span><br><span class="hero-outline">Derinine in.</span></h1>
         <div class="hero-lower">
-          <p>Yapay zekâ, yazılım ve sistemler üzerine araştırmalar. Karmaşık fikirleri <strong>anlaşılır, görsel ve etkileşimli</strong> hâle getiren bir not arşivi.</p>
+          <p>Öğrenirken hazırladığım, <strong>kurcalayarak anlayabileceğin</strong> teknoloji notları.</p>
           <a href="#topics" class="explore-link">Konuları keşfet <span aria-hidden="true">↘</span></a>
         </div>
+        <a class="editor-note" href="topics/token-nedir/index.html"><span class="editor-note-label">BU HAFTA / DEFTERDEN</span><span class="editor-note-title">Bir kelime neden tek token değil? <span aria-hidden="true">↗</span></span></a>
       </section>
 
       <section id="topics" class="topics-section" aria-labelledby="topics-title">

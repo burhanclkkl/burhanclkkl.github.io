@@ -24,12 +24,32 @@
     if (!saved) setTheme(event.matches ? 'dark' : 'light', false);
   });
 
-  // Yıldızlar sabit başlangıç noktalarından itilir; sürekli çalışan bir animasyon yoktur.
+  // Yıldızlar fareden uzaklaşır; yörünge hareketi CSS ile yönetilir.
   const hero = document.querySelector('.hero');
   const solar = document.querySelector('.hero-graphic');
   if (hero && solar) {
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
+    const motionButton = document.getElementById('solar-motion-toggle');
+    let motionPaused = false;
+    function syncMotion() {
+      const paused = motionPaused || reducedMotion.matches || document.hidden;
+      solar.classList.toggle('is-paused', paused);
+      if (motionButton) {
+        motionButton.hidden = reducedMotion.matches;
+        motionButton.setAttribute('aria-pressed', String(motionPaused));
+        motionButton.textContent = motionPaused ? 'Hareketi sürdür ↻' : 'Hareketi duraklat Ⅱ';
+      }
+    }
+    motionButton?.addEventListener('click', () => { motionPaused = !motionPaused; syncMotion(); });
+    reducedMotion.addEventListener?.('change', syncMotion);
+    document.addEventListener('visibilitychange', syncMotion);
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(entries => {
+        solar.classList.toggle('is-offscreen', !entries[0].isIntersecting);
+      }).observe(solar);
+    }
+    syncMotion();
     const stars = [...solar.querySelectorAll('.solar-star')].map((element, index) => ({
       element,
       x: parseFloat(element.style.getPropertyValue('--x')) / 100,
