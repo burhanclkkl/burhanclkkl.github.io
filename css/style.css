@@ -340,10 +340,10 @@ html[data-theme="dark"] .easter-egg-photo img { filter: grayscale(1) brightness(
 
 /* İsim, sade bir italik imza gibi. */
 .about-greeting { margin:0 0 25px; font-size:clamp(18px,2vw,24px); font-weight:600; line-height:1.7; letter-spacing:-.05em; }
-.about-name { display:inline-block; white-space:nowrap; font-family:Georgia,'Times New Roman',serif; font-style:italic; font-weight:500; font-size:1.22em; letter-spacing:-.045em; color:var(--lilac-ink); transform-origin:50% 80%; transition:transform .35s var(--ease),color .35s var(--ease); }
-.about-name-period { color:var(--orange-ink); }
+.about-name { --name-gold:#8A630C; --name-shine:#B58519; display:inline-block; white-space:nowrap; font-family:Georgia,'Times New Roman',serif; font-style:italic; font-weight:500; font-size:1.22em; letter-spacing:-.045em; color:var(--name-gold); transform-origin:50% 80%; transition:transform .18s var(--ease); }
+.about-name-period { color:inherit; }
 @media (hover:hover) and (pointer:fine) {
- .about-name:hover { transform:translateY(-2px) rotate(-3deg); color:var(--orange-ink); }
+ .about-name:hover { transform:translateY(-2px) rotate(-3deg); }
 }
 @media (prefers-reduced-motion:reduce) { .about-name { transition:none; }.about-name:hover { transform:none; } }
 
@@ -389,4 +389,12 @@ html[data-theme="dark"] .easter-egg-photo img { filter: grayscale(1) brightness(
 }
 @media (prefers-reduced-motion:reduce) {
  .explore-link::after,.social-links a::after,.back-top::after,.header-nav>a::after,.search-field { transition:none; }
+}
+
+/* İsme özel altın vurgu; footer'daki imzayla aynı renk ailesi. */
+html[data-theme="dark"] .about-name { --name-gold:#DDB459; --name-shine:#FFF0BA; }
+@media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference) {
+ @supports ((background-clip:text) or (-webkit-background-clip:text)) {
+  .about-name:hover { background-image:linear-gradient(110deg,var(--name-gold) 20%,var(--name-shine) 45%,var(--name-gold) 70%); background-size:250% 100%; background-position:-100% center; background-clip:text; -webkit-background-clip:text; color:transparent; animation:king-shimmer 1.2s linear 1; }
+ }
 }
