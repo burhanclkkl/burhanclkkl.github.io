@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#FAF9F7">
-  <meta name="description" content="Token nedir? 7 sahnede, 5 dakikalık etkileşimli Türkçe teknoloji anlatımı.">
+  <meta name="description" content="Token, modelin metni işlediği parçalardan biridir. Görünür açıklamalar, somut örnekler ve adım adım deneylerle öğren.">
   <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="../../assets/apple-touch-icon.png">
@@ -32,9 +32,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" >
   <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="../../css/lesson-reading.css">
   <script src="./script.js" defer></script>
+  <script src="../../js/lesson-reading.js" defer></script>
+  <noscript><style>.lesson-article[hidden] { display:block !important; }.lesson-article + .lesson-article { margin-top:64px; }.lesson-jump,.lesson-stage-intro { display:none; }</style></noscript>
 </head>
-<body>
+<body data-lesson-topic="token-nedir">
   <noscript><p class="noscript-note">Etkileşimli sunum için JavaScript’i etkinleştirin. <a href="../../index.html#topics">Konu arşivine dön →</a></p></noscript>
   <div class="app" id="app" data-scene="1">
     <header class="masthead" aria-label="Sunum üst menüsü">
@@ -56,7 +59,7 @@
           <a class="archive-return" href="../../index.html#topics">← Konu arşivine dön</a>
           </section>
         </details>
-        <span class="header-meta">INTERACTIVE EXPLAINER <span class="meta-sep">/</span> 05:00</span>
+        <span class="header-meta">OKU / DENE <span class="meta-sep">/</span> KENDİ HIZINDA</span>
         <button type="button" class="header-control" id="notesToggle" aria-label="Konuşmacı notlarını aç (N)" aria-expanded="false" title="Konuşmacı notları (N)">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h12a1.5 1.5 0 0 1 1.5 1.5v14a1.5 1.5 0 0 1-1.5 1.5h-12A1.5 1.5 0 0 1 5 19V5A1.5 1.5 0 0 1 6.5 3.5Z"/><path d="M9 9h7M9 13h7M9 17h4"/></svg>
         </button>
@@ -67,6 +70,80 @@
     </header>
 
     <main class="presentation" id="presentation" aria-label="Token Nedir etkileşimli sunumu">
+<section class="lesson-reading" id="lesson-reading" aria-label="Sahnenin adım adım açıklaması">
+<article class="lesson-article" data-lesson-scene="1" aria-labelledby="lesson-title-1">
+ <p class="lesson-overline">01 / 07 · OKU, DENE, ANLA</p>
+ <h2 id="lesson-title-1">Token, modelin metni işlediği parçalardan biridir.</h2>
+ <div class="lesson-explanation-steps"><section class="lesson-explanation-step"><h3><span aria-hidden="true">01</span>Nedir?</h3><p>Bir dil modeli metni doğrudan bizim saydığımız kelimelerle işlemez. Tokenizer adı verilen dönüştürücü, metni modelin kullanacağı parçalara ve bu parçaların kimliklerine çevirir.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">02</span>Somut örnek</h3><p>“Kitaplarımızdan” tek kelimedir. Bir sözlük bunu “Kitap / larımız / dan” diye üç parçada temsil edebilir. Başka bir sözlükte aynı sözcük tek parça olabilir.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">03</span>Nasıl çalışır?</h3><p>Parçaların sınırlarını kullanılan sözlük ve kurallar belirler. Boşluk ve noktalama da temsilin parçasıdır; “kelime sayısı = token sayısı” diye bir eşitlik yoktur.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">04</span>Deneyde ne yapacağım?</h3><p>Açılıştaki kelimeyi ve altındaki üç parçayı karşılaştır. Sonraki sahnede aynı fikri metin, parça ve kimlik olarak ayırarak inceleyeceğiz.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">05</span>Ne öğrendim?</h3><p>Bu bölünme anlatım için seçilmiş bir örnektir. Gerçek bir modelin kaç token kullanacağını o modelin tokenizerıyla öğrenebilirsin.</p></section></div>
+ <a class="lesson-jump" href="#lesson-stage">Görseli ve deneyi incele <span aria-hidden="true">↓</span></a>
+</article>
+<article class="lesson-article" data-lesson-scene="2" aria-labelledby="lesson-title-2" hidden>
+ <p class="lesson-overline">02 / 07 · OKU, DENE, ANLA</p>
+ <h2 id="lesson-title-2">Metni yapı taşlarıyla temsil etmek gibi düşün.</h2>
+ <div class="lesson-explanation-steps"><section class="lesson-explanation-step"><h3><span aria-hidden="true">01</span>Nedir?</h3><p>Token, sözlükte bir kimliği olan metin parçasıdır. Bir kelimeyi, kelimenin bölümünü, noktalama işaretini veya bazı sistemlerde byte dizisini temsil edebilir. Byte, metnin bilgisayardaki temsilini oluşturan küçük veri birimidir.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">02</span>Somut örnek</h3><p>“Merhaba dünya!” metnini düşün. Bu sunumun küçük sözlüğü onu “Merhaba”, başında boşluk bulunan “dünya” ve “!” olarak üç parçaya ayırır.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">03</span>Nasıl çalışır?</h3><p>Aynı yapıyı büyük veya küçük taşlarla kurabildiğin gibi aynı metin de farklı boyuttaki parçalarla temsil edilebilir. Parçaya verilen kimlik, sözlükteki kaydın numarasıdır.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">04</span>Deneyde ne yapacağım?</h3><p>Çalışma alanındaki metni aşağıdaki parçalara eşleştir. Kelime, görünen karakter ve örnek token sayaçlarının aynı şeyi saymadığına dikkat et.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">05</span>Ne öğrendim?</h3><p>Kimliğin büyük olması parçanın daha önemli olduğunu göstermez. Bu kimlikler, modelin sayısal temsilleri elde etmekte kullandığı sözlük adresleri gibi düşünülebilir.</p></section></div>
+ <a class="lesson-jump" href="#lesson-stage">Görseli ve deneyi incele <span aria-hidden="true">↓</span></a>
+</article>
+<article class="lesson-article" data-lesson-scene="3" aria-labelledby="lesson-title-3" hidden>
+ <p class="lesson-overline">03 / 07 · OKU, DENE, ANLA</p>
+ <h2 id="lesson-title-3">Metinden parçaya, parçadan kimliğe geçişi izle.</h2>
+ <div class="lesson-explanation-steps"><section class="lesson-explanation-step"><h3><span aria-hidden="true">01</span>Nedir?</h3><p>Tokenleştirme, okunabilir metni modelin kullanacağı kimlik dizisine dönüştürmektir. Metni bölme ve parçaları numaralarıyla eşleştirme aynı sürecin iki görünümüdür.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">02</span>Somut örnek</h3><p>“Merhaba dünya!” önce bir cümledir. Sözlükteki parçalara ayrıldıktan sonra her parçanın altında bir ID, yani kimlik numarası gösterilebilir.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">03</span>Nasıl çalışır?</h3><p>BPE, küçük birimlerden başlayıp komşu parçaları birleştiren bir tokenleştirme yöntemidir. Bu deneyde byte düzeyinde başlar. Önceden belirlediğimiz birleştirme kuralları komşu parçaları birleştirir. Gerçek dil modellerindeki kurallar genellikle veriden öğrenilir.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">04</span>Deneyde ne yapacağım?</h3><p>“Metin”, “Parçalar”, “Kimlikler” düğmelerini sırayla seç. Metnin değişmediğini, yalnızca temsilinin açıldığını gör; geri adımda kimlikler yeniden gizlenir.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">05</span>Ne öğrendim?</h3><p>Tokenleştirmek, metni özetlemek veya anlamını açıklamak değildir. Modele verilecek temsili hazırlar; model tarafında bu kimliklerden sayısal temsiller elde edilir.</p></section></div>
+ <a class="lesson-jump" href="#lesson-stage">Görseli ve deneyi incele <span aria-hidden="true">↓</span></a>
+</article>
+<article class="lesson-article" data-lesson-scene="4" aria-labelledby="lesson-title-4" hidden>
+ <p class="lesson-overline">04 / 07 · OKU, DENE, ANLA</p>
+ <h2 id="lesson-title-4">Kendi metninde neyin sayıldığını karşılaştır.</h2>
+ <div class="lesson-explanation-steps"><section class="lesson-explanation-step"><h3><span aria-hidden="true">01</span>Nedir?</h3><p>Bu deney metni küçük öğretici sözlüğümüzle tokenlara ayırır. Gördüğün sayılar bu sözlüğün hesabıdır; herhangi bir ticari veya açık modelin gerçek token sayacı değildir.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">02</span>Somut örnek</h3><p>“Cümle” seçeneğinde bir metin, “Ekli sözcük”te tek kelime, “Emoji”de tek görünen karakter bulunur. Buna rağmen parça sayıları birbirinden farklıdır.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">03</span>Nasıl çalışır?</h3><p>Metin bilgisayarda UTF-8 denen kodlama düzeninin veri birimlerine (byte’lara) çevrilir; sözlüğümüzdeki kurallar uygun parçaları birleştirir. Bir emoji birkaç byte kullandığından burada birkaç ayrı parçada görünebilir. Bu her model için aynı değildir.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">04</span>Deneyde ne yapacağım?</h3><p>Metin alanına kısa bir cümle yaz, boşluk veya noktalama ekle. Üç hazır örneği dene; “Kimlikleri göster” ile ID’leri aç. “Sıfırla” ilk cümleyi geri getirir.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">05</span>Ne öğrendim?</h3><p>Karakter, kelime ve token sayısı farklı ölçülerdir. Gerçek kapasite veya ücret hesabını bu demo sayılarıyla yapma; kullandığın modelin sayacını kullan.</p></section></div>
+ <a class="lesson-jump" href="#lesson-stage">Görseli ve deneyi incele <span aria-hidden="true">↓</span></a>
+</article>
+<article class="lesson-article" data-lesson-scene="5" aria-labelledby="lesson-title-5" hidden>
+ <p class="lesson-overline">05 / 07 · OKU, DENE, ANLA</p>
+ <h2 id="lesson-title-5">Aynı kelime neden iki sözlükte farklı sayılır?</h2>
+ <div class="lesson-explanation-steps"><section class="lesson-explanation-step"><h3><span aria-hidden="true">01</span>Nedir?</h3><p>Bir tokenizerın sözlüğü, hangi parçaları tek kimlikle temsil edebildiğini belirler. Aynı metnin token sayısı kullanılan sözlükle değişebilir.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">02</span>Somut örnek</h3><p>“Kitaplarımızdan” A sözlüğünde üç parçadır. B sözlüğüne bu sözcüğün bütününü kapsayan bir birleştirme ekledik; böylece aynı kelime tek token olur.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">03</span>Nasıl çalışır?</h3><p>Metnin karakterleri veya kelime sayısı değişmedi. Değişen, bu karakterlerin sözlükte nasıl gruplanabildiğidir. Dil, yazım biçimi ve boşluklar da sonucu etkileyebilir.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">04</span>Deneyde ne yapacağım?</h3><p>A ve B sözlükleri arasında geçiş yap. Üstteki kelimenin aynı kaldığını, alttaki parçaların ve örnek token sayısının değiştiğini kontrol et.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">05</span>Ne öğrendim?</h3><p>Daha az token tek başına daha iyi model demek değildir. Bütün modellere ve dillere uygulanabilen sabit bir “bir kelime şu kadar token” kuralı kullanamazsın.</p></section></div>
+ <a class="lesson-jump" href="#lesson-stage">Görseli ve deneyi incele <span aria-hidden="true">↓</span></a>
+</article>
+<article class="lesson-article" data-lesson-scene="6" aria-labelledby="lesson-title-6" hidden>
+ <p class="lesson-overline">06 / 07 · OKU, DENE, ANLA</p>
+ <h2 id="lesson-title-6">Girdi kadar yanıt için de alan planla.</h2>
+ <div class="lesson-explanation-steps"><section class="lesson-explanation-step"><h3><span aria-hidden="true">01</span>Nedir?</h3><p>Token, hem modele verdiğin metni hem üretilen metni ölçmekte kullanılır. Bağlamı planlarken yalnızca soruyu değil, talimatları ve yanıt payını da düşünürsün.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">02</span>Somut örnek</h3><p>Bu şemada 20 tokenlık temsili alan var. 4 talimat + 3 soru + 8 yanıt payı toplam 15 eder. Yanıta 18 ayırırsan istenen toplam 25 olur.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">03</span>Nasıl çalışır?</h3><p>Yanıt payı, henüz üretilmemiş çıktı için ayırdığın bütçedir. Çubuk sınırda dururken metin 5 tokenlık aşımı ayrıca bildirir; taşan kısmı yok saymaz.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">04</span>Deneyde ne yapacağım?</h3><p>Kısa ve uzun yanıt payı düğmelerini seç. Kullanılan toplamla kalan alanı karşılaştır. Burada gerçek yanıt üretilmediğini ve yalnızca bütçenin değiştiğini unutma.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">05</span>Ne öğrendim?</h3><p>Gerçek modellerin girdi ve çıktı sınırları farklı olabilir. Bu 20 tokenlık örneği bir servisin kesin sınırı veya fiyat tarifesi olarak kullanma.</p></section></div>
+ <a class="lesson-jump" href="#lesson-stage">Görseli ve deneyi incele <span aria-hidden="true">↓</span></a>
+</article>
+<article class="lesson-article" data-lesson-scene="7" aria-labelledby="lesson-title-7" hidden>
+ <p class="lesson-overline">07 / 07 · OKU, DENE, ANLA</p>
+ <h2 id="lesson-title-7">Kelime yerine modelin kullandığı birimi say.</h2>
+ <div class="lesson-explanation-steps"><section class="lesson-explanation-step"><h3><span aria-hidden="true">01</span>Nedir?</h3><p>Token, metnin modele özgü parçalanmış temsilinin birimidir. Sayım yaparken metin kadar hangi tokenizerı kullandığın da önemlidir.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">02</span>Somut örnek</h3><p>Aynı ekli sözcüğü iki sözlükte farklı saydık; tek bir emojinin de birkaç byte parçasıyla temsil edilebildiğini gördük. Bunlar kelime saymanın neden yetmediğini gösterdi.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">03</span>Nasıl çalışır?</h3><p>Önce modelin tokenizerını belirle, gönderilecek içeriği onunla say, sonra ilgili bağlam ve çıktı sınırlarını kontrol et. Deneyimiz bu mekanizmayı görünür kılmak içindi.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">04</span>Deneyde ne yapacağım?</h3><p>İstersen sunumu yeniden başlatıp emoji örneğine dön. Context Window bağlantısında bu parçaların sınırlı bir çalışma alanını nasıl doldurduğunu inceleyebilirsin.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">05</span>Ne öğrendim?</h3><p>“Token = kelime” ezberinden kaçın. Doğru planlama, gerçek modelin gerçek sayımıyla başlar; bu küçük öğretici sözlük o modelin yerine geçmez.</p></section></div>
+ <a class="lesson-jump" href="#lesson-stage">Görseli ve deneyi incele <span aria-hidden="true">↓</span></a>
+</article>
+</section>
+<div class="lesson-stage-intro"><span>AYNI FİKRİ GÖRSELDE İNCELE</span><a class="lesson-return" href="#lesson-reading">Açıklamaya dön ↑</a></div>
+<div class="lesson-stage" id="lesson-stage" role="region" aria-label="Sahnenin görseli ve etkileşimli deneyi">
       <section class="scene scene-1 active" data-index="1" aria-labelledby="scene1-title">
         <div class="cover-copy"><p class="eyebrow"><span>01</span><i></i>BİR SORU</p><h1 id="scene1-title">Bir kelime,<br><span>tek token mı</span><b>?</b></h1><p class="cover-lead">Modelin gördüğü parçalar,<br>bizim saydığımız kelimelerle aynı olmayabilir.</p></div>
         <div class="cover-word" aria-hidden="true"><span>TEK KELİME</span><strong>Kitaplarımızdan</strong><div><i>Kitap</i><i>larımız</i><i>dan</i></div><small>PARÇALAMA ÖRNEĞİ · SÖZLÜĞE BAĞLI</small></div>
@@ -97,6 +174,7 @@
         <div class="workbench-body"><div class="raw-caption">METİN</div><p class="raw-text" id="rawText">Merhaba dünya!</p><div class="token-direction" aria-hidden="true">↓</div><div class="token-pieces" id="tokenPieces" role="list" aria-label="Token parçaları"></div><p class="empty-tokens" id="emptyTokens" hidden>Henüz metin yok. Soldaki alana bir şey yaz.</p><div class="token-stats"><span><b id="characterCount">14</b><small id="characterLabel">GÖRÜNÜR KARAKTER</small></span><span><b id="wordCount">2</b><small>KELİME</small></span><span><b id="tokenCount">3</b><small>ÖRNEK TOKEN</small></span></div></div>
         <div class="workbench-footer" id="workbenchNote">Bu sunumun küçük sözlüğü; gerçek modellerin token sayımı değildir.</div>
       </div>
+</div>
     </main>
     <footer class="navigation" aria-label="Sunum gezinme">
       <div class="nav-instructions"><span class="nav-key">←</span><span class="nav-key">→</span><span>GEZİN</span><span class="nav-divider"></span><span class="notes-tip">N <span>NOTLAR</span></span></div>

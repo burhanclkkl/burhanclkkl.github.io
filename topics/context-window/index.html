@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#FAF9F7">
-  <meta name="description" content="Context Window nedir? 7 sahnede, 5 dakikalık etkileşimli Türkçe teknoloji anlatımı.">
+  <meta name="description" content="Bir model neden konuşmanın başını kullanamayabilir? Görünür açıklamalar, somut örnekler ve adım adım deneylerle öğren.">
   <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="../../assets/apple-touch-icon.png">
@@ -32,9 +32,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="../../css/lesson-reading.css">
   <script src="./script.js" defer></script>
+  <script src="../../js/lesson-reading.js" defer></script>
+  <noscript><style>.lesson-article[hidden] { display:block !important; }.lesson-article + .lesson-article { margin-top:64px; }.lesson-jump,.lesson-stage-intro { display:none; }</style></noscript>
 </head>
-<body>
+<body data-lesson-topic="context-window">
   <div class="app" id="app" data-scene="1">
     <header class="masthead" aria-label="Sunum üst menüsü">
       <div class="brand" aria-label="Context Window">
@@ -56,7 +59,7 @@
           <a class="archive-return" href="../../index.html#topics">← Konu arşivine dön</a>
           </section>
         </details>
-        <span class="header-meta">INTERACTIVE EXPLAINER <span class="meta-sep">/</span> 05:00</span>
+        <span class="header-meta">OKU / DENE <span class="meta-sep">/</span> KENDİ HIZINDA</span>
         <button type="button" class="header-control" id="notesToggle" aria-label="Konuşmacı notlarını aç (N)" aria-expanded="false" title="Konuşmacı notları (N)">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h12a1.5 1.5 0 0 1 1.5 1.5v14a1.5 1.5 0 0 1-1.5 1.5h-12A1.5 1.5 0 0 1 5 19V5A1.5 1.5 0 0 1 6.5 3.5Z"/><path d="M9 9h7M9 13h7M9 17h4"/></svg>
         </button>
@@ -67,6 +70,80 @@
     </header>
 
     <main class="presentation" id="presentation" aria-label="Context Window etkileşimli sunumu">
+<section class="lesson-reading" id="lesson-reading" aria-label="Sahnenin adım adım açıklaması">
+<article class="lesson-article" data-lesson-scene="1" aria-labelledby="lesson-title-1">
+ <p class="lesson-overline">01 / 07 · OKU, DENE, ANLA</p>
+ <h2 id="lesson-title-1">Bir model neden konuşmanın başını kullanamayabilir?</h2>
+ <div class="lesson-explanation-steps"><section class="lesson-explanation-step"><h3><span aria-hidden="true">01</span>Nedir?</h3><p>Bir dil modeli her yanıtında, uygulamanın o istek için önüne koyduğu bilgileri işler. Bu bilgilerin toplamına bağlam denir; işleyebileceği miktar sınırlıdır.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">02</span>Somut örnek</h3><p>Bir konuşmanın başında “Benim adım Deniz” dediğini düşün. Yüz mesaj sonra uygulama yalnızca son mesajları gönderirse model bu yanıtta ilk cümleyi kullanamaz.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">03</span>Nasıl çalışır?</h3><p>Model, eski mesajları kendi kendine sonsuz bir sohbet arşivinden açmaz. Uygulama hangi mesajları yeniden gönderiyorsa modelin o anda erişebildiği konuşma bilgisi odur.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">04</span>Deneyde ne yapacağım?</h3><p>Aşağıdaki konuşma görselini incele. Ardından sonraki sahneye geç: aynı konuşma parçalarının sınırlı bir çalışma alanında nasıl tutulduğunu göreceksin.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">05</span>Ne öğrendim?</h3><p>Bir ayrıntının yanıtta kullanılmaması her zaman modelin eğitimde öğrendiklerini kaybettiği anlamına gelmez. Önce o ayrıntının bu isteğin bağlamında bulunup bulunmadığına bak.</p></section></div>
+ <a class="lesson-jump" href="#lesson-stage">Görseli ve deneyi incele <span aria-hidden="true">↓</span></a>
+</article>
+<article class="lesson-article" data-lesson-scene="2" aria-labelledby="lesson-title-2" hidden>
+ <p class="lesson-overline">02 / 07 · OKU, DENE, ANLA</p>
+ <h2 id="lesson-title-2">Context Window, o isteğin sınırlı çalışma alanıdır.</h2>
+ <div class="lesson-explanation-steps"><section class="lesson-explanation-step"><h3><span aria-hidden="true">01</span>Nedir?</h3><p>Context Window, modelin tek bir istek sırasında işleyebildiği bağlam kapasitesidir. Bütün bilgisini sakladığı bir depo yerine, önünde açık duran çalışma masası gibi düşünebilirsin.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">02</span>Somut örnek</h3><p>Masaya hem konuşmayı hem bir belgeyi koyarsan ikisi de yer kaplar. Örnekte masanın büyüklüğü 32.768 token; bu, belirli bir gerçek modelin kapasitesi olarak verilmemiştir.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">03</span>Nasıl çalışır?</h3><p>Kapasite token ile sayılır. Token metnin bir parçasıdır; her kelime tek token değildir. Modele verilen içerik ve üretilecek yanıt için planlanan alan ilgili sınırlarla birlikte düşünülür.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">04</span>Deneyde ne yapacağım?</h3><p>Görseldeki çerçeveyi masanın sınırı, içindeki satırları o istekteki içerik olarak oku. Sonraki sahnede hangi kaynakların bu alana girdiğini sırayla ekle.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">05</span>Ne öğrendim?</h3><p>Kalıcı bir hafıza sistemi, geçmişi ayrıca saklayıp gerektiğinde bağlama getirebilir. Bu, bağlam penceresinin kendisinin sınırsız veya kalıcı olduğu anlamına gelmez.</p></section></div>
+ <a class="lesson-jump" href="#lesson-stage">Görseli ve deneyi incele <span aria-hidden="true">↓</span></a>
+</article>
+<article class="lesson-article" data-lesson-scene="3" aria-labelledby="lesson-title-3" hidden>
+ <p class="lesson-overline">03 / 07 · OKU, DENE, ANLA</p>
+ <h2 id="lesson-title-3">Kısa sorunun arkasında uzun bir bağlam olabilir.</h2>
+ <div class="lesson-explanation-steps"><section class="lesson-explanation-step"><h3><span aria-hidden="true">01</span>Nedir?</h3><p>Bağlamı yalnızca kullanıcının son cümlesi doldurmaz. Talimatlar, önceki mesajlar, belgeler ve araçların döndürdüğü sonuçlar da modele gönderilebilir.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">02</span>Somut örnek</h3><p>“Bu işlemi onaylayabilir miyim?” sorusunun yanında uygulama eski yazışmaları ve uzun bir şirket yönetmeliğini ekleyebilir. Ekranda tek cümle görürken modele çok daha fazla metin gider.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">03</span>Nasıl çalışır?</h3><p>Talimat ne yapacağını söyler; sohbet geçmişi konuşmayı sürdürür; RAG ilgili belge parçalarını getirir; araç çıktıları hesap veya sorgu sonuçlarını taşır. Her ekleme aynı isteğin bağlamını büyütür.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">04</span>Deneyde ne yapacağım?</h3><p>İleri düğmesiyle veya sağ okla kaynakları sırayla ekle. Her yeni kaynakla çerçevede başka bir satırın dolduğunu izle; kaynağın adını ve görevini eşleştir.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">05</span>Ne öğrendim?</h3><p>Uzun bağlamın nedeni her zaman uzun bir kullanıcı mesajı değildir. Kullanıcıya görünmeyen ek içerikleri ve yanıt için gereken payı da hesaba katmak gerekir.</p></section></div>
+ <a class="lesson-jump" href="#lesson-stage">Görseli ve deneyi incele <span aria-hidden="true">↓</span></a>
+</article>
+<article class="lesson-article" data-lesson-scene="4" aria-labelledby="lesson-title-4" hidden>
+ <p class="lesson-overline">04 / 07 · OKU, DENE, ANLA</p>
+ <h2 id="lesson-title-4">32K örneğinde doluluğu adım adım hesapla.</h2>
+ <div class="lesson-explanation-steps"><section class="lesson-explanation-step"><h3><span aria-hidden="true">01</span>Nedir?</h3><p>Bu deney, eklenen içeriklerin ortak bir kapasiteyi nasıl doldurduğunu gösterir. Buradaki sayılar öğretici örnektir; metni gerçek bir tokenizer ile ölçmüyoruz.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">02</span>Somut örnek</h3><p>Başlangıç 2.500 token. Sohbet geçmişi 8.000 ekleyince 10.500; belgeler 18.000 ekleyince 28.500; araç çıktıları 12.000 ekleyince 40.500 token olur.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">03</span>Nasıl çalışır?</h3><p>Örnek sınır 32.768 olduğundan son aşamada 40.500 − 32.768 = 7.732 token aşım vardır. Çubuğun tamamen dolması, eklenen bütün içeriğin sınır içine sığdığı anlamına gelmez.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">04</span>Deneyde ne yapacağım?</h3><p>“Sonraki adım” ile kaynakları ekle, “Sıfırla” ile başa dön. “Kendin dene”yi açarsan kapasiteyi ve mesaj uzunluğunu seçebilir, mesaj ekleyip çıkarabilirsin. Çıkışta özgün örneğe dönersin.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">05</span>Ne öğrendim?</h3><p>Kapasiteyi büyütmek veya gönderilen içeriği azaltmak sonucu değiştirir. Gerçek bir uygulamada toplamı o modelin tokenizerı ve girdi/çıktı sınırlarıyla hesaplamalısın.</p></section></div>
+ <a class="lesson-jump" href="#lesson-stage">Görseli ve deneyi incele <span aria-hidden="true">↓</span></a>
+</article>
+<article class="lesson-article" data-lesson-scene="5" aria-labelledby="lesson-title-5" hidden>
+ <p class="lesson-overline">05 / 07 · OKU, DENE, ANLA</p>
+ <h2 id="lesson-title-5">Sınır aşıldığında sonucu uygulama belirler.</h2>
+ <div class="lesson-explanation-steps"><section class="lesson-explanation-step"><h3><span aria-hidden="true">01</span>Nedir?</h3><p>İçerik bağlama sığmadığında bütün uygulamalar aynı şeyi yapmaz. Uygulama içeriği azaltabilir, özetleyebilir veya isteği reddedebilir.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">02</span>Somut örnek</h3><p>Konuşmanın ilk mesajında bir teslim tarihi bulunduğunu düşün. Eski mesaj çıkarılırsa bu tarih yeni yanıta taşınmayabilir; özetlenirse ayrıntı özette korunmayabilir.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">03</span>Nasıl çalışır?</h3><p>Çıkarma doğrudan yer açar. Özetleme metni kısaltır ama bilgi kaybı riski taşır. Reddetme ise eksik bağlamla devam etmek yerine hatayı kullanıcıya veya geliştiriciye bildirir.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">04</span>Deneyde ne yapacağım?</h3><p>Üç seçeneği tek tek seç. Aynı bağlam alanında hangi içeriğin kaldığını, hangisinin dönüştüğünü ve hangi durumda işlemin durduğunu karşılaştır.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">05</span>Ne öğrendim?</h3><p>Sınır yönetimi modelin bütün eğitim bilgisini silmez. Hangi ayrıntının bu isteğe gönderildiğini değiştirir. Kritik bilgilerin korunduğunu ayrıca doğrulamak gerekir.</p></section></div>
+ <a class="lesson-jump" href="#lesson-stage">Görseli ve deneyi incele <span aria-hidden="true">↓</span></a>
+</article>
+<article class="lesson-article" data-lesson-scene="6" aria-labelledby="lesson-title-6" hidden>
+ <p class="lesson-overline">06 / 07 · OKU, DENE, ANLA</p>
+ <h2 id="lesson-title-6">Daha uzun bağlam neden daha fazla bellek isteyebilir?</h2>
+ <div class="lesson-explanation-steps"><section class="lesson-explanation-step"><h3><span aria-hidden="true">01</span>Nedir?</h3><p>Model çalışırken hem öğrenilmiş ağırlıklar hem hesaplamaya ait ara veriler bellek kullanır. KV Cache, önceki tokenlara ait bazı ara temsilleri yeniden kullanmak için tutan yapıdır.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">02</span>Somut örnek</h3><p>Aynı modelle kısa ve uzun iki konuşma işlendiğini düşün. Model ağırlıkları aynı kalırken, daha çok tokenın ara verilerini tutmak ek bellek gerektirebilir.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">03</span>Nasıl çalışır?</h3><p>Birçok yaygın attention düzeninde işlenen bağlam uzadıkça KV Cache büyür. Ancak mimari, veri türü, eşzamanlı istek sayısı ve sunucu ayarları miktarı etkiler.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">04</span>Deneyde ne yapacağım?</h3><p>8K ve 32K düğmelerini seç. Ağırlıklar alanı sabitken cache alanının nasıl değiştiğini izle. Bölmelerin boyutlarını gerçek gigabayt veya ölçülmüş oran olarak okuma.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">05</span>Ne öğrendim?</h3><p>Daha büyük pencerenin yalnızca daha uzun metin kabul etmekten ibaret olmadığını öğrendin. Bunun kaynak maliyeti de olabilir; her model için geçerli tek bir bellek çarpanı yoktur.</p></section></div>
+ <a class="lesson-jump" href="#lesson-stage">Görseli ve deneyi incele <span aria-hidden="true">↓</span></a>
+</article>
+<article class="lesson-article" data-lesson-scene="7" aria-labelledby="lesson-title-7" hidden>
+ <p class="lesson-overline">07 / 07 · OKU, DENE, ANLA</p>
+ <h2 id="lesson-title-7">Bağlam yönetimi, bilgiyi seçme işidir.</h2>
+ <div class="lesson-explanation-steps"><section class="lesson-explanation-step"><h3><span aria-hidden="true">01</span>Nedir?</h3><p>Bağlam yönetimi, modelin o yanıtta ihtiyaç duyduğu bilgiyi sınırlı alana yerleştirmektir. En uzun metni göndermek yerine ilgili ve yeterli içeriği seçmeye çalışırız.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">02</span>Somut örnek</h3><p>Teslim tarihi soruluyorsa bütün proje arşivi yerine ilgili güncel belge ve gerekli konuşma parçaları daha uygun olabilir. Yanıt için de kapasite bırakılır.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">03</span>Nasıl çalışır?</h3><p>Önce gerekli bilgiyi belirle, sonra token miktarını hesapla, sınır ve kaynak maliyetini kontrol et. Önemli ayrıntıların çıkarma veya özetleme sırasında kaybolmadığını incele.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">04</span>Deneyde ne yapacağım?</h3><p>Üç çıkarımı görselle eşleştir. İstersen sunumu yeniden başlatıp 4. sahnedeki deneyi bu kez daha küçük bir kapasiteyle düşünerek tekrar izle.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">05</span>Ne öğrendim?</h3><p>Daha geniş pencere, her bilginin doğru kullanılacağını garanti etmez. Doğru bilgiyi doğru zamanda bağlama getirmek ve sonucu değerlendirmek hâlâ gerekir.</p></section></div>
+ <a class="lesson-jump" href="#lesson-stage">Görseli ve deneyi incele <span aria-hidden="true">↓</span></a>
+</article>
+</section>
+<div class="lesson-stage-intro"><span>AYNI FİKRİ GÖRSELDE İNCELE</span><a class="lesson-return" href="#lesson-reading">Açıklamaya dön ↑</a></div>
+<div class="lesson-stage" id="lesson-stage" role="region" aria-label="Sahnenin görseli ve etkileşimli deneyi">
       <div class="presentation-grid" aria-hidden="true"></div>
 
       <section class="scene scene-1 active" data-index="1" aria-labelledby="scene1-title">
@@ -221,6 +298,7 @@
         </div>
         <div class="board-decision" id="boardDecision" aria-live="polite" aria-hidden="true"><span id="decisionIcon">↗</span><strong id="decisionText"></strong><small id="decisionHelp"></small></div>
       </div>
+</div>
     </main>
 
     <footer class="navigation" aria-label="Sunum gezinme">

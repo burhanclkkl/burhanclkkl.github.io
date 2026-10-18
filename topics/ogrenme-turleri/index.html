@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#FAF9F7">
+  <meta name="description" content="Öğrenme türünü, modelin elindeki bilgi belirler. Görünür açıklamalar, somut örnekler ve adım adım deneylerle öğren.">
+  <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../assets/apple-touch-icon.png">
+  <meta property="og:locale" content="tr_TR">
+  <meta property="og:site_name" content="OPEN / NOTES">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Makine Öğrenmesinde Öğrenme Türleri — OPEN / NOTES">
+  <meta property="og:description" content="Modelin elinde hangi veri veya geri bildirim var?">
+  <meta property="og:image" content="https://burhanclkkl.github.io/helloworld/assets/social-card.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="OPEN / NOTES — Merak et. Derinine in. Yapay zekâ, yazılım ve sistemler.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Makine Öğrenmesinde Öğrenme Türleri — OPEN / NOTES">
+  <meta name="twitter:description" content="Modelin elinde hangi veri veya geri bildirim var?">
+  <meta name="twitter:image" content="https://burhanclkkl.github.io/helloworld/assets/social-card.png">
+  <meta name="twitter:image:alt" content="OPEN / NOTES — Merak et. Derinine in.">
+  <meta property="article:published_time" content="2026-10-18">
+  <meta property="article:modified_time" content="2026-10-18">
+  <link rel="canonical" href="https://burhanclkkl.github.io/helloworld/topics/ogrenme-turleri/index.html">
+  <meta property="og:url" content="https://burhanclkkl.github.io/helloworld/topics/ogrenme-turleri/index.html">
+  <title>Makine Öğrenmesinde Öğrenme Türleri — OPEN / NOTES</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" >
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="../../css/lesson-reading.css">
+  <script src="./script.js" defer></script>
+  <script src="../../js/lesson-reading.js" defer></script>
+  <noscript><style>.lesson-article[hidden] { display:block !important; }.lesson-article + .lesson-article { margin-top:64px; }.lesson-jump,.lesson-stage-intro { display:none; }</style></noscript>
+</head>
+<body data-lesson-topic="ogrenme-turleri">
+  <noscript><p class="noscript-note">Etkileşimli sunum için JavaScript’i etkinleştirin. <a href="../../index.html#topics">Konu arşivine dön →</a></p></noscript>
+  <div class="app" id="app" data-scene="1">
+    <header class="masthead" aria-label="Sunum üst menüsü">
+      <a href="../../index.html#topics" class="brand" aria-label="Konu arşivine dön">
+        <span class="brand-sign" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+        <span>ML <span class="brand-slash">/</span> ÖĞRENME</span>
+      </a>
+      <div class="masthead-right">
+        <details class="publication-details" id="publicationDetails">
+          <summary>Kaynakça<span class="publication-summary-extra"> ve tarihler</span> <span aria-hidden="true">↗</span></summary>
+          <section class="publication-panel" aria-labelledby="sources-title">
+<div class="publication-dates"><span>YAYIMLANMA <time datetime="2026-10-18">18 Ekim 2026</time></span><span>SON GÜNCELLEME <time datetime="2026-10-18">18 Ekim 2026</time></span></div>
+          <h2 id="sources-title">Kaynakça<span>.</span></h2>
+          <p>Öğrenme türleri, etiket kullanımı ve ajan–ortam döngüsü için kaynaklar. Deneyler küçük ve deterministiktir; gerçek veri veya model benchmarkı değildir. Veriler bu sayfada işlenir.</p>
+          <ol class="source-references">
+            <li><a href="https://scikit-learn.org/stable/supervised_learning.html" target="_blank" rel="noopener noreferrer">scikit-learn — Supervised learning ↗</a><p>Etiketli örneklerden sınıflandırma ve sayısal tahmin.</p></li>
+            <li><a href="https://scikit-learn.org/stable/modules/clustering.html#k-means" target="_blank" rel="noopener noreferrer">scikit-learn — Clustering ve K-Means ↗</a><p>Etiketsiz veride gruplama; merkez ve atama adımları.</p></li>
+            <li><a href="https://scikit-learn.org/stable/modules/semi_supervised.html" target="_blank" rel="noopener noreferrer">scikit-learn — Semi-supervised learning ↗</a><p>Az etiketli veri, benzerlik grafı ve etiket yayılımı.</p></li>
+            <li><a href="https://gymnasium.farama.org/introduction/basic_usage/" target="_blank" rel="noopener noreferrer">Farama — Agent, action, observation, reward ↗</a><p>Ajanın eylem seçmesi, ortamdan yeni gözlem ve ödül alması.</p></li>
+          </ol>
+          <a class="archive-return" href="../../index.html#topics">← Konu arşivine dön</a>
+          </section>
+        </details>
+        <span class="header-meta">OKU / DENE <span class="meta-sep">/</span> KENDİ HIZINDA</span>
+        <button type="button" class="header-control" id="notesToggle" aria-label="Konuşmacı notlarını aç (N)" aria-expanded="false" title="Konuşmacı notları (N)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h12a1.5 1.5 0 0 1 1.5 1.5v14a1.5 1.5 0 0 1-1.5 1.5h-12A1.5 1.5 0 0 1 5 19V5A1.5 1.5 0 0 1 6.5 3.5Z"/><path d="M9 9h7M9 13h7M9 17h4"/></svg>
+        </button>
+        <button type="button" class="header-control" id="fullscreenToggle" aria-label="Tam ekran modunu aç (F)" title="Tam ekran (F)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3.5H3.5V8m12.5-4.5h4.5V8M3.5 16v4.5H8m12.5-4.5v4.5H16"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <main class="presentation" id="presentation" aria-label="Öğrenme türleri etkileşimli sunumu">
+<section class="lesson-reading" id="lesson-reading" aria-label="Sahnenin adım adım açıklaması">
+<article class="lesson-article" data-lesson-scene="1" aria-labelledby="lesson-title-1">
+ <p class="lesson-overline">01 / 10 · OKU, DENE, ANLA</p>
+ <h2 id="lesson-title-1">Öğrenme türünü, modelin elindeki bilgi belirler.</h2>
+ <div class="lesson-explanation-steps"><section class="lesson-explanation-step"><h3><span aria-hidden="true">01</span>Nedir?</h3><p>Makine öğrenmesi, örneklerdeki ilişkileri kullanarak tahmin veya davranış öğrenmektir. Öğrenme türleri arasındaki temel fark, eğitim sırasında hangi bilgi ve geri bildirimin bulunduğudur.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">02</span>Somut örnek</h3><p>Bir fotoğraf arşivini düşün. Fotoğrafların kedi mi köpek mi olduğunu biliyor olabilirsin; yalnızca fotoğraflar elinde olabilir; ya da sadece birkaçına etiket verilmiş olabilir.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">03</span>Nasıl çalışır?</h3><p>İlk üç düzeni aynı noktalarda göreceğiz. Her nokta bir örneği, konumu iki temsili özelliği gösterir. Özellik, örneği tanımlayan bir ölçü veya sayısal bilgidir. Pekiştirmeli öğrenmede ise bir robot benzeri ajanı ayrı bir ortamda izleyeceğiz.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">04</span>Deneyde ne yapacağım?</h3><p>Önce aşağıdaki dört bilgi türünü karşılaştır. Sonraki sahnelerde her birinin modelden beklenen işi nasıl değiştirdiğini deneyeceksin; açıklamaları okumak için notları açman gerekmiyor.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">05</span>Ne öğrendim?</h3><p>Bir öğrenme türü bütün problemler için en iyi değildir. Önce hangi verinin, hedefin ve etkileşim imkânının bulunduğunu belirlemek gerekir.</p></section></div>
+ <a class="lesson-jump" href="#lesson-stage">Görseli ve deneyi incele <span aria-hidden="true">↓</span></a>
+</article>
+<article class="lesson-article" data-lesson-scene="2" aria-labelledby="lesson-title-2" hidden>
+ <p class="lesson-overline">02 / 10 · OKU, DENE, ANLA</p>
+ <h2 id="lesson-title-2">Öğrenme türü, görev ve algoritma farklı sorulardır.</h2>
+ <div class="lesson-explanation-steps"><section class="lesson-explanation-step"><h3><span aria-hidden="true">01</span>Nedir?</h3><p>Öğrenme türü hangi bilgiyle öğrenildiğini, görev ne yapılacağını, algoritma ise bunu öğrenmek için kullanılan yöntemi anlatır. Bu üç kavramı birbirinin yerine kullanmamalıyız.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">02</span>Somut örnek</h3><p>Kedi/köpek etiketleri verilmiş fotoğraflardan yeni bir fotoğrafın sınıfını tahmin etmek istiyoruz. Düzen gözetimli, görev sınıflandırmadır. En yakın merkez, bu göreve uygulanabilecek basit bir yöntem örneğidir.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">03</span>Nasıl çalışır?</h3><p>Aynı görev farklı algoritmalarla ele alınabilir. Etiketlerin bulunabilirliği değişirse eğitim düzeni de değişebilir. Bir sistemin farklı aşamalarında farklı öğrenme türleri kullanılabilir.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">04</span>Deneyde ne yapacağım?</h3><p>Tür, görev ve yöntem satırlarını ayrı ayrı oku. Bir satırı değiştirmek diğer ikisini zorunlu olarak aynı biçimde değiştirmez; örneğin aynı göreve başka bir yöntem seçilebilir.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">05</span>Ne öğrendim?</h3><p>Dört tür bir başlangıç haritasıdır; bütün öğrenme yaklaşımlarını kapsamaz. Buradaki amaç algoritma isimlerini ezberlemek yerine öğrenme sinyalini ayırt etmektir.</p></section></div>
+ <a class="lesson-jump" href="#lesson-stage">Görseli ve deneyi incele <span aria-hidden="true">↓</span></a>
+</article>
+<article class="lesson-article" data-lesson-scene="3" aria-labelledby="lesson-title-3" hidden>
+ <p class="lesson-overline">03 / 10 · OKU, DENE, ANLA</p>
+ <h2 id="lesson-title-3">Gözetimli öğrenmede örnekle birlikte hedef verilir.</h2>
+ <div class="lesson-explanation-steps"><section class="lesson-explanation-step"><h3><span aria-hidden="true">01</span>Nedir?</h3><p>Gözetimli öğrenme, hangi girdinin hangi doğru hedefle eşleştiği bilinen örneklerden öğrenmektir. Yeni bir girdinin hedefini tahmin etmek için bu ilişkiler kullanılır.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">02</span>Somut örnek</h3><p>Fotoğraflara kedi ve köpek etiketi verilmiş olsun. Noktalardaki A ve B’yi bu iki sınıf gibi düşünebilirsin. Bunlar gerçek fotoğraflardan çıkarılmış özellikler değil, hazırlanmış iki boyutlu örneklerdir.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">03</span>Nasıl çalışır?</h3><p>Bu küçük model her sınıfın ortalama konumunu hesaplar. Yeni noktayı en yakın merkezin sınıfına atar. Etiketli veride öğrenmek, her fotoğrafı ezberlemek zorunda olmak değildir.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">04</span>Deneyde ne yapacağım?</h3><p>“Örnekler”de verilen A/B etiketlerini gör. “Öğren”de × işaretli merkezler açılır. “Tahmin”de siyah elmasla gösterilen yeni örnek yakın merkezle eşleştirilir.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">05</span>Ne öğrendim?</h3><p>Kedi/köpek veya spam/normal gibi hedefler sınıflandırmadır. Hedef bir evin fiyatı gibi sayıysa regresyondur. İkisi de etiketli örneklerle gözetimli öğrenme olabilir.</p></section></div>
+ <a class="lesson-jump" href="#lesson-stage">Görseli ve deneyi incele <span aria-hidden="true">↓</span></a>
+</article>
+<article class="lesson-article" data-lesson-scene="4" aria-labelledby="lesson-title-4" hidden>
+ <p class="lesson-overline">04 / 10 · OKU, DENE, ANLA</p>
+ <h2 id="lesson-title-4">Yanlış etiket, öğrenilen ilişkiyi değiştirebilir.</h2>
+ <div class="lesson-explanation-steps"><section class="lesson-explanation-step"><h3><span aria-hidden="true">01</span>Nedir?</h3><p>Etiket, modelin eğitimde doğru cevap olarak gördüğü bilgidir. Yanlış verilen bir etiket, örneğin hangi sınıfa ait olduğuna dair yanıltıcı bir eğitim sinyali oluşturur.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">02</span>Somut örnek</h3><p>İki kedi fotoğrafının yanlışlıkla köpek diye işaretlendiğini düşün. Deneyde bunun karşılığı iki noktanın A/B etiketini değiştirmektir; noktaların konumları aynı kalır.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">03</span>Nasıl çalışır?</h3><p>Etiketler değişince sınıfların ortalamaları yeniden hesaplanır. Merkezler kaydığı için aynı yeni nokta farklı sınıfa atanabilir. Yöntem aynı; öğrenmek için verilen cevaplar farklıdır.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">04</span>Deneyde ne yapacağım?</h3><p>Önce tutarlı etiketlerdeki tahmini oku. “İki etiketi değiştir”e bas. Kaydırıcıyla yalnızca yeni noktanın yatay konumunu değiştir; “Özgün örneğe dön” başlangıcı geri getirir.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">05</span>Ne öğrendim?</h3><p>Merkezlerin kaymasını modelin “daha akıllı” olması diye yorumlama. Öğrenme verisi değişmiştir. Başarıyı ayrıca, doğru hedefleri bilinen ve eğitimde kullanılmamış örneklerde ölçmelisin.</p></section></div>
+ <a class="lesson-jump" href="#lesson-stage">Görseli ve deneyi incele <span aria-hidden="true">↓</span></a>
+</article>
+<article class="lesson-article" data-lesson-scene="5" aria-labelledby="lesson-title-5" hidden>
+ <p class="lesson-overline">05 / 10 · OKU, DENE, ANLA</p>
+ <h2 id="lesson-title-5">Gözetimsiz öğrenmede hazır cevap etiketi yoktur.</h2>
+ <div class="lesson-explanation-steps"><section class="lesson-explanation-step"><h3><span aria-hidden="true">01</span>Nedir?</h3><p>Gözetimsiz öğrenme, her örnek için doğru cevap verilmeden veride yapı arar. Bu sahnede kullanılan K-Means, benzer konumdaki noktaları seçtiğin sayıda kümeye ayırır.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">02</span>Somut örnek</h3><p>Fotoğraf arşivinin etiketlerini kaldırdığını düşün. Bir yöntem benzer görünümlü örnekleri gruplar; fakat “küme 1 kesin kedidir” bilgisini ona vermedik. Bulduğu gruplar farklı görsel özellikleri de yansıtabilir.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">03</span>Nasıl çalışır?</h3><p>K-Means önce her noktayı yakın merkeze atar, sonra her grubun ortalamasını yeni merkez yapar. Bu işlem tekrarlandıkça atamalar ve merkezler değişebilir. Küme sayısını bu deneyde sen seçiyorsun.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">04</span>Deneyde ne yapacağım?</h3><p>2 veya 3 küme seç. “1 adım ilerlet” merkezleri günceller ve noktaları yeniden atar; “Geri al” aynı önceki hesabı getirir. Sayılar sınıf etiketi değil, hesaplanan küme numarasıdır.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">05</span>Ne öğrendim?</h3><p>Bulunan küme otomatik olarak anlamlı bir kategori değildir. Sonuç seçilen özelliklere, uzaklık ölçüsüne, küme sayısına ve başlangıca bağlıdır; yararlılığını ayrıca değerlendirmek gerekir.</p></section></div>
+ <a class="lesson-jump" href="#lesson-stage">Görseli ve deneyi incele <span aria-hidden="true">↓</span></a>
+</article>
+<article class="lesson-article" data-lesson-scene="6" aria-labelledby="lesson-title-6" hidden>
+ <p class="lesson-overline">06 / 10 · OKU, DENE, ANLA</p>
+ <h2 id="lesson-title-6">Yarı gözetimli öğrenme iki veri kaynağını birlikte kullanır.</h2>
+ <div class="lesson-explanation-steps"><section class="lesson-explanation-step"><h3><span aria-hidden="true">01</span>Nedir?</h3><p>Yarı gözetimli öğrenmede az sayıda etiketli örnekle çok sayıda etiketsiz örnek birlikte kullanılır. Amaç, etiketsiz verideki yapıdan yararlanarak sınırlı etiketlerin katkısını artırmaktır.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">02</span>Somut örnek</h3><p>1.000 fotoğrafın sadece 50’sinde kedi/köpek bilgisi yazıyor olsun. Bu düzen, öğrenirken kalan 950 fotoğrafı da kullanabilir. Grafikte bunun küçültülmüş karşılığı 10 noktadan yalnızca ikisinin etiketli olmasıdır.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">03</span>Nasıl çalışır?</h3><p>Bu yöntemde benzer noktalar bir grafla bağlanır. Sabit etiketlerin bilgisi komşuların desteği üzerinden yayılır. Düz çerçeveli A/B insan tarafından verilen etiket; kesik çerçeve modelin tahminidir.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">04</span>Deneyde ne yapacağım?</h3><p>“Bilgiyi yay”a birkaç kez bas; soru işaretlerinin nasıl tahmine dönüştüğünü izle. “Geri al” önceki tura döner. “İlk etiketi yanlış ver” seçeneği başlangıç etiketini değiştirip hesabı sıfırlar.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">05</span>Ne öğrendim?</h3><p>Etiketsiz verinin sınıfla ilgili yararlı yapı taşıması gerekir. Benzerlik yanlışsa veya başlangıç etiketi hatalıysa hata yayılabilir. Tahmin edilen etiketi doğrulanmış insan etiketi sanmamalısın.</p></section></div>
+ <a class="lesson-jump" href="#lesson-stage">Görseli ve deneyi incele <span aria-hidden="true">↓</span></a>
+</article>
+<article class="lesson-article" data-lesson-scene="7" aria-labelledby="lesson-title-7" hidden>
+ <p class="lesson-overline">07 / 10 · OKU, DENE, ANLA</p>
+ <h2 id="lesson-title-7">Pekiştirmeli öğrenmede ajan sonuçlardan öğrenir.</h2>
+ <div class="lesson-explanation-steps"><section class="lesson-explanation-step"><h3><span aria-hidden="true">01</span>Nedir?</h3><p>Pekiştirmeli öğrenmede bir ajan ortamda eylem seçer, yeni durumu ve sayısal ödülü görür. Amaç, zaman içinde beklenen toplam ödülü artıracak bir eylem seçme kuralı, yani politika öğrenmektir.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">02</span>Somut örnek</h3><p>Bir robotun koridorda hedefe ulaşmasını düşün. Her konum için doğru hareketi baştan söylemek yerine, hareket ettiğinde aldığı sonuçlarla hangi yönün daha yararlı olduğunu öğrenebilir.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">03</span>Nasıl çalışır?</h3><p>Ajanın eylemi sonraki durumu etkiler. Bazı iyi sonuçlar birkaç adım sonra gelir; bu yüzden yalnızca o anki ödül yetmez. Keşif, henüz yeterince denenmemiş hareketlerden bilgi toplamaktır.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">04</span>Deneyde ne yapacağım?</h3><p>Döngüyü yukarıdan aşağıya oku: ajan eylem seçer, ortam sonucu döndürür, öğrenme bu deneyimden yararlanır. Sonraki sahnede bu döngüyü beş konumlu küçük ortamda çalıştıracağız.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">05</span>Ne öğrendim?</h3><p>Ödül bir kedi/köpek etiketi gibi hazır cevap değildir. Ajanın tercihlerini yönlendiren sinyaldir. Hangi davranışı ödüllendirdiğin, öğrenilen davranışı doğrudan etkileyebilir.</p></section></div>
+ <a class="lesson-jump" href="#lesson-stage">Görseli ve deneyi incele <span aria-hidden="true">↓</span></a>
+</article>
+<article class="lesson-article" data-lesson-scene="8" aria-labelledby="lesson-title-8" hidden>
+ <p class="lesson-overline">08 / 10 · OKU, DENE, ANLA</p>
+ <h2 id="lesson-title-8">Eylem seç, ödülü gör, öğrenilen politikayı ayrı dene.</h2>
+ <div class="lesson-explanation-steps"><section class="lesson-explanation-step"><h3><span aria-hidden="true">01</span>Nedir?</h3><p>Q-learning, bir durumdayken bir eylemin ne kadar yararlı olabileceğine dair değerler öğrenir. Q tablosundaki sayılar, anlık ödülün yanında gelecekteki ödülleri de hesaba katar.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">02</span>Somut örnek</h3><p>Ajan 0 konumundan 4’teki hedefe gitmeye çalışıyor. Normal hareket −1, hedefe varış +8. Başlangıçta bütün Q değerleri sıfırdır; hangi yolun yararlı olduğunu henüz öğrenmemiştir.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">03</span>Nasıl çalışır?</h3><p>Her deneyim ödül ve sonraki durumun değeriyle ilgili Q sayısını günceller. Tablodaki α yeni deneyimin etkisini, γ gelecekteki ödüllerin bugünkü değere etkisini ayarlar. Eğitimde yüzde 30 keşif vardır. Bölüm, hedefe ulaşınca veya 20 adım sınırında biter; bunlar farklı bitiş nedenleridir.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">04</span>Deneyde ne yapacağım?</h3><p>Sol/sağ ile elle bir adım yapıp tabloyu izle. “10 bölüm öğren”i çalıştır, sonra “Politikayı dene”ye bas. Bu son düğme Q değerlerini değiştirmez. Başa dönmek öğrenileni korur; tümünü sıfırlamak siler.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">05</span>Ne öğrendim?</h3><p>Bir yol öğrenmek gerçek dünyada güvenli veya genellenebilir kontrol öğrenildiğini göstermez. Bu küçük deterministik ortam yalnızca eylem, ödül ve öğrenme ayrımını öğretir.</p></section></div>
+ <a class="lesson-jump" href="#lesson-stage">Görseli ve deneyi incele <span aria-hidden="true">↓</span></a>
+</article>
+<article class="lesson-article" data-lesson-scene="9" aria-labelledby="lesson-title-9" hidden>
+ <p class="lesson-overline">09 / 10 · OKU, DENE, ANLA</p>
+ <h2 id="lesson-title-9">Dört türü, öğrenme sırasında bulunan bilgiyle karşılaştır.</h2>
+ <div class="lesson-explanation-steps"><section class="lesson-explanation-step"><h3><span aria-hidden="true">01</span>Nedir?</h3><p>Öğrenme türünü seçerken “hangi model popüler?” yerine “elimde hedef etiketi veya etkileşimden gelen ödül var mı?” sorusuyla başlayabilirsin. Tablo bu ayrımı özetler.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">02</span>Somut örnek</h3><p>Aynı fotoğraf arşivi etiketlerin tamamı biliniyorsa gözetimli, hiçbiri bilinmiyorsa bir kümeleme çalışması, azı biliniyorsa yarı gözetimli düzenle ele alınabilir. Robotun eylem seçmesi ise farklı bir etkileşim problemidir.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">03</span>Nasıl çalışır?</h3><p>Gözetimlide hedef eşleşmesi, gözetimsizde verinin yapısı, yarı gözetimlide ikisi birlikte kullanılır. Pekiştirmelide seçilen eylemler gelecekte alınacak geri bildirimi de etkiler.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">04</span>Deneyde ne yapacağım?</h3><p>Tabloda önce “Elindeki bilgi”, ardından örnek sütununu oku. Dört deneyde hangi bilginin baştan verildiğini ve hangisinin hesaplandığını kendin tarif etmeyi dene.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">05</span>Ne öğrendim?</h3><p>Tek bir ürün birden fazla düzeni kullanabilir. Örneğin farklı eğitim aşamalarının aynı modelde bulunması mümkündür; bu başlıklar birbirinden kopuk dört ürün türü değildir.</p></section></div>
+ <a class="lesson-jump" href="#lesson-stage">Görseli ve deneyi incele <span aria-hidden="true">↓</span></a>
+</article>
+<article class="lesson-article" data-lesson-scene="10" aria-labelledby="lesson-title-10" hidden>
+ <p class="lesson-overline">10 / 10 · OKU, DENE, ANLA</p>
+ <h2 id="lesson-title-10">Önce sinyali, sonra görevi ve yöntemi seç.</h2>
+ <div class="lesson-explanation-steps"><section class="lesson-explanation-step"><h3><span aria-hidden="true">01</span>Nedir?</h3><p>Öğrenme sinyali, modelin hangi örneğin veya davranışın daha uygun olduğunu anlamak için yararlandığı bilgidir. Etiketler, veri yapısı ve ödül farklı öğrenme düzenleri oluşturur.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">02</span>Somut örnek</h3><p>Fotoğraf örneklerinde etiketin varlığını değiştirdik; robotta eylemin sonucunu kullandık. Aynı kelimeyle “öğrenme” desek de hangi bilginin bulunduğu ve hedeflenen iş farklıydı.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">03</span>Nasıl çalışır?</h3><p>Önce veriyi ve geri bildirimi tanımla. Sonra sınıflandırma, tahmin, yapı keşfi veya eylem seçimi gibi görevi belirle. Algoritmayı seçtikten sonra bağımsız değerlendirme planla.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">04</span>Deneyde ne yapacağım?</h3><p>Sahne menüsüyle dört deneyden birine dönüp “Burada baştan verilen bilgi ne?” sorusunu yanıtla. Yeniden başlatma bütün deneyleri başlangıcına getirir. Fine-tuning bağlantısı eğitimle uyarlamayı ayrı bir konuda açıklar.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">05</span>Ne öğrendim?</h3><p>Bir algoritma adı öğrenme türünün yerine geçmez. Daha karmaşık model veya daha çok veri tek başına başarı garantisi değildir; doğru sinyal ve değerlendirme birlikte gerekir.</p></section></div>
+ <a class="lesson-jump" href="#lesson-stage">Görseli ve deneyi incele <span aria-hidden="true">↓</span></a>
+</article>
+</section>
+<div class="lesson-stage-intro"><span>AYNI FİKRİ GÖRSELDE İNCELE</span><a class="lesson-return" href="#lesson-reading">Açıklamaya dön ↑</a></div>
+<div class="lesson-stage" id="lesson-stage" role="region" aria-label="Sahnenin görseli ve etkileşimli deneyi">
+<section class="scene scene-1 active" data-index="1" aria-labelledby="scene1-title"><div class="cover-copy"><p class="eyebrow"><span>01</span><i></i>BİR ORTAK SORU</p><h1 id="scene1-title">Modelin elinde<br><span>hangi bilgi var?</span></h1><p class="lead">Aynı veri noktaları.<br>Dört farklı öğrenme düzeni.</p></div><div class="opening-signals" aria-hidden="true"><span>VERİ + DOĞRU CEVAP</span><span>YALNIZCA VERİ</span><span>AZ ETİKET + ÇOK VERİ</span><span>EYLEM + ÖDÜL</span></div></section>
+<section class="scene scene-2" data-index="2" aria-labelledby="scene2-title" hidden><div class="split-copy"><p class="eyebrow"><span>02</span><i></i>ÖNCE AYRIM</p><h2 id="scene2-title">Tür, algoritmanın<br><span>adı değildir.</span></h2><p class="statement">Öğrenme türü: <strong>hangi veri ve geri bildirimle öğrenildiği.</strong></p><p class="small-note">Görev, ne yapmak istediğindir.<br>Algoritma, bunu öğrenmek için seçtiğin yöntemdir.</p></div><div class="distinction"><div><span>TÜR</span><strong>Gözetimli</strong></div><div><span>GÖREV</span><strong>Sınıflandırma</strong></div><div><span>ÖRNEK YÖNTEM</span><strong>En yakın merkez</strong></div><p>Bu sunum dört temel düzeni karşılaştırır; bütün öğrenme yaklaşımlarını kapsayan kapalı bir liste değildir.</p></div></section>
+<section class="scene scene-3" data-index="3" aria-labelledby="scene3-title" hidden><div class="split-copy"><p class="eyebrow"><span>03</span><i></i>SUPERVISED / GÖZETİMLİ</p><h2 id="scene3-title">Örnek de var.<br><span>Cevap da.</span></h2><p class="statement">Model, <strong>girdi–hedef eşleşmelerinden</strong> yeni girdiler için tahmin öğrenir.</p><div class="step-buttons" role="group" aria-label="Gözetimli öğrenme adımları"><button type="button" data-step="0" aria-pressed="true">Örnekler</button><button type="button" data-step="1" aria-pressed="false">Öğren</button><button type="button" data-step="2" aria-pressed="false">Tahmin</button></div><p class="step-note" id="supervisedExplanation"></p><p class="small-note">Spam / normal → sınıflandırma.<br>Ev fiyatı → sayısal tahmin (regresyon).</p></div></section>
+<section class="scene scene-4" data-index="4" aria-labelledby="scene4-title" hidden><div class="split-copy"><p class="eyebrow"><span>04</span><i></i>DENE / ETİKETLERİN ETKİSİ</p><h2 id="scene4-title">Hedef değişirse<br>tahmin de değişir.</h2><p class="statement">Bu örnekte model, her sınıfın merkezini öğrenir. Yeni noktayı yakın merkeze atar.</p><div class="choice-buttons" role="group" aria-label="Etiket düzeni"><button type="button" data-labels="clean" aria-pressed="true">Tutarlı etiketler</button><button type="button" data-labels="noisy" aria-pressed="false">İki etiketi değiştir</button></div><label class="range-label" for="queryX">Yeni noktanın konumu <output id="queryValue" for="queryX">45</output></label><input id="queryX" type="range" min="10" max="90" value="45" step="1"><button class="quiet-button" id="resetSupervised" type="button">Özgün örneğe dön ↺</button><p class="small-note">Renk ve A/B harfi verilen etiketi gösterir. Bu küçük örnekteki sonuç, gerçek bir başarı ölçümü değildir.</p></div></section>
+<section class="scene scene-5" data-index="5" aria-labelledby="scene5-title" hidden><div class="split-copy"><p class="eyebrow"><span>05</span><i></i>UNSUPERVISED / GÖZETİMSİZ</p><h2 id="scene5-title">Cevap verilmez.<br><span>Yapı aranır.</span></h2><p class="statement">Etiket yok. K-Means, noktaları seçilen sayıda merkezin çevresinde gruplar.</p><div class="choice-buttons" role="group" aria-label="Küme sayısı"><button type="button" data-k="2" aria-pressed="true">2 küme</button><button type="button" data-k="3" aria-pressed="false">3 küme</button></div><div class="action-buttons"><button id="clusterStep" type="button">1 adım ilerlet</button><button id="clusterBack" type="button" disabled>Geri al</button><button id="resetClusters" type="button">Sıfırla ↺</button></div><p class="small-note">Merkezleri güncelle, sonra yeniden ata. Küme numarası, “spam” gibi hazır bir anlam değildir. Başlangıç ve küme sayısı sonucu etkiler.</p></div></section>
+<section class="scene scene-6" data-index="6" aria-labelledby="scene6-title" hidden><div class="split-copy"><p class="eyebrow"><span>06</span><i></i>SEMI-SUPERVISED / YARI GÖZETİMLİ</p><h2 id="scene6-title">Az etiket.<br><span>Çok etiketsiz veri.</span></h2><p class="statement">Etiketli ve etiketsiz örnekler <strong>birlikte</strong> kullanılır.</p><p class="small-note">Burada iki sabit etiket, benzerlik grafı üzerinden diğer noktalara bilgi taşır. Kesik çerçeveler modelin tahminidir.</p><div class="action-buttons"><button id="spreadStep" type="button">Bilgiyi yay</button><button id="spreadBack" type="button" disabled>Geri al</button><button id="resetSpread" type="button">Sıfırla ↺</button></div><label class="check-label"><input id="wrongSeed" type="checkbox"> İlk etiketi yanlış ver</label><p class="small-note">Benzerlik doğru sınıfı yansıtmıyorsa veya etiket yanlışsa, hata da yayılabilir. Her etiketsiz veri otomatik olarak faydalı değildir.</p></div></section>
+<section class="scene scene-7" data-index="7" aria-labelledby="scene7-title" hidden><div class="split-copy"><p class="eyebrow"><span>07</span><i></i>REINFORCEMENT / PEKİŞTİRMELİ</p><h2 id="scene7-title">Cevap anahtarı yok.<br><span>Eylemin sonucu var.</span></h2><p class="statement">Ajan bir ortamda eylem seçer; yeni durum ve ödül alır. Amaç, <strong>beklenen toplam ödülü</strong> artıran politika öğrenmektir.</p><p class="small-note">Ödül, doğru sınıf etiketi değildir. Sonuç gecikebilir; keşif ve sonraki adımları hesaba katmak gerekir.</p></div><div class="agent-loop"><span>AJAN / EYLEM SEÇ</span><i aria-hidden="true">↓ eylem</i><strong>ORTAM</strong><i aria-hidden="true">↑ yeni durum + ödül</i><span>DEĞERİ GÜNCELLE</span><p>Robot kontrolü ve oyun ajanları bu düzene örnektir. Burada küçük bir çizgisel ortam kullanacağız.</p></div></section>
+<section class="scene scene-8" data-index="8" aria-labelledby="scene8-title" hidden><div class="split-copy"><p class="eyebrow"><span>08</span><i></i>DENE / EYLEM VE ÖDÜL</p><h2 id="scene8-title">Hedefe var.<br>Geleceği hesaba kat.</h2><p class="statement">Normal adım −1. Hedefe varış +8.<br>Q-learning, durum–eylem değerlerini deneyimden günceller.</p><div class="action-buttons"><button type="button" id="moveLeft">← Sola</button><button type="button" id="moveRight">Sağa →</button></div><div class="action-buttons"><button type="button" id="trainEpisodes">10 bölüm öğren</button><button type="button" id="testPolicy">Politikayı dene</button></div><div class="action-buttons"><button type="button" id="newEpisode">Başlangıca dön</button><button type="button" id="undoAgent" disabled>Geri al</button><button type="button" id="resetAgent">Tümünü sıfırla ↺</button></div><p class="small-note">Öğrenmede %30 keşif; denemede açgözlü seçim. En fazla 20 adım/bölüm. “Politikayı dene” Q değerlerini değiştirmez.</p></div><div class="agent-bench"><div class="bench-header"><span>AJAN / 5 DURUM</span><span id="agentPhase">BAŞLANGIÇ</span></div><div class="agent-track" id="agentTrack" aria-label="Ajanın konumu ve hedef"></div><div class="agent-stats"><span>Son ödül <b id="lastReward">0</b></span><span>Bölüm toplamı <b id="totalReward">0</b></span></div><div class="q-values" id="qValues"></div><p class="agent-status" id="agentStatus" role="status" aria-live="polite"></p><p class="bench-footer">Deterministik küçük ortam · sabit başlangıç tohumu · gerçek robot veya model benchmarkı değildir.</p></div></section>
+<section class="scene scene-9" data-index="9" aria-labelledby="scene9-title" hidden><div class="split-copy"><p class="eyebrow"><span>09</span><i></i>YAN YANA</p><h2 id="scene9-title">Dört düzen.<br><span>Dört öğrenme sinyali.</span></h2><p class="statement">Farkı, modelin elindeki bilgiyle hatırla.</p><p class="small-note">Aynı sistem farklı aşamalarda birden çok öğrenme türünü kullanabilir.</p></div><div class="comparison-table"><table><caption>Öğrenme türü, bilgi ve örnek</caption><thead><tr><th scope="col">Tür</th><th scope="col">Elindeki bilgi</th><th scope="col">Örnek</th></tr></thead><tbody><tr><th scope="row">Gözetimli</th><td>Veri + hedef</td><td>Spam, fiyat tahmini</td></tr><tr><th scope="row">Gözetimsiz</th><td>Etiketsiz veri</td><td>Müşteri gruplama</td></tr><tr><th scope="row">Yarı gözetimli</th><td>Az etiket + çok veri</td><td>Görüntü sınıflandırma</td></tr><tr><th scope="row">Pekiştirmeli</th><td>Eylem + ödül + durum</td><td>Robot, oyun ajanı</td></tr></tbody></table></div></section>
+<section class="scene scene-10" data-index="10" aria-labelledby="scene10-title" hidden><div class="closing-copy"><p class="eyebrow"><span>10</span><i></i>AKLINDA KALSIN</p><h2 id="scene10-title">Önce modeli değil,<br><span>öğrenme sinyalini</span><br>sor.</h2><ol class="takeaways"><li>Hedef etiket mi, verideki yapı mı, eylemin ödülü mü?</li><li>Öğrenme türü ile algoritma adını ayır.</li><li>Başarıyı yeni örneklerde veya ayrı denemelerde ölç.</li></ol><div class="closing-actions"><button type="button" id="replayPresentation">YENİDEN BAŞLAT ↺</button><a href="../fine-tuning/index.html">Fine-tuning’i keşfet ↗</a></div></div><div class="closing-glyph" aria-hidden="true">VERİ<br><span>+</span><br>GERİ BİLDİRİM<br><span>↓</span><br>ÖĞRENME</div></section><div id="dataBench" class="data-bench" role="region" aria-label="Aynı veri üzerinde öğrenme deneyleri" hidden><div class="bench-header"><span>VERİ / ÇALIŞMA ALANI</span><span id="dataPhase"></span></div><div class="plot-wrap"><svg id="dataPlot" viewBox="0 0 440 320" role="img" aria-labelledby="plotTitle plotDescription"><title id="plotTitle">İki özellikli örnek veri</title><desc id="plotDescription">Her nokta bir örnektir. Sayısal konumlar bu anlatım için hazırlanmıştır.</desc><g id="plotContent"></g></svg></div><p class="plot-legend" id="plotLegend"></p><p class="plot-status" id="plotStatus" role="status" aria-live="polite"></p><p class="bench-footer">Özellikler temsili · hesaplar bu sayfada · gerçek veri veya benchmark değil</p></div></div>
+    </main>
+    <footer class="navigation" aria-label="Sunum gezinme">
+      <div class="nav-instructions"><span class="nav-key">←</span><span class="nav-key">→</span><span>GEZİN</span><span class="nav-divider"></span><span class="notes-tip">N <span>NOTLAR</span></span></div>
+      <label class="scene-picker"><span class="sr-only">Sahneye git</span><select id="scenePicker" aria-label="Sahneye git"><option value="1">01 / Soru</option><option value="2">02 / Öğrenme sinyali</option><option value="3">03 / Gözetimli</option><option value="4">04 / Etiket deneyi</option><option value="5">05 / Gözetimsiz</option><option value="6">06 / Yarı gözetimli</option><option value="7">07 / Pekiştirmeli</option><option value="8">08 / Ödül deneyi</option><option value="9">09 / Karşılaştırma</option><option value="10">10 / Sonuç</option></select></label><div class="nav-right">
+        <span class="scene-count"><strong id="currentSceneCount">01</strong><span> / 10</span></span>
+        <div class="progress-track" aria-hidden="true"><div class="progress-line" id="progressLine"></div></div>
+        <button type="button" class="nav-button" id="prevButton" aria-label="Önceki adım" title="Önceki adım (←)" disabled>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6"/></svg>
+        </button>
+        <button type="button" class="nav-button next-button" id="nextButton" aria-label="Sonraki adım" title="Sonraki adım (→)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+        </button>
+      </div>
+    </footer>
+
+    <dialog class="notes-drawer" id="notesDrawer" aria-labelledby="notesSceneTitle">
+      <div class="notes-head"><div><span>KONUŞMACI / NOTLAR</span><h2 id="notesSceneTitle">01 — Soru</h2></div><button type="button" id="notesClose" aria-label="Notları kapat">×</button></div>
+      <div class="notes-content"><p id="notesBody"></p><p class="notes-action" id="notesAction"></p><div class="notes-bottom"><span id="notesDuration">20 SN / HEDEF</span><span>← / → GEZİN</span></div></div>
+    </dialog>
+    <div class="sr-only" id="announcer" role="status" aria-live="polite" aria-atomic="true"></div>
+  </div>
+</body>
+</html>

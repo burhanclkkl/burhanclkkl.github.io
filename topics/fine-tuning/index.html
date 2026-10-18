@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#FAF9F7">
+  <meta name="description" content="Fine-tuning ile hazır bir model bir göreve uyarlanır. Görünür açıklamalar, somut örnekler ve adım adım deneylerle öğren.">
+  <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../assets/apple-touch-icon.png">
+  <meta property="og:locale" content="tr_TR">
+  <meta property="og:site_name" content="OPEN / NOTES">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Fine-tuning Nedir? — OPEN / NOTES">
+  <meta property="og:description" content="Hazır bir model, örneklerle bir göreve nasıl uyarlanır?">
+  <meta property="og:image" content="https://burhanclkkl.github.io/helloworld/assets/social-card.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="OPEN / NOTES — Merak et. Derinine in. Yapay zekâ, yazılım ve sistemler.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Fine-tuning Nedir? — OPEN / NOTES">
+  <meta name="twitter:description" content="Hazır bir model, örneklerle bir göreve nasıl uyarlanır?">
+  <meta name="twitter:image" content="https://burhanclkkl.github.io/helloworld/assets/social-card.png">
+  <meta name="twitter:image:alt" content="OPEN / NOTES — Merak et. Derinine in.">
+  <meta property="article:published_time" content="2026-10-18">
+  <meta property="article:modified_time" content="2026-10-18">
+  <link rel="canonical" href="https://burhanclkkl.github.io/helloworld/topics/fine-tuning/index.html">
+  <meta property="og:url" content="https://burhanclkkl.github.io/helloworld/topics/fine-tuning/index.html">
+  <title>Fine-tuning Nedir? — OPEN / NOTES</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" >
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="../../css/lesson-reading.css">
+  <script src="./script.js" defer></script>
+  <script src="../../js/lesson-reading.js" defer></script>
+  <noscript><style>.lesson-article[hidden] { display:block !important; }.lesson-article + .lesson-article { margin-top:64px; }.lesson-jump,.lesson-stage-intro { display:none; }</style></noscript>
+</head>
+<body data-lesson-topic="fine-tuning">
+  <noscript><p class="noscript-note">Etkileşimli sunum için JavaScript’i etkinleştirin. <a href="../../index.html#topics">Konu arşivine dön →</a></p></noscript>
+  <div class="app" id="app" data-scene="1">
+    <header class="masthead" aria-label="Sunum üst menüsü">
+      <a href="../../index.html#topics" class="brand" aria-label="Konu arşivine dön">
+        <span class="brand-sign" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+        <span>FINE <span class="brand-slash">/</span> TUNING</span>
+      </a>
+      <div class="masthead-right">
+        <details class="publication-details" id="publicationDetails">
+          <summary>Kaynakça<span class="publication-summary-extra"> ve tarihler</span> <span aria-hidden="true">↗</span></summary>
+          <section class="publication-panel" aria-labelledby="sources-title">
+<div class="publication-dates"><span>YAYIMLANMA <time datetime="2026-10-18">18 Ekim 2026</time></span><span>SON GÜNCELLEME <time datetime="2026-10-18">18 Ekim 2026</time></span></div>
+          <h2 id="sources-title">Kaynakça<span>.</span></h2>
+          <p>Ön eğitimli bir modeli göreve uyarlamak, ağırlık güncellemesi ve LoRA için birincil kaynaklar. Deney, elle seçilmiş başlangıç ağırlıkları olan iki özellikli lojistik sınıflandırıcıdır; bir LLM eğitimi veya performans ölçümü değildir.</p>
+          <ol class="source-references">
+            <li><a href="https://huggingface.co/docs/transformers/main/en/training" target="_blank" rel="noopener noreferrer">Hugging Face — Fine-tuning ↗</a><p>Ön eğitimli modelden devam etme, veri ayırma ve eğitim döngüsü.</p></li>
+            <li><a href="https://huggingface.co/docs/peft/main/en/conceptual_guides/lora" target="_blank" rel="noopener noreferrer">Hugging Face — LoRA ↗</a><p>Temel ağırlıkları sabit tutarak düşük ranklı güncellemeleri öğrenme.</p></li>
+            <li><a href="https://arxiv.org/abs/2005.11401" target="_blank" rel="noopener noreferrer">Lewis ve diğerleri — Retrieval-Augmented Generation ↗</a><p>Üretimi, dış kaynaklardan getirilen bilgiyle destekleme yaklaşımı.</p></li>
+          </ol>
+          <a class="archive-return" href="../../index.html#topics">← Konu arşivine dön</a>
+          </section>
+        </details>
+        <span class="header-meta">OKU / DENE <span class="meta-sep">/</span> KENDİ HIZINDA</span>
+        <button type="button" class="header-control" id="notesToggle" aria-label="Konuşmacı notlarını aç (N)" aria-expanded="false" title="Konuşmacı notları (N)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h12a1.5 1.5 0 0 1 1.5 1.5v14a1.5 1.5 0 0 1-1.5 1.5h-12A1.5 1.5 0 0 1 5 19V5A1.5 1.5 0 0 1 6.5 3.5Z"/><path d="M9 9h7M9 13h7M9 17h4"/></svg>
+        </button>
+        <button type="button" class="header-control" id="fullscreenToggle" aria-label="Tam ekran modunu aç (F)" title="Tam ekran (F)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3.5H3.5V8m12.5-4.5h4.5V8M3.5 16v4.5H8m12.5-4.5v4.5H16"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <main class="presentation" id="presentation" aria-label="Fine-tuning etkileşimli sunumu">
+<section class="lesson-reading" id="lesson-reading" aria-label="Sahnenin adım adım açıklaması">
+<article class="lesson-article" data-lesson-scene="1" aria-labelledby="lesson-title-1">
+ <p class="lesson-overline">01 / 07 · OKU, DENE, ANLA</p>
+ <h2 id="lesson-title-1">Fine-tuning ile hazır bir model bir göreve uyarlanır.</h2>
+ <div class="lesson-explanation-steps"><section class="lesson-explanation-step"><h3><span aria-hidden="true">01</span>Nedir?</h3><p>Fine-tuning, daha önce eğitilmiş bir modeli belirli bir görev veya alanın örnekleriyle eğitmeye devam etmektir. Amaç, hedeflenen işi daha uygun ve tutarlı yapmasını sağlamaktır.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">02</span>Somut örnek</h3><p>Bir destek talebine uzun bir sohbet yanıtı yerine yalnızca “ödeme” ya da “teknik” kategorisini vermesini istediğini düşün. Eğitim örneklerinde talep ve beklenen çıktı birlikte bulunabilir.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">03</span>Nasıl çalışır?</h3><p>Önce iyi bir talimat ve birkaç örnek denenebilir. Yeterli değilse, ölçülmüş ihtiyaç ve uygun veriyle eğitim yapılır. Eğitim sonunda öğrenilmiş parametreler veya ek uyarlayıcılar değişir.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">04</span>Deneyde ne yapacağım?</h3><p>Açılıştaki genel yanıtı hedef kategoriyle karşılaştır. Bunlar hazırlanmış örneklerdir; gerçek bir modelin eğitim öncesi ve sonrası ölçümü değildir.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">05</span>Ne öğrendim?</h3><p>Fine-tuning bir modele her bilgiyi kusursuz öğretmek değildir. Hangi davranışı iyileştirmek istediğini belirlemek ve sonucu ayrı örneklerde ölçmek gerekir.</p></section></div>
+ <a class="lesson-jump" href="#lesson-stage">Görseli ve deneyi incele <span aria-hidden="true">↓</span></a>
+</article>
+<article class="lesson-article" data-lesson-scene="2" aria-labelledby="lesson-title-2" hidden>
+ <p class="lesson-overline">02 / 07 · OKU, DENE, ANLA</p>
+ <h2 id="lesson-title-2">Sıfırdan başlamak yerine mevcut beceriyi geliştir.</h2>
+ <div class="lesson-explanation-steps"><section class="lesson-explanation-step"><h3><span aria-hidden="true">01</span>Nedir?</h3><p>Ön eğitimli model, geniş bir eğitimden kazanılmış parametrelerle gelir. Fine-tuning bu noktadan devam ederek belirli bir veri ve hedef doğrultusunda modeli uyarlar.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">02</span>Somut örnek</h3><p>Zaten çalabilen bir müzisyenin yeni bir parçaya çalışması gibi düşünebilirsin. Destek örneğimizde mevcut dil becerisinin üzerine tutarlı kategori çıktısı çalışılır.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">03</span>Nasıl çalışır?</h3><p>Sohbete örnek yazmak genellikle yalnızca o isteğin bağlamını değiştirir. Eğitim ise temel modelin veya eklenen eğitilebilir parçaların öğrenilmiş sayılarını değiştirir; sonuç ayrı bir sürüm olarak saklanabilir.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">04</span>Deneyde ne yapacağım?</h3><p>Aşağıdaki ağırlıkları model davranışını etkileyen sayılar olarak oku. Bu görseldeki üç sayı elle seçilmiş öğretici bir sınıflandırıcıya aittir; ön eğitimli bir büyük dil modeli (LLM) yüklenmiyor.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">05</span>Ne öğrendim?</h3><p>Prompt ile eğitim arasındaki fark, sadece kaç örnek verdiğin değildir. Değişimin isteğin bağlamında mı yoksa öğrenilmiş parametrelerde mi gerçekleştiğidir.</p></section></div>
+ <a class="lesson-jump" href="#lesson-stage">Görseli ve deneyi incele <span aria-hidden="true">↓</span></a>
+</article>
+<article class="lesson-article" data-lesson-scene="3" aria-labelledby="lesson-title-3" hidden>
+ <p class="lesson-overline">03 / 07 · OKU, DENE, ANLA</p>
+ <h2 id="lesson-title-3">Tahmin, kayıp ve güncelleme nasıl bağlanır?</h2>
+ <div class="lesson-explanation-steps"><section class="lesson-explanation-step"><h3><span aria-hidden="true">01</span>Nedir?</h3><p>Gözetimli eğitimde modele bir girdi ve beklenen hedef verilir. Modelin tahmini hedefle karşılaştırılır; farkı ölçen kayıp değeri, güncellemenin hesaplanmasında kullanılır.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">02</span>Somut örnek</h3><p>“Ödeme tamamlanmadı” cümlesinin hedefi ödeme olsun. Model bu sınıfa düşük olasılık veriyorsa eğitim adımı, bu örnekteki hatayı azaltacak yönde parametreleri değiştirmeye çalışır.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">03</span>Nasıl çalışır?</h3><p>Gradyan, kaybın parametreler değişince hangi yönde değiştiğini gösterir. Optimizasyon yöntemi bu bilgiyi kullanır. Dil modeli eğitiminde hedefler yanıtın tokenları olabilir; buradaki model yalnızca iki kelime özelliği kullanır.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">04</span>Deneyde ne yapacağım?</h3><p>“Tahmin”, “Kayıp”, “Güncelle” adımlarını seç. İlk ikisinde ağırlıkların aynı kaldığını, güncellemede değiştiğini izle. Geri dönünce aynı başlangıç sayıları geri gelir.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">05</span>Ne öğrendim?</h3><p>Bir örneğin kaybını azaltmak, bütün görevde iyileşme garantisi değildir. Eğitimden ayrı veride ve istenmeyen davranışlar açısından değerlendirme gerekir.</p></section></div>
+ <a class="lesson-jump" href="#lesson-stage">Görseli ve deneyi incele <span aria-hidden="true">↓</span></a>
+</article>
+<article class="lesson-article" data-lesson-scene="4" aria-labelledby="lesson-title-4" hidden>
+ <p class="lesson-overline">04 / 07 · OKU, DENE, ANLA</p>
+ <h2 id="lesson-title-4">İyi eğitim sonucu, yeni örnekte başarı demek değildir.</h2>
+ <div class="lesson-explanation-steps"><section class="lesson-explanation-step"><h3><span aria-hidden="true">01</span>Nedir?</h3><p>Bu deney, seçilen örneklerin öğrenmeyi nasıl yönlendirdiğini gösterir. Çalışan model, üç ağırlıkla iki kategoriden birini seçen küçük bir örnektir; büyük bir dil modeli (LLM) eğitimi değildir.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">02</span>Somut örnek</h3><p>Çeşitli kümede hem ödeme hem teknik taleplerin acil ve normal örnekleri var. Tek yönlü kümede ödeme taleplerinin hepsi acil; model “acil” kelimesini yanlış bir ipucu olarak öğrenebilir.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">03</span>Nasıl çalışır?</h3><p>Model yalnızca “ödeme” ve “acil” kelimelerinin varlığına bakar. Her turda dört eğitim örneğinden ağırlık günceller. İki ayrı kontrol metni güncellemede kullanılmaz; yine de bu kapsamlı bir genelleme testi değildir.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">04</span>Deneyde ne yapacağım?</h3><p>Veri kümesini seçip 5 tur eğit. Eğitim doğrularıyla ayrı kontroldeki doğruları karşılaştır. Diğer küme aynı başlangıçtan başlar. Geri al, sıfırla ve örnekler bölümünü de dene.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">05</span>Ne öğrendim?</h3><p>Bir kümede 4/4 görmen modelin her yeni talepte başarılı olduğu anlamına gelmez. Veri çeşitliliği ve bağımsız değerlendirme, yalnızca daha çok eğitim turundan önemlidir.</p></section></div>
+ <a class="lesson-jump" href="#lesson-stage">Görseli ve deneyi incele <span aria-hidden="true">↓</span></a>
+</article>
+<article class="lesson-article" data-lesson-scene="5" aria-labelledby="lesson-title-5" hidden>
+ <p class="lesson-overline">05 / 07 · OKU, DENE, ANLA</p>
+ <h2 id="lesson-title-5">LoRA, temel ağırlıkları sabit tutarak uyarlama yapar.</h2>
+ <div class="lesson-explanation-steps"><section class="lesson-explanation-step"><h3><span aria-hidden="true">01</span>Nedir?</h3><p>Tam fine-tuning temel ağırlıkları güncelleyebilir. LoRA ise bu ağırlıkları sabit tutar; etkisi onlara eklenen daha küçük eğitilebilir matrisler öğrenir.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">02</span>Somut örnek</h3><p>Destek kategorilerini öğrenirken dev bir tablonun bütün hücrelerini değiştirmek yerine, tablonun etkisini düzelten küçük bir ek öğrenmeyi düşün. Bu benzetme, temel modelin sabit kalmasını anlatır.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">03</span>Nasıl çalışır?</h3><p>Şemada W temel ağırlık, B ve A ise güncellemeyi temsil eden küçük matrislerdir. BA çarpımı temel ağırlığın etkisine eklenir. LoRA eğitilebilir parametre sayısını ve bellek ihtiyacını azaltabilir.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">04</span>Deneyde ne yapacağım?</h3><p>Tam fine-tuning ve LoRA arasında geçiş yap. W’nin hangi durumda değiştiğine, hangi durumda sabit kaldığına ve küçük matrislerin ne zaman açıldığına bak. Bu düğmeler canlı sınıflandırıcıyı eğitmez.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">05</span>Ne öğrendim?</h3><p>Şemadaki boyutlar temsili; gerçek tasarruf veya kalite oranı değildir. Daha az parametre eğitmek de ayrı değerlendirme, doğru veri ve uygun ayar ihtiyacını kaldırmaz.</p></section></div>
+ <a class="lesson-jump" href="#lesson-stage">Görseli ve deneyi incele <span aria-hidden="true">↓</span></a>
+</article>
+<article class="lesson-article" data-lesson-scene="6" aria-labelledby="lesson-title-6" hidden>
+ <p class="lesson-overline">06 / 07 · OKU, DENE, ANLA</p>
+ <h2 id="lesson-title-6">Prompt, RAG ve fine-tuning aynı yere müdahale etmez.</h2>
+ <div class="lesson-explanation-steps"><section class="lesson-explanation-step"><h3><span aria-hidden="true">01</span>Nedir?</h3><p>Prompt isteğin talimatını, RAG yanıt anında erişilen bilgiyi, fine-tuning ise eğitim yoluyla öğrenilmiş davranışı değiştirir. Bu yaklaşımlar birbirinin zorunlu alternatifi değildir.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">02</span>Somut örnek</h3><p>Destek sisteminden yalnızca kategori istiyorsan önce net bir talimat ver. Güncel iade kuralını belgeye dayanarak yanıtlaması gerekiyorsa bilgi erişimini düşün. Tutarlı görev davranışı için eğitim ihtiyacını ölç.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">03</span>Nasıl çalışır?</h3><p>Prompt ve getirilen belgeler o isteğin bağlamına girer. Fine-tuning temel ağırlıkları veya uyarlayıcı parametrelerini günceller. Eğitilmiş bir model de yanıt verirken RAG kullanabilir.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">04</span>Deneyde ne yapacağım?</h3><p>Üç düğmeyi sırayla seç. “Müdahale” satırında neyin değiştiğini oku ve akıştaki yerini bul. Bu karşılaştırma gerçek bir model çağrısı yapmaz.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">05</span>Ne öğrendim?</h3><p>Fine-tuning bilgi de öğretebilir, ama güncel belge erişimi veya hatasızlık garantisi değildir. Hangi yaklaşımı seçeceğini görev ihtiyacı ve ölçüm belirlemelidir.</p></section></div>
+ <a class="lesson-jump" href="#lesson-stage">Görseli ve deneyi incele <span aria-hidden="true">↓</span></a>
+</article>
+<article class="lesson-article" data-lesson-scene="7" aria-labelledby="lesson-title-7" hidden>
+ <p class="lesson-overline">07 / 07 · OKU, DENE, ANLA</p>
+ <h2 id="lesson-title-7">Fine-tuning’i yeni örneklerde değerlendir.</h2>
+ <div class="lesson-explanation-steps"><section class="lesson-explanation-step"><h3><span aria-hidden="true">01</span>Nedir?</h3><p>Fine-tuning, hazır beceriyi hedefe uygun örneklerle uyarlama işidir. Başarısı, yalnızca eğitimdeki örneklerin doğru yanıtlanmasıyla ölçülemez.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">02</span>Somut örnek</h3><p>Destek modelin eğitim taleplerini doğru ayırırken farklı yazılmış acil bir teknik talebi yanlış sınıflandırabilir. Ayrı kontrolün amacı bu tür sorunları yakalamaktır.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">03</span>Nasıl çalışır?</h3><p>Veriyi temizle, tekrarları ve veri sızıntısını önle, eğitim ve değerlendirme kümelerini ayır. Ayarları seçmek için tekrar tekrar kullandığın kümenin dışında son bir test kümesi de tut.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">04</span>Deneyde ne yapacağım?</h3><p>Canlı deneye dönüp iki veri kümesini aynı turda karşılaştırabilirsin. RAG bağlantısı, yeni bir belgeye erişmenin neden farklı bir müdahale olduğunu yeniden incelemeni sağlar.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">05</span>Ne öğrendim?</h3><p>Daha çok tur her zaman daha iyi değildir. Aşırı uyum veya önceki becerilerin zayıflaması görülebilir. Model sürümünü görev kalitesi ve istenmeyen etkilerini ölçerek seç.</p></section></div>
+ <a class="lesson-jump" href="#lesson-stage">Görseli ve deneyi incele <span aria-hidden="true">↓</span></a>
+</article>
+</section>
+<div class="lesson-stage-intro"><span>AYNI FİKRİ GÖRSELDE İNCELE</span><a class="lesson-return" href="#lesson-reading">Açıklamaya dön ↑</a></div>
+<div class="lesson-stage" id="lesson-stage" role="region" aria-label="Sahnenin görseli ve etkileşimli deneyi">
+<section class="scene scene-1 active" data-index="1" aria-labelledby="scene1-title"><div class="cover-copy"><p class="eyebrow"><span>01</span><i></i>BİR SORU</p><h1 id="scene1-title">Model aynı.<br><span>Davranış neden</span><br>farklı?</h1><p class="cover-lead">Bir destek talebi.<br>Genel yanıttan, göreve uygun çıktıya.</p></div><div class="opening-output"><span>GİRDİ / “Ödemem iki kez alındı.”</span><p>“Size yardımcı olabilirim…”</p><i aria-hidden="true">↓</i><strong>{"kategori": "ödeme"}</strong><small>HEDEF DAVRANIŞ ÖRNEĞİ · GERÇEK MODEL ÇIKTISI DEĞİL</small></div></section>
+<section class="scene scene-2" data-index="2" aria-labelledby="scene2-title" hidden><div class="split-copy"><p class="eyebrow"><span>02</span><i></i>TANIM</p><h2 id="scene2-title">Sıfırdan öğrenme.<br><span>Üzerine çalış.</span></h2><p class="statement">Fine-tuning: ön eğitimli bir modeli <strong>göreve veya alana özel veriyle eğitmeye devam etmek.</strong></p><p class="small-note">Bir müzisyenin yeni bir parçaya çalışması gibi: temel beceri vardır, çalışma yön değiştirir.</p><p class="margin-note">Sohbete örnek yazmaktan farklı olarak, eğitim sonunda öğrenilmiş parametreler değişir.</p></div></section>
+<section class="scene scene-3" data-index="3" aria-labelledby="scene3-title" hidden><div class="split-copy"><p class="eyebrow"><span>03</span><i></i>ÖĞRENME DÖNGÜSÜ</p><h2 id="scene3-title">Tahmin et.<br>Hatadan öğren.</h2><div class="step-buttons" role="group" aria-label="Öğrenme adımı"><button type="button" data-step="0" aria-pressed="true">01 Tahmin</button><button type="button" data-step="1" aria-pressed="false">02 Kayıp</button><button type="button" data-step="2" aria-pressed="false">03 Güncelle</button></div><p class="statement" id="loopExplanation"></p><p class="small-note">Örnek: “Ödeme alınmadı.” → ödeme.<br>Kayıp (loss), tahminin hedefe uzaklığını ölçer; gradyan güncellemenin yönünü verir.</p></div></section>
+<section class="scene scene-4" data-index="4" aria-labelledby="scene4-title" hidden><div class="split-copy"><p class="eyebrow"><span>04</span><i></i>KENDİN DENE</p><h2 id="scene4-title">Veriyi değiştir.<br>Öğrenmeyi gör.</h2><p class="small-note">Görev: talepleri “ödeme” veya “teknik” olarak ayır.</p><div class="dataset-buttons" role="group" aria-label="Eğitim verisi seçimi"><button type="button" data-dataset="diverse" aria-pressed="true">Çeşitli örnekler</button><button type="button" data-dataset="biased" aria-pressed="false">Tek yönlü örnekler</button></div><p class="dataset-description" id="datasetDescription"></p><div class="training-buttons"><button type="button" id="trainOne">1 tur eğit</button><button type="button" id="trainFive">5 tur eğit</button><button type="button" id="trainBack" disabled>1 tur geri</button><button type="button" id="resetTraining">Sıfırla ↺</button></div><p class="epoch-note">1 tur = eğitim kümesinin tamamı.<br>En fazla 30 tur; örnekler ve başlangıç her seferinde aynı.</p><details class="data-details" id="dataDetails"><summary>Eğitim ve ayrı kontrol örnekleri</summary><div id="datasetExamples"></div></details></div></section>
+<section class="scene scene-5" data-index="5" aria-labelledby="scene5-title" hidden><div class="split-copy"><p class="eyebrow"><span>05</span><i></i>TEKNİK MERCEK</p><h2 id="scene5-title">Her ağırlığı<br>değiştirmek şart mı?</h2><p class="statement">Tam fine-tuning’de temel ağırlıklar güncellenir. <strong>LoRA’da temel ağırlıklar sabit, küçük güncellemeler öğrenilir.</strong></p><div class="method-buttons" role="group" aria-label="Eğitim yöntemi"><button type="button" data-method="full" aria-pressed="true">Tam fine-tuning</button><button type="button" data-method="lora" aria-pressed="false">LoRA</button></div><p class="small-note">LoRA, eğitilen parametre sayısını ve bellek gereksinimini azaltabilir. Kazanç ve kalite, modele ve göreve bağlıdır.</p></div></section>
+<section class="scene scene-6" data-index="6" aria-labelledby="scene6-title" hidden><div class="split-copy"><p class="eyebrow"><span>06</span><i></i>DOĞRU ARACI SEÇ</p><h2 id="scene6-title">Davranış mı?<br><span>Güncel bilgi mi?</span></h2><p class="statement">Fine-tuning, RAG ve prompting farklı yerlere müdahale eder.</p><p class="small-note">Önce iyi bir talimat ve birkaç örnekle başla. Ölçtüğün ihtiyaca göre eğitim veya bilgi erişimi ekle.</p></div><div class="comparison"><div class="comparison-tabs" role="group" aria-label="Yaklaşım seçimi"><button type="button" data-approach="prompt" aria-pressed="true">Prompt</button><button type="button" data-approach="rag" aria-pressed="false">RAG</button><button type="button" data-approach="tune" aria-pressed="false">Fine-tuning</button></div><p class="comparison-kicker" id="approachPlace"></p><h3 id="approachTitle"></h3><p id="approachDescription"></p><div class="approach-flow" id="approachFlow"></div><p class="comparison-note">Birlikte kullanılabilirler. Fine-tuning bilgi de öğretebilir; güncel belge erişimini ve kaynak izlenebilirliğini garanti etmez.</p></div></section>
+<section class="scene scene-7" data-index="7" aria-labelledby="scene7-title" hidden><div class="closing-copy"><p class="eyebrow"><span>07</span><i></i>AKLINDA KALSIN</p><h2 id="scene7-title">Daha çok eğitim değil.<br><span>Doğru örnek,</span><br>ayrı değerlendirme.</h2><ol class="takeaways"><li><span>01</span>Hazır model, hedefe uygun örneklerle uyarlanır.</li><li><span>02</span>Eğitim başarısı, genelleme başarısı değildir.</li><li><span>03</span>Kaliteyi görmediği örneklerde ölç.</li></ol><div class="closing-actions"><button type="button" id="replayPresentation">YENİDEN BAŞLAT ↺</button><a href="../rag-mimarisi/index.html">RAG Mimarisi’ni keşfet ↗</a></div></div><div class="closing-mark" aria-hidden="true"><span>ÖRNEK</span><i>↓</i><span>GÜNCELLEME</span><i>↓</i><strong>DEĞERLENDİRME</strong></div></section><div class="model-bench" id="modelBench" role="region" aria-label="Ortak model çalışma alanı" hidden>
+ <div class="bench-header"><span>MODEL / ÇALIŞMA ALANI</span><span id="benchPhase">BAŞLANGIÇ</span></div>
+ <div class="classifier-view" id="classifierView">
+  <p class="bench-caption" id="benchCaption">ÖĞRETİCİ MODEL · ELLE SEÇİLMİŞ BAŞLANGIÇ</p>
+  <div class="weight-rows" id="weightRows" aria-label="Modelin üç ağırlığı"></div>
+  <div class="loop-result" id="loopResult" hidden></div>
+  <div class="training-result" id="trainingResult" hidden><div class="training-stats"><span><b id="epochCount">0</b><small>EĞİTİM TURU</small></span><span><b id="trainScore">0/4</b><small>EĞİTİM DOĞRU</small></span><span><b id="testScore">0/2</b><small>AYRI KONTROL</small></span></div><div id="testPredictions" aria-label="Ayrı örneklerin tahminleri"></div><p class="training-status" id="trainingStatus" role="status" aria-live="polite"></p></div>
+ </div>
+ <div class="adapter-view" id="adapterView" hidden><div class="matrix-caption"><span>W / TEMEL AĞIRLIKLAR</span><strong id="baseState">GÜNCELLENİR</strong></div><div class="weight-matrix" id="weightMatrix" aria-hidden="true"></div><div class="adapter-pair" id="adapterPair" hidden><span>+</span><div class="mini-matrix matrix-b" aria-label="B matrisi, 4 satır 1 sütun"></div><span>×</span><div class="mini-matrix matrix-a" aria-label="A matrisi, 1 satır 4 sütun"></div><strong>ΔW = BA</strong></div><p id="methodExplanation"></p><p class="matrix-footnote">Şematik 4 × 4 ağırlık ve rank 1 güncelleme. Gerçek model boyutu veya kazanç oranı değildir.</p></div>
+ <div class="bench-footer" id="benchFooter">Öğretici sınıflandırıcı; LLM eğitimi veya benchmark değildir.</div>
+</div>
+</div>
+    </main>
+    <footer class="navigation" aria-label="Sunum gezinme">
+      <div class="nav-instructions"><span class="nav-key">←</span><span class="nav-key">→</span><span>GEZİN</span><span class="nav-divider"></span><span class="notes-tip">N <span>NOTLAR</span></span></div>
+      <div class="nav-right">
+        <span class="scene-count"><strong id="currentSceneCount">01</strong><span> / 07</span></span>
+        <div class="progress-track" aria-hidden="true"><div class="progress-line" id="progressLine"></div></div>
+        <button type="button" class="nav-button" id="prevButton" aria-label="Önceki adım" title="Önceki adım (←)" disabled>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6"/></svg>
+        </button>
+        <button type="button" class="nav-button next-button" id="nextButton" aria-label="Sonraki adım" title="Sonraki adım (→)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+        </button>
+      </div>
+    </footer>
+
+    <dialog class="notes-drawer" id="notesDrawer" aria-labelledby="notesSceneTitle">
+      <div class="notes-head"><div><span>KONUŞMACI / NOTLAR</span><h2 id="notesSceneTitle">01 — Soru</h2></div><button type="button" id="notesClose" aria-label="Notları kapat">×</button></div>
+      <div class="notes-content"><p id="notesBody"></p><p class="notes-action" id="notesAction"></p><div class="notes-bottom"><span id="notesDuration">20 SN / HEDEF</span><span>← / → GEZİN</span></div></div>
+    </dialog>
+    <div class="sr-only" id="announcer" role="status" aria-live="polite" aria-atomic="true"></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+/* MOTION / MONO: açıklama gizlenmez; görsel, okunan fikrin deneyi olarak izler. */
+body[data-lesson-topic] .app { height:auto !important; min-height:100dvh; overflow:visible !important; }
+body[data-lesson-topic] .presentation { display:block !important; flex:none !important; min-height:0 !important; overflow:visible !important; padding:0 !important; isolation:auto; }
+body[data-lesson-topic] .presentation::before { display:none; }
+.lesson-reading { width:86%; max-width:1040px; margin:0 auto; padding:64px 0 48px; scroll-margin-top:24px; }
+.lesson-article { max-width:800px; }
+.lesson-article[hidden] { display:none !important; }
+.lesson-overline { margin:0 0 24px; font-size:10px; letter-spacing:.08em; font-weight:600; color:var(--lilac-ink); line-height:1.8; }
+.lesson-article h2 { margin:0; max-width:900px; font-size:clamp(30px,3vw,48px); line-height:1.25; font-weight:600; letter-spacing:-.065em; color:var(--ink); }
+.lesson-explanation-steps { margin-top:40px; }
+.lesson-explanation-step { margin:0 0 32px; max-width:740px; }
+.lesson-explanation-step h3 { display:flex; align-items:baseline; gap:14px; margin:0 0 10px; font-size:14px; line-height:1.7; letter-spacing:-.025em; font-weight:600; color:var(--ink); }
+.lesson-explanation-step h3>span { font-size:10px; color:var(--lilac-ink); font-weight:500; font-variant-numeric:tabular-nums; }
+.lesson-explanation-step p { margin:0; font-size:15px; line-height:1.95; color:var(--muted); }
+.lesson-explanation-step:first-child p { color:var(--ink); font-size:17px; line-height:1.9; }
+.lesson-jump,.lesson-return { display:inline-flex; align-items:center; min-height:44px; gap:12px; font-size:11px; font-weight:500; color:var(--lilac-ink); text-decoration:underline; text-decoration-color:var(--lilac); text-underline-offset:5px; }
+.lesson-jump span { color:var(--orange-ink); transition:transform .18s var(--ease); }
+.lesson-jump:hover span,.lesson-jump:focus-visible span { transform:translateY(3px); }
+.lesson-stage-intro { width:86%; margin:0 auto; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:12px 24px; padding:16px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+.lesson-stage-intro>span { color:var(--muted); font-size:9px; line-height:1.8; letter-spacing:.06em; }
+.lesson-stage { position:relative; min-height:620px; height:calc(100dvh - 150px); overflow:hidden; isolation:isolate; scroll-margin-top:12px; }
+.lesson-stage .scene[hidden] { display:none !important; }
+body[data-lesson-topic] .navigation { position:sticky; bottom:0; z-index:15; flex:0 0 auto; min-height:72px; padding-block:8px; background:var(--bg); border-top:1px solid var(--line); }
+@media (min-width:1600px) { .lesson-reading { max-width:1400px; }.lesson-article { max-width:940px; }.lesson-explanation-step { max-width:820px; }.lesson-explanation-step p { font-size:17px; }.lesson-explanation-step:first-child p { font-size:19px; } }
+@media (max-width:800px) {
+ .lesson-reading { width:calc(100% - 44px); padding:40px 0 32px; }
+ .lesson-article h2 { font-size:clamp(27px,5vw,38px); }
+ .lesson-explanation-steps { margin-top:32px; }.lesson-explanation-step { margin-bottom:28px; }
+ .lesson-explanation-step p { font-size:14px; line-height:1.95; }.lesson-explanation-step:first-child p { font-size:15px; }
+ .lesson-stage-intro { width:calc(100% - 44px); padding-block:12px; }.lesson-stage-intro>span { font-size:8px; }
+ body[data-lesson-topic="context-window"] .lesson-stage { height:max(700px,calc(100dvh - 130px)); min-height:700px; }
+ body[data-lesson-topic="rag-mimarisi"] .lesson-stage { display:flex; flex-direction:column; gap:24px; height:auto; min-height:calc(100dvh - 132px); padding:30px 22px 24px; overflow:visible; }
+ body[data-lesson-topic] .navigation { min-height:64px; }
+}
+@media (max-width:700px) {
+ body[data-lesson-topic="token-nedir"] .lesson-stage,body[data-lesson-topic="fine-tuning"] .lesson-stage,body[data-lesson-topic="ogrenme-turleri"] .lesson-stage { height:auto; min-height:calc(100dvh - 132px); padding:32px 22px 36px; overflow:visible; }
+}
+@media (max-width:400px) {
+ .lesson-reading,.lesson-stage-intro { width:calc(100% - 32px); }.lesson-overline { font-size:8px; }.lesson-explanation-step h3 { font-size:13px; gap:10px; }.lesson-explanation-step p { font-size:13px; }.lesson-explanation-step:first-child p { font-size:14px; }.lesson-jump,.lesson-return { font-size:10px; }
+}
+@media (prefers-reduced-motion:reduce) { .lesson-jump span { transition:none; } }
+@media print {
+ body[data-lesson-topic] .masthead,body[data-lesson-topic] .navigation,.lesson-stage,.lesson-stage-intro,.lesson-jump,.notes-drawer { display:none !important; }
+ .lesson-article[hidden] { display:block !important; }.lesson-article { break-after:page; }.lesson-reading { width:100%; padding:0; }
+}
+
+body[data-lesson-topic="context-window"] .app:not(.notes-open) .notes-drawer { box-shadow:none; }
+body[data-lesson-topic="context-window"] .app:is([data-scene="1"],[data-scene="6"],[data-scene="7"]) #contextBoard { display:none !important; pointer-events:none; }

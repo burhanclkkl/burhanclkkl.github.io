@@ -38,5 +38,17 @@ window.SITE_TOPICS = [
     description: 'Bir dil modeli metni nasıl parçalara ve sayılara dönüştürür?',
     category: 'ai', categoryLabel: 'LLM / TOKENİZASYON',
     accent: 'lilac', status: 'published', href: 'topics/token-nedir/index.html'
+  },
+  {
+    id: '07', title: 'Fine-tuning Nedir?',
+    description: 'Hazır bir model, örneklerle bir göreve nasıl uyarlanır?',
+    category: 'ai', categoryLabel: 'LLM / EĞİTİM',
+    accent: 'orange', status: 'published', href: 'topics/fine-tuning/index.html'
+  },
+  {
+    id: '08', title: 'Makine Öğrenmesinde Öğrenme Türleri',
+    description: 'Modelin elinde hangi veri veya geri bildirim var?',
+    category: 'ai', categoryLabel: 'ML / TEMELLER',
+    accent: 'lilac', status: 'published', href: 'topics/ogrenme-turleri/index.html'
   }
 ];

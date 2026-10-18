@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#FAF9F7">
-  <meta name="description" content="RAG Mimarisi nedir? 7 sahnede, 5 dakikalık etkileşimli Türkçe teknoloji anlatımı.">
+  <meta name="description" content="Modelin görmediği bir belgeye nasıl dayanırsın? Görünür açıklamalar, somut örnekler ve adım adım deneylerle öğren.">
   <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="../../assets/apple-touch-icon.png">
@@ -24,7 +24,7 @@
   <meta name="twitter:image" content="https://burhanclkkl.github.io/helloworld/assets/social-card.png">
   <meta name="twitter:image:alt" content="OPEN / NOTES — Merak et. Derinine in.">
   <meta property="article:published_time" content="2026-10-17">
-  <meta property="article:modified_time" content="2026-10-17">
+  <meta property="article:modified_time" content="2026-10-18">
   <link rel="canonical" href="https://burhanclkkl.github.io/helloworld/topics/rag-mimarisi/index.html">
   <meta property="og:url" content="https://burhanclkkl.github.io/helloworld/topics/rag-mimarisi/index.html">
   <title>RAG Mimarisi — OPEN / NOTES</title>
@@ -32,9 +32,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="../../css/lesson-reading.css">
   <script src="./script.js" defer></script>
+  <script src="../../js/lesson-reading.js" defer></script>
+  <noscript><style>.lesson-article[hidden] { display:block !important; }.lesson-article + .lesson-article { margin-top:64px; }.lesson-jump,.lesson-stage-intro { display:none; }</style></noscript>
 </head>
-<body>
+<body data-lesson-topic="rag-mimarisi">
   <noscript><p class="noscript-note">Etkileşimli sunum için JavaScript’i etkinleştirin. <a href="../../index.html#topics">Konu arşivine dön →</a></p></noscript>
   <div class="app" id="app" data-scene="1">
     <header class="masthead" aria-label="Sunum üst menüsü">
@@ -46,7 +49,7 @@
         <details class="publication-details" id="publicationDetails">
           <summary>Kaynakça<span class="publication-summary-extra"> ve tarihler</span> <span aria-hidden="true">↗</span></summary>
           <section class="publication-panel" aria-labelledby="sources-title">
-<div class="publication-dates"><span>YAYIMLANMA <time datetime="2026-10-17">17 Ekim 2026</time></span><span>SON GÜNCELLEME <time datetime="2026-10-17">17 Ekim 2026</time></span></div>
+<div class="publication-dates"><span>YAYIMLANMA <time datetime="2026-10-17">17 Ekim 2026</time></span><span>SON GÜNCELLEME <time datetime="2026-10-18">18 Ekim 2026</time></span></div>
           <h2 id="sources-title">Kaynakça<span>.</span></h2>
           <p>Kavramlar ve ileri okuma. Atlas belgeleri ve yanıtlar bu sunuma özel kurgusal örneklerdir; gerçek bir arama veya model çağrısı yapılmaz.</p>
           <ol class="source-references">
@@ -57,7 +60,7 @@
           <a class="archive-return" href="../../index.html#topics">← Konu arşivine dön</a>
           </section>
         </details>
-        <span class="header-meta">INTERACTIVE EXPLAINER <span class="meta-sep">/</span> 05:00</span>
+        <span class="header-meta">OKU / DENE <span class="meta-sep">/</span> KENDİ HIZINDA</span>
         <button type="button" class="header-control" id="notesToggle" aria-label="Konuşmacı notlarını aç (N)" aria-expanded="false" title="Konuşmacı notları (N)">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h12a1.5 1.5 0 0 1 1.5 1.5v14a1.5 1.5 0 0 1-1.5 1.5h-12A1.5 1.5 0 0 1 5 19V5A1.5 1.5 0 0 1 6.5 3.5Z"/><path d="M9 9h7M9 13h7M9 17h4"/></svg>
         </button>
@@ -68,6 +71,80 @@
     </header>
 
     <main class="presentation" id="presentation" aria-label="RAG Mimarisi etkileşimli sunumu">
+<section class="lesson-reading" id="lesson-reading" aria-label="Sahnenin adım adım açıklaması">
+<article class="lesson-article" data-lesson-scene="1" aria-labelledby="lesson-title-1">
+ <p class="lesson-overline">01 / 07 · OKU, DENE, ANLA</p>
+ <h2 id="lesson-title-1">Modelin görmediği bir belgeye nasıl dayanırsın?</h2>
+ <div class="lesson-explanation-steps"><section class="lesson-explanation-step"><h3><span aria-hidden="true">01</span>Nedir?</h3><p>Bir dil modeli kurumunun özel belgelerini kendiliğinden bilmez. RAG, soruyla ilgili bilgiyi dış kaynaklardan bulup yanıt oluşturulurken modele sunan bir düzendir.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">02</span>Somut örnek</h3><p>Atlas adlı kurgusal projenin yedekleme saatini soruyorsun. Şirketin yedekleme belgesi modele verilmemişse, akıcı bir cevap yazması o saati bildiğini göstermez.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">03</span>Nasıl çalışır?</h3><p>RAG yaklaşımında uygulama önce bu soruyla ilgili belgeyi arar. Bulunan metin soruyla birlikte modele gönderilir; model yanıtını bu bilgiye dayandırabilir.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">04</span>Deneyde ne yapacağım?</h3><p>Aşağıdaki soru ve belgeyi incele. Sonraki sahnelerde aynı belgeyi önce aranabilir hâle getirecek, sonra sorunun yanına taşıyacağız.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">05</span>Ne öğrendim?</h3><p>Bir modelin güzel konuşmasıyla bir iç belgenin bilgisini kullanması farklı şeylerdir. Belgeyi bulmak ve yanıtın gerçekten ona dayanmasını kontrol etmek gerekir.</p></section></div>
+ <a class="lesson-jump" href="#lesson-stage">Görseli ve deneyi incele <span aria-hidden="true">↓</span></a>
+</article>
+<article class="lesson-article" data-lesson-scene="2" aria-labelledby="lesson-title-2" hidden>
+ <p class="lesson-overline">02 / 07 · OKU, DENE, ANLA</p>
+ <h2 id="lesson-title-2">RAG: önce ilgili bilgiyi getir, sonra yanıt üret.</h2>
+ <div class="lesson-explanation-steps"><section class="lesson-explanation-step"><h3><span aria-hidden="true">01</span>Nedir?</h3><p>RAG, Retrieval-Augmented Generation ifadesinin kısaltmasıdır: bilgi getirmeyle desteklenen üretim. Arama ile yanıt üretimini aynı akışta birleştirir.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">02</span>Somut örnek</h3><p>Bir kütüphanedeki bütün kitapları ezberlemek yerine soruyla ilgili sayfayı bulup önüne açtığını düşün. Atlas sorusunda bu sayfa yedekleme belgesidir.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">03</span>Nasıl çalışır?</h3><p>Uygulama kaynaklarda arar, seçilen parçaları bağlama ekler, model de bu bağlamla yanıt üretir. Bu işlem tek başına model ağırlıklarını değiştiren bir eğitim değildir.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">04</span>Deneyde ne yapacağım?</h3><p>Görselde arşivde duran belge ile sorunun yanında açılan belgeyi ayır. Arşivin tamamı değil, getirilen parça modelin o istekteki bağlamına girer.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">05</span>Ne öğrendim?</h3><p>RAG, dış bilgiye erişmenin bir yoludur. Doğru parçanın bulunacağını veya üretilen cümlenin hatasız olacağını kendiliğinden garanti etmez.</p></section></div>
+ <a class="lesson-jump" href="#lesson-stage">Görseli ve deneyi incele <span aria-hidden="true">↓</span></a>
+</article>
+<article class="lesson-article" data-lesson-scene="3" aria-labelledby="lesson-title-3" hidden>
+ <p class="lesson-overline">03 / 07 · OKU, DENE, ANLA</p>
+ <h2 id="lesson-title-3">Bir belgeyi aramadan önce nasıl hazırlarsın?</h2>
+ <div class="lesson-explanation-steps"><section class="lesson-explanation-step"><h3><span aria-hidden="true">01</span>Nedir?</h3><p>İndeksleme, belgeleri sonradan arayıp bulabileceğin bir yapıya yerleştirmektir. Bu sunumda metin parçaları ve sayısal temsilleriyle çalışan yaygın bir örnek kullanıyoruz.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">02</span>Somut örnek</h3><p>Atlas belgesinin yedekleme saati ile günlük saklama süresi ayrı bölümlerdedir. Soruyla ilgili bölümü bulmak için bu bölümler kaynak bilgileriyle birlikte saklanır.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">03</span>Nasıl çalışır?</h3><p>Önce metin parçalara ayrılır. Embedding, her parçayı benzerlik aramasında kullanılabilecek bir sayı dizisine çevirir. İndeks, metinleri ve kaynak bilgilerini aranabilir biçimde tutar.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">04</span>Deneyde ne yapacağım?</h3><p>“Parçala”, “Vektörleştir” ve “İndeksle” adımlarını seç. Her adımda aynı belgenin hangi temsilinin hazırlandığını izle. Ekrandaki vektörler gerçek hesap sonucu değildir.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">05</span>Ne öğrendim?</h3><p>Benzer görünen bir parça sorunun cevabını taşımayabilir. Çok küçük parçalar gerekli bağlantıyı, çok büyük parçalar ise ilgililik ve kapasite avantajını kaybettirebilir.</p></section></div>
+ <a class="lesson-jump" href="#lesson-stage">Görseli ve deneyi incele <span aria-hidden="true">↓</span></a>
+</article>
+<article class="lesson-article" data-lesson-scene="4" aria-labelledby="lesson-title-4" hidden>
+ <p class="lesson-overline">04 / 07 · OKU, DENE, ANLA</p>
+ <h2 id="lesson-title-4">Atlas sorusunu belgeden yanıta takip et.</h2>
+ <div class="lesson-explanation-steps"><section class="lesson-explanation-step"><h3><span aria-hidden="true">01</span>Nedir?</h3><p>Bir RAG sorgusu, soruyu almakla başlayıp ilgili parçayı bulma, bağlama ekleme ve yanıt üretmeyle devam eder. Bu adımların her biri farklı bir iş yapar.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">02</span>Somut örnek</h3><p>Soru “Atlas yedekleri ne zaman alınır?” Yedekleme belgesindeki “her gece 02.00” bilgisi ilgilidir; günlüklerin kaç gün tutulduğu aynı sorunun cevabı değildir.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">03</span>Nasıl çalışır?</h3><p>Arama ilgili parçayı seçer. Uygulama bu parçayı soruyla birleştirir. Model, önüne gelen metinden yararlanarak yanıt oluşturur ve kaynak bağlantısı gösterilebilir.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">04</span>Deneyde ne yapacağım?</h3><p>Dört adımı sırayla seç. Parçanın önce bulunduğunu, sonra bağlama girdiğini, en son yanıtın açıldığını izle. Yanıttaki kaynak bölümünü açıp dayanak cümleyi karşılaştır.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">05</span>Ne öğrendim?</h3><p>Bu deneyde belgeler ve yanıtlar önceden hazırlanmıştır; gerçek arama servisi veya büyük dil modeli çağrısı yoktur. Öğrendiğin şey hız veya başarı oranı değil, adımların görev ayrımıdır.</p></section></div>
+ <a class="lesson-jump" href="#lesson-stage">Görseli ve deneyi incele <span aria-hidden="true">↓</span></a>
+</article>
+<article class="lesson-article" data-lesson-scene="5" aria-labelledby="lesson-title-5" hidden>
+ <p class="lesson-overline">05 / 07 · OKU, DENE, ANLA</p>
+ <h2 id="lesson-title-5">Kaynak bulmak, doğru kaynağı bulmakla aynı değildir.</h2>
+ <div class="lesson-explanation-steps"><section class="lesson-explanation-step"><h3><span aria-hidden="true">01</span>Nedir?</h3><p>Kaynak kalitesi, belgenin soruyla ilgili, güncel ve yeterli olmasını içerir. Kaynak bağlantısının bulunması tek başına cevabın doğruluğunu kanıtlamaz.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">02</span>Somut örnek</h3><p>Eski Atlas belgesinde farklı bir yedekleme düzeni yazabilir. Bu belgeyi getirip bugünün kuralı gibi sunarsan kaynaklı ama yanlış yönlendiren bir yanıt üretilebilir.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">03</span>Nasıl çalışır?</h3><p>Arama eski veya ilgisiz metni seçebilir. Uygulama sürüm ve erişim bilgilerini kontrol etmeli; yeterli dayanak yoksa kesin cevap yerine belirsizliği belirtmelidir.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">04</span>Deneyde ne yapacağım?</h3><p>“Doğru kaynak”, “Eski kayıt” ve “Kaynak yok” seçeneklerini değiştir. Yanıtın hangi durumda desteklendiğine, ne zaman doğrulama istediğine ve ne zaman cevap vermediğine bak.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">05</span>Ne öğrendim?</h3><p>Kaynağın gerçekten iddiayı destekleyip desteklemediğini kontrol et. Belirsizliği dürüstçe göstermek için talimat ve değerlendirme gerekir; RAG bunu otomatik çözmez.</p></section></div>
+ <a class="lesson-jump" href="#lesson-stage">Görseli ve deneyi incele <span aria-hidden="true">↓</span></a>
+</article>
+<article class="lesson-article" data-lesson-scene="6" aria-labelledby="lesson-title-6" hidden>
+ <p class="lesson-overline">06 / 07 · OKU, DENE, ANLA</p>
+ <h2 id="lesson-title-6">Hazırlık ile her soruda yapılan işi ayır.</h2>
+ <div class="lesson-explanation-steps"><section class="lesson-explanation-step"><h3><span aria-hidden="true">01</span>Nedir?</h3><p>RAG sisteminde belgeleri hazırlamak ve kullanıcı sorusunu yanıtlamak iki ayrı akıştır. Biri arşivi düzenler; diğeri o anda gerekli bilgiyi arar.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">02</span>Somut örnek</h3><p>Atlas belgesi güncellendiğinde indeks de güncellenir. Kullanıcı yeni bir soru sorduğunda ise arama o soruya göre yeniden çalışır.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">03</span>Nasıl çalışır?</h3><p>Vektör arama sayısal temsiller üzerinden benzerlik bulur. Hibrit arama buna anahtar kelime eşleşmesini de katabilir. Getirilen parçalar modelin bağlam penceresinde yer kaplar.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">04</span>Deneyde ne yapacağım?</h3><p>İki akışı soldan sağa takip et. Vektör ve hibrit düğmelerini değiştirip arama yaklaşımının hangi aşamayı etkilediğini incele; bu şemada gerçek sorgu çalıştırılmıyor.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">05</span>Ne öğrendim?</h3><p>Her RAG sistemi vektör veritabanı kullanmak zorunda değildir. İndeks güncelliği, belge izinleri, getirilen bilginin yeterliliği ve yanıt bütçesi ayrıca yönetilmelidir.</p></section></div>
+ <a class="lesson-jump" href="#lesson-stage">Görseli ve deneyi incele <span aria-hidden="true">↓</span></a>
+</article>
+<article class="lesson-article" data-lesson-scene="7" aria-labelledby="lesson-title-7" hidden>
+ <p class="lesson-overline">07 / 07 · OKU, DENE, ANLA</p>
+ <h2 id="lesson-title-7">RAG’in başarısı, bulma ve yanıtlama kalitesine bağlıdır.</h2>
+ <div class="lesson-explanation-steps"><section class="lesson-explanation-step"><h3><span aria-hidden="true">01</span>Nedir?</h3><p>RAG, soruyla ilgili dış bilgiyi bulup yanıt sırasında kullanma düzenidir. Bilgiyi getirme kalitesiyle onu doğru kullanma kalitesini ayrı ayrı düşünmelisin.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">02</span>Somut örnek</h3><p>Atlas sorusunda önce yedekleme belgesi bulunmalı; ardından yanıt gerçekten bu belgedeki saate dayanmalıdır. Bu iki aşamadan biri hatalıysa sonuç güvenilir olmaz.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">03</span>Nasıl çalışır?</h3><p>Önce getirilen parçalara bak, sonra yanıtın iddialarını kaynakla karşılaştır. Kaynağın sürümünü ve belirsizlikleri görünür tut; gerekiyorsa yanıt vermemeyi seç.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">04</span>Deneyde ne yapacağım?</h3><p>İstersen akışı yeniden başlatıp 5. sahnede eski kayıtla tekrar dene. Bağlam sınırını anlamak için Context Window bağlantısına da geçebilirsin.</p></section>
+<section class="lesson-explanation-step"><h3><span aria-hidden="true">05</span>Ne öğrendim?</h3><p>RAG’in ana fikri bütün belgeleri modele yüklemek değildir. Gerekli bilgiyi doğru anda getirmek ve kullanılışını denetlemektir.</p></section></div>
+ <a class="lesson-jump" href="#lesson-stage">Görseli ve deneyi incele <span aria-hidden="true">↓</span></a>
+</article>
+</section>
+<div class="lesson-stage-intro"><span>AYNI FİKRİ GÖRSELDE İNCELE</span><a class="lesson-return" href="#lesson-reading">Açıklamaya dön ↑</a></div>
+<div class="lesson-stage" id="lesson-stage" role="region" aria-label="Sahnenin görseli ve etkileşimli deneyi">
       <section class="scene scene-1 active" data-index="1" aria-labelledby="scene1-title">
         <div class="cover-copy">
           <p class="eyebrow"><span>01</span><i></i>BİR SORU</p>
@@ -117,6 +194,7 @@
         <div class="context-packet"><div class="column-label" id="packetLabel">YANIT İÇİN BAĞLAM</div><div class="packet-instructions">Talimat + kullanıcı sorusu</div><div class="retrieved-passage" id="retrievedPassage" hidden><span>SEÇİLEN PARÇA / [1]</span><p>Atlas yedekleri her gece 02.00’de alınır.</p></div><p class="packet-placeholder" id="packetPlaceholder">Önce ilgili parçayı bul.</p><div class="answer-block" id="answerBlock" hidden><span id="answerLabel">KAYNAKLI YANIT</span><p id="answerText">Atlas yedekleri her gece 02.00’de alınır. [1]</p><details class="evidence" id="evidence"><summary>[1] Kaynağı gör</summary><p id="evidenceText">Kurgusal Atlas ekip notları · Yedekleme / v3. Kaynak metni: “Atlas yedekleri her gece 02.00’de alınır.”</p></details></div></div></div>
         <div class="board-status" id="boardStatus" role="status" aria-live="polite">BUL → BAĞLAMA EKLE → YANITLA</div>
       </div>
+</div>
     </main>
     <footer class="navigation" aria-label="Sunum gezinme">
       <div class="nav-instructions"><span class="nav-key">←</span><span class="nav-key">→</span><span>GEZİN</span><span class="nav-divider"></span><span class="notes-tip">N <span>NOTLAR</span></span></div>
