@@ -145,7 +145,21 @@
       return categoryMatches && termMatches;
     });
     if (!topics.length) return; // Veri betiği yüklenemezse başlangıç HTML'ini koru.
-    list.replaceChildren(...visible.map(createTopic));
+    const groups = [
+      { kind: 'published', title: 'HAZIR ANLATIMLAR', items: visible.filter(topic => topic.status === 'published' && topic.href) },
+      { kind: 'planned', title: 'YAKINDA', items: visible.filter(topic => !(topic.status === 'published' && topic.href)) }
+    ].filter(group => group.items.length).map(group => {
+      const section = document.createElement('section');
+      section.className = `topic-group topic-group-${group.kind}`;
+      section.setAttribute('aria-label', group.title);
+      const label = document.createElement('p');
+      label.className = 'topic-group-label'; label.textContent = group.title;
+      const rows = document.createElement('div'); rows.className = 'topic-group-rows';
+      rows.append(...group.items.map(createTopic));
+      section.append(label, rows);
+      return section;
+    });
+    list.replaceChildren(...groups);
     if (empty) empty.hidden = visible.length !== 0;
     if (count) count.textContent = String(visible.length).padStart(2, '0');
     if (total) total.textContent = String(topics.length).padStart(2, '0');

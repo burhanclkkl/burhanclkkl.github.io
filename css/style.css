@@ -308,21 +308,20 @@ html[data-theme="dark"] .easter-egg-photo img { filter: grayscale(1) brightness(
 .solar-route-context { --phase:155deg; --radius:32.5cqw; --period:64s; --planet-color:var(--lilac); }
 .solar-route-rag { --phase:55deg; --radius:44cqw; --period:88s; --planet-color:var(--green); }
 .planet-link { position:absolute; left:var(--radius); top:0; width:44px; height:44px; display:grid; place-items:center; border-radius:50%; pointer-events:auto; animation:solar-counterturn var(--period) linear infinite; }
-.planet-link .solar-planet { position:relative; left:auto; top:auto; transform:none; opacity:1; flex:none; box-shadow:0 0 14px color-mix(in srgb,var(--planet-color) 35%,transparent); transition:box-shadow .3s; }
+.planet-link .solar-planet { position:relative; left:auto; top:auto; transform:none; opacity:1; flex:none; box-shadow:none; transition:box-shadow .18s var(--ease); }
 .planet-link .solar-planet-inner { width:12px; height:12px; background:var(--orange); }
 .planet-link .solar-planet-middle { width:19px; height:19px; }
 .planet-label { position:absolute; left:50%; top:calc(100% - 2px); transform:translateX(-50%); white-space:nowrap; font-size:10px; color:var(--muted); line-height:1.8; padding:2px 5px; border-radius:3px; background:var(--bg); }
 .planet-label>span { color:var(--planet-color); }
 .planet-link:hover .planet-label,.planet-link:focus-visible .planet-label { color:var(--ink); }
-.planet-link:hover .solar-planet,.planet-link:focus-visible .solar-planet { box-shadow:0 0 0 6px color-mix(in srgb,var(--planet-color) 13%,transparent),0 0 25px color-mix(in srgb,var(--planet-color) 60%,transparent); }
-.solar-sun { box-shadow:0 0 0 10px color-mix(in srgb,var(--orange) 9%,transparent),0 0 35px color-mix(in srgb,var(--orange) 22%,transparent); animation:solar-warmth 7s ease-in-out infinite alternate; }
+.planet-link:hover .solar-planet,.planet-link:focus-visible .solar-planet { box-shadow:0 0 0 6px color-mix(in srgb,var(--planet-color) 13%,transparent); }
+.solar-sun { box-shadow:0 0 0 10px color-mix(in srgb,var(--orange) 9%,transparent); }
 .solar-motion-toggle { position:absolute; left:50%; bottom:-38px; transform:translateX(-50%); min-height:44px; border:0; padding:10px; color:var(--muted); background:transparent; font:inherit; font-size:8px; cursor:pointer; white-space:nowrap; }
 .solar-motion-toggle:hover { color:var(--ink); }
 .hero-graphic:hover .solar-route,.hero-graphic:hover .planet-link,.hero-graphic:focus-within .solar-route,.hero-graphic:focus-within .planet-link,.hero-graphic.is-paused .solar-route,.hero-graphic.is-paused .planet-link,.hero-graphic.is-offscreen .solar-route,.hero-graphic.is-offscreen .planet-link { animation-play-state:paused; }
 .hero-graphic:hover .solar-sun,.hero-graphic:focus-within .solar-sun,.hero-graphic.is-paused .solar-sun,.hero-graphic.is-offscreen .solar-sun { animation-play-state:paused; }
 @keyframes solar-revolve { from { transform:rotate(var(--phase)); } to { transform:rotate(calc(var(--phase) + 360deg)); } }
 @keyframes solar-counterturn { from { transform:translate(-50%,-50%) rotate(calc(-1 * var(--phase))); } to { transform:translate(-50%,-50%) rotate(calc(-1 * var(--phase) - 360deg)); } }
-@keyframes solar-warmth { to { box-shadow:0 0 0 13px color-mix(in srgb,var(--orange) 12%,transparent),0 0 45px color-mix(in srgb,var(--orange) 30%,transparent); } }
 @media (min-width:901px) and (max-width:1100px) { .hero-graphic { width:350px; height:350px; top:115px; right:-8px; }.hero h1 { font-size:clamp(46px,5.8vw,64px); } }
 @media (max-width:900px) {
  .hero { min-height:0; padding:48px 0 68px; }
@@ -337,4 +336,57 @@ html[data-theme="dark"] .easter-egg-photo img { filter: grayscale(1) brightness(
  .solar-route { animation:none !important; transform:rotate(var(--phase)); }
  .planet-link { animation:none !important; transform:translate(-50%,-50%) rotate(calc(-1 * var(--phase))); }
  .solar-sun { animation:none !important; }.solar-motion-toggle { display:none; }
+}
+
+/* İsim, sade bir italik imza gibi. */
+.about-greeting { margin:0 0 25px; font-size:clamp(18px,2vw,24px); font-weight:600; line-height:1.7; letter-spacing:-.05em; }
+.about-name { display:inline-block; white-space:nowrap; font-family:Georgia,'Times New Roman',serif; font-style:italic; font-weight:500; font-size:1.22em; letter-spacing:-.045em; color:var(--lilac-ink); transform-origin:50% 80%; transition:transform .35s var(--ease),color .35s var(--ease); }
+.about-name-period { color:var(--orange-ink); }
+@media (hover:hover) and (pointer:fine) {
+ .about-name:hover { transform:translateY(-2px) rotate(-3deg); color:var(--orange-ink); }
+}
+@media (prefers-reduced-motion:reduce) { .about-name { transition:none; }.about-name:hover { transform:none; } }
+
+/* Hazır içerikler önde; hazırlananlar sade bir liste olarak altta. */
+.topic-list { gap:34px; }
+.topic-group-label { margin:0 0 14px; color:var(--muted); font-size:9px; line-height:1.8; font-weight:600; letter-spacing:.08em; }
+.topic-group-rows { display:flex; flex-direction:column; gap:9px; }
+.topic-group-planned { padding-top:20px; border-top:1px solid var(--rule); }
+.topic-group-planned .topic-group-rows { gap:0; }
+.topic-row.planned { grid-template-columns:44px minmax(0,1fr); min-height:96px; padding:18px 0; border:0; border-bottom:1px solid var(--rule); border-radius:0; background:transparent; animation:none; }
+.topic-row.planned::before,.topic-row.planned .topic-side,.topic-row.planned .topic-type { display:none; }
+.topic-row.planned .topic-number { margin-top:4px; }
+.topic-row.planned .topic-info h3 { font-size:16px; font-weight:500; color:var(--muted); }
+.topic-row.planned .topic-info p { font-size:10px; }
+@media (max-width:600px) {
+ .topic-row.planned { grid-template-columns:23px minmax(0,1fr); gap:9px; padding:16px 0; min-height:88px; }
+ .topic-row.planned .topic-info h3 { font-size:14px; }
+}
+
+/* MOTION / MONO: düzenli boşluklar ve kullanıcıya yanıt veren mikro hareketler. */
+.topics-section { padding-block:96px; }
+.how-section { padding-block:64px 96px; }
+.about-section { padding-block:64px 96px; }
+.section-topline { gap:24px; line-height:1.6; font-variant-numeric:tabular-nums; }
+.section-topline>span:first-child { display:inline-flex; align-items:center; gap:12px; }
+.section-heading,.how-layout,.about-content { margin-top:32px; }
+.social-links { gap:24px; }
+.explore-link,.social-links a,.back-top,.header-nav>a { position:relative; }
+.explore-link,.social-links a { border-bottom-color:var(--rule); }
+.explore-link::after,.social-links a::after,.back-top::after,.header-nav>a::after { content:''; position:absolute; left:0; right:0; bottom:-1px; height:1px; background:var(--lilac-ink); transform:scaleX(0); transform-origin:left; transition:transform .18s var(--ease); pointer-events:none; }
+:is(.explore-link,.social-links a,.back-top,.header-nav>a):is(:hover,:focus-visible)::after { transform:scaleX(1); }
+.explore-link:focus-visible span { transform:translate(3px,3px); }
+.search-field { min-height:44px; transition:border-color .18s var(--ease),outline-color .18s var(--ease); outline:2px solid transparent; outline-offset:3px; }
+.search-field:focus-within { border-color:var(--lilac-ink); outline-color:var(--lilac); }
+.search-field:focus-within svg { stroke:var(--lilac-ink); }
+.filter-button { min-height:44px; }
+@media (max-width:600px) {
+ .topics-section { padding-block:64px; }
+ .how-section { padding-block:48px 64px; }
+ .about-section { padding-block:48px 96px; }
+ .section-topline { gap:16px; }
+ .how-layout,.about-content { margin-top:24px; }
+}
+@media (prefers-reduced-motion:reduce) {
+ .explore-link::after,.social-links a::after,.back-top::after,.header-nav>a::after,.search-field { transition:none; }
 }
