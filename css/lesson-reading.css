@@ -1,4 +1,4 @@
-/* MOTION / MONO: açıklama gizlenmez; görsel, okunan fikrin deneyi olarak izler. */
+/* MOTION / MONO: ortak okuma biçimi ve JavaScript olmadan erişilebilir anlatım. */
 body[data-lesson-topic] .app { height:auto !important; min-height:100dvh; overflow:visible !important; }
 body[data-lesson-topic] .presentation { display:block !important; flex:none !important; min-height:0 !important; overflow:visible !important; padding:0 !important; isolation:auto; }
 body[data-lesson-topic] .presentation::before { display:none; }
@@ -46,3 +46,91 @@ body[data-lesson-topic] .navigation { position:sticky; bottom:0; z-index:15; fle
 
 body[data-lesson-topic="context-window"] .app:not(.notes-open) .notes-drawer { box-shadow:none; }
 body[data-lesson-topic="context-window"] .app:is([data-scene="1"],[data-scene="6"],[data-scene="7"]) #contextBoard { display:none !important; pointer-events:none; }
+
+/* Kısa tanım görünür; ayrıntılar isteğe bağlı aynı sahne panelinde. */
+.lesson-summary { display:flex; align-items:center; justify-content:space-between; gap:24px; padding:16px 7%; border-bottom:1px solid var(--line); }
+.lesson-summary p { margin:0; max-width:900px; font-size:12px; line-height:1.8; color:var(--muted); }
+.lesson-summary button,.lesson-panel-close { flex-shrink:0; min-height:44px; padding:8px 14px; border:1px solid var(--line); background:var(--bg); color:var(--ink); font:inherit; font-size:11px; cursor:pointer; }
+.lesson-summary button[aria-expanded="true"] { border-color:var(--lilac-ink); color:var(--lilac-ink); }
+.lesson-summary button:focus-visible,.lesson-panel-close:focus-visible { outline:2px solid var(--lilac-ink); outline-offset:3px; }
+.lesson-enhanced .lesson-stage-intro,.lesson-enhanced .lesson-jump { display:none; }
+.lesson-enhanced .lesson-reading { display:none; }
+.lesson-panel { position:fixed; z-index:40; right:0; top:78px; bottom:80px; width:400px; padding:24px; background:var(--bg); border-left:1px solid var(--line); overflow:auto; overscroll-behavior:contain; }
+.lesson-panel[hidden],.lesson-backdrop[hidden] { display:none !important; }
+.lesson-panel .lesson-reading { display:block; width:100%; padding:24px 0 0; margin:0; }
+.lesson-panel-header { display:flex; justify-content:space-between; align-items:center; gap:16px; font-size:11px; color:var(--lilac-ink); }
+.lesson-panel .lesson-article h1,.lesson-panel .lesson-article h2 { font-size:26px; line-height:1.4; letter-spacing:-.045em; }
+.lesson-panel .lesson-overline { margin-bottom:16px; font-size:9px; }
+.lesson-panel .lesson-explanation-steps { margin-top:28px; }
+.lesson-panel .lesson-explanation-step p,.lesson-panel .lesson-explanation-step:first-child p { font-size:13px; line-height:1.9; }
+.lesson-enhanced .lesson-stage { min-height:560px; height:calc(100dvh - 230px); }
+@media(min-width:1101px) {
+ .lesson-explanation-open .presentation { margin-right:400px; }
+ .lesson-explanation-open .lesson-summary { padding-inline:5%; }
+ .lesson-explanation-open .lesson-stage .cover-copy h1,.lesson-explanation-open .lesson-stage .split-copy h2 { font-size:clamp(28px,3.1vw,48px); }
+}
+@media(max-width:1100px) {
+ .lesson-panel { top:auto; bottom:0; left:0; width:auto; max-height:78dvh; padding:20px 22px 32px; border:1px solid var(--line); border-radius:16px 16px 0 0; z-index:101; }
+ .lesson-backdrop { position:fixed; inset:0; background:rgba(25,23,30,.28); z-index:100; }
+ .lesson-summary { padding:12px 22px; gap:12px; }
+ .lesson-summary p { font-size:11px; }
+ .lesson-panel .lesson-reading { max-width:740px; }
+}
+@media print { .lesson-summary,.lesson-panel-header,.lesson-backdrop { display:none!important; }.lesson-panel { display:block!important; position:static; width:auto; height:auto; max-height:none; overflow:visible; border:0; }.lesson-panel .lesson-reading { display:block; } }
+.lesson-panel-header { position:sticky; top:-24px; z-index:2; padding:12px 0; margin-top:-12px; background:var(--bg); }
+
+/* Diğer anlatımlar: konumla üst üste bindirmek yerine içerik kadar büyüyen düzen. */
+body.lesson-enhanced[data-lesson-topic]:not([data-classic-part]) .lesson-summary { padding:10px 5%; }
+body.lesson-enhanced[data-lesson-topic]:not([data-classic-part]) .lesson-summary p { font-size:11px; line-height:1.75; }
+body.lesson-enhanced[data-lesson-topic]:not([data-classic-part]) .lesson-stage h1 { font-size:clamp(34px,3.8vw,56px); }
+body.lesson-enhanced[data-lesson-topic]:not([data-classic-part]) .lesson-stage h2 { font-size:clamp(28px,2.8vw,42px); }
+body.lesson-enhanced[data-lesson-topic]:not([data-classic-part]) .navigation { position:relative; }
+@media(min-width:901px) {
+ body.lesson-enhanced[data-lesson-topic]:not([data-classic-part]) .app { height:100dvh!important; min-height:0; overflow:hidden!important; }
+ body.lesson-enhanced[data-lesson-topic]:not([data-classic-part]) .masthead { flex-basis:64px; }
+ body.lesson-enhanced[data-lesson-topic]:not([data-classic-part]) .presentation { display:flex!important; flex-direction:column; flex:1 1 0!important; min-height:0!important; overflow:hidden!important; }
+ .lesson-viewport { flex:1 1 0; min-height:0; overflow:auto; overscroll-behavior:contain; scrollbar-width:thin; scrollbar-gutter:stable; }
+ body.lesson-enhanced[data-lesson-topic]:not([data-classic-part]) .lesson-summary { flex:none; }
+ body.lesson-enhanced[data-lesson-topic]:not([data-classic-part]) .navigation { flex:0 0 64px; min-height:64px; }
+}
+@media(min-width:1101px) { body.lesson-enhanced:not([data-classic-part]) .lesson-panel { top:64px; bottom:64px; } }
+@media(min-width:701px) {
+ body.lesson-enhanced[data-lesson-topic]:not([data-classic-part]) .lesson-stage { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); align-content:start; align-items:start; gap:18px 36px; height:auto; min-height:0; padding:26px 5%; overflow:visible; }
+ body.lesson-enhanced[data-lesson-topic]:not([data-classic-part]) .scene.active { display:contents; }
+ body.lesson-enhanced[data-lesson-topic]:not([data-classic-part]) .scene.active>* { position:relative; inset:auto; transform:none; width:100%; min-width:0; max-width:none; grid-column:1; }
+ body.lesson-enhanced[data-lesson-topic]:not([data-classic-part]) .scene.active>:is(.chat-illustration,.cover-document,.cover-word,.opening-output,.opening-signals,.distinction,.agent-loop,.budget-view,.comparison,.comparison-table,.agent-bench,.gpu-visual),
+ body.lesson-enhanced[data-lesson-topic]:not([data-classic-part]) .lesson-stage>:is(.context-board,.knowledge-board,.token-workbench,.model-bench,.data-bench) { position:relative; inset:auto; transform:none; width:100%; min-width:0; max-width:none; grid-column:2; grid-row:1 / span 6; margin:0; max-height:none; }
+ body.lesson-enhanced[data-lesson-topic]:not([data-classic-part]) .scene.active>:is(.closing-copy,.closing-motif,.closing-mark,.closing-glyph) { grid-column:1/-1; }
+ body.lesson-enhanced[data-lesson-topic]:not([data-classic-part]) .scene.active>:is(.closing-motif,.closing-mark,.closing-glyph) { display:none; }
+ body.lesson-enhanced[data-lesson-topic]:not([data-classic-part]) .eyebrow { font-size:10px; margin-bottom:16px!important; }
+ body.lesson-enhanced[data-lesson-topic]:not([data-classic-part]) :is(.statement,.body-statement) { font-size:15px; line-height:1.75; margin-top:16px!important; }
+ body.lesson-enhanced[data-lesson-topic]:not([data-classic-part]) :is(.small-note,.micro-caption,.cover-lead,.lead-question,.lead) { font-size:12px; line-height:1.8; margin-top:14px!important; }
+ body.lesson-enhanced[data-lesson-topic]:not([data-classic-part]) .scene.active>.lab-input { grid-row:2; }
+ body.lesson-enhanced[data-lesson-topic]:not([data-classic-part]) .scene.active>.lab-disclaimer { grid-column:1/-1; grid-row:7; }
+ body.lesson-enhanced[data-lesson-topic="context-window"] .lesson-stage>.context-board { height:340px; }
+ body.lesson-enhanced[data-lesson-topic="context-window"] .gpu-visual { height:340px; }
+ body.lesson-enhanced[data-lesson-topic="context-window"] .chat-illustration { animation:none; }
+ body.lesson-enhanced[data-lesson-topic="context-window"] .scene2-capacity { grid-row:2; }
+ body.lesson-enhanced[data-lesson-topic="context-window"] .scene3-top-right { grid-row:2; flex-wrap:wrap; gap:12px; }
+ body.lesson-enhanced[data-lesson-topic="context-window"] .scene-4>.scene4-heading { grid-column:1/-1; grid-row:1; }
+ body.lesson-enhanced[data-lesson-topic="context-window"] .scene-4>.experiment-launch { grid-column:2; grid-row:2; justify-self:end; width:auto; }
+ body.lesson-enhanced[data-lesson-topic="context-window"] .scene-4>.scene4-stepper { grid-column:1; grid-row:2; flex-wrap:wrap; }
+ body.lesson-enhanced[data-lesson-topic="context-window"] .app[data-scene="4"] .context-board { grid-column:1/-1; grid-row:3; height:250px; }
+ body.lesson-enhanced[data-lesson-topic="context-window"] .scene-4>.sim-footnote { grid-column:1/-1; grid-row:4; }
+ body.lesson-enhanced[data-lesson-topic="rag-mimarisi"] .scene-4>.experiment-heading { grid-column:1/-1; grid-row:1; }
+ body.lesson-enhanced[data-lesson-topic="rag-mimarisi"] .scene-4>.experiment-controls { grid-column:1/-1; grid-row:2; flex-wrap:wrap; }
+ body.lesson-enhanced[data-lesson-topic="rag-mimarisi"] .app[data-scene="4"] .knowledge-board { grid-column:1/-1; grid-row:3; }
+ body.lesson-enhanced[data-lesson-topic="rag-mimarisi"] .scene-4>.simulation-note { grid-column:1/-1; grid-row:4; }
+ body.lesson-enhanced[data-lesson-topic="rag-mimarisi"] .architecture { grid-column:2; grid-row:1 / span 6; }
+ body.lesson-enhanced[data-lesson-topic="rag-mimarisi"] .context-connection { grid-column:1/-1; grid-row:7; }
+}
+@media(min-width:701px) and (max-width:1000px) {
+ body.lesson-enhanced[data-lesson-topic]:not([data-classic-part]) .lesson-stage { grid-template-columns:minmax(0,1fr); }
+ body.lesson-enhanced[data-lesson-topic]:not([data-classic-part]) .scene.active>*,body.lesson-enhanced[data-lesson-topic]:not([data-classic-part]) .lesson-stage>:is(.context-board,.knowledge-board,.token-workbench,.model-bench,.data-bench) { grid-column:1!important; grid-row:auto!important; }
+}
+@media(max-width:700px) {
+ .lesson-viewport { overflow:visible; }
+ body.lesson-enhanced[data-lesson-topic]:not([data-classic-part]) .lesson-stage h1 { font-size:clamp(32px,8.5vw,48px); }
+ body.lesson-enhanced[data-lesson-topic]:not([data-classic-part]) .lesson-stage h2 { font-size:clamp(27px,7vw,36px); }
+}
+@media print { .lesson-viewport { display:none; } }

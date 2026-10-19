@@ -42,6 +42,8 @@
   <script defer src="js/config.js"></script>
   <script defer src="js/topics.js"></script>
   <script defer src="js/main.js"></script>
+  <link rel="stylesheet" href="css/universe.css">
+  <script defer src="js/universe.js"></script>
 </head>
 <body>
   <a href="#main" class="skip-link">İçeriğe geç</a>
@@ -73,6 +75,7 @@
           <div class="solar-route solar-route-token"><a class="planet-link" href="topics/token-nedir/index.html"><span class="solar-planet solar-planet-inner" aria-hidden="true"></span><span class="planet-label">Token <span aria-hidden="true">↗</span></span></a></div>
           <div class="solar-route solar-route-context"><a class="planet-link" href="topics/context-window/index.html"><span class="solar-planet solar-planet-middle" aria-hidden="true"></span><span class="planet-label">Context Window <span aria-hidden="true">↗</span></span></a></div>
           <div class="solar-route solar-route-rag"><a class="planet-link" href="topics/rag-mimarisi/index.html"><span class="solar-planet solar-planet-ringed" aria-hidden="true"></span><span class="planet-label">RAG <span aria-hidden="true">↗</span></span></a></div>
+          <button class="universe-launch" id="universe-launch" type="button" hidden>Uzayı keşfet ↗</button>
           <button class="solar-motion-toggle" id="solar-motion-toggle" type="button" aria-pressed="false" hidden>Hareketi duraklat <span aria-hidden="true">Ⅱ</span></button>
           <span aria-hidden="true" class="solar-star solar-star-dot" style="--x: 6%; --y: 28%; --size: 4px"></span>
           <span aria-hidden="true" class="solar-star" style="--x: 16%; --y: 9%; --size: 8px"></span>
@@ -212,7 +215,7 @@
         <div class="about-content">
           <div class="about-heading"><span class="about-symbol" aria-hidden="true">{ }</span><h2 id="about-title">Biraz da<br>benden.</h2></div>
           <div class="about-copy">
-            <h3 class="about-greeting">Merhaba, ben <span class="about-name">Burhan<span class="about-name-period">.</span></span></h3>
+            <h3 class="about-greeting">Merhaba, ben <span class="about-name">Burhan Çaçık <span class="about-name-period">.</span></span></h3>
             <p>Bilgisayar mühendisliği, yapay zekâ sistemleri ve yazılım üzerine çalışıyorum. Bir teknolojiyi kullanmak kadar, arkasında ne olduğunu anlamayı da seviyorum.</p>
             <p>Burası da o merakın defteri. Araştırdığım konuları, öğrendikçe anlaşılır anlatımlara ve küçük deneylere dönüştürüyorum.</p>
             <div class="social-links">

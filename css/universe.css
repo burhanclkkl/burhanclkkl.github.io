@@ -1,0 +1,78 @@
+.universe-launch { position:absolute; right:0; top:-24px; min-height:44px; padding:10px 12px; border:1px solid var(--rule); border-radius:4px; font:inherit; font-size:10px; background:var(--bg); color:var(--lilac-ink); cursor:pointer; z-index:3; }
+.universe { position:fixed; inset:0; width:100%; max-width:none; height:100dvh; max-height:none; margin:0; padding:0; border:0; background:var(--bg); color:var(--ink); font:inherit; overflow:hidden; }
+.universe::backdrop { background:var(--bg); }
+.universe[open] { display:flex; flex-direction:column; }
+.universe button,.universe a { font:inherit; }
+.universe button { color:var(--ink); cursor:pointer; }
+.universe button:focus-visible,.universe a:focus-visible { outline:2px solid var(--lilac-ink); outline-offset:4px; }
+.universe-head { position:relative; z-index:3; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px 24px; padding:18px 4%; border-bottom:1px solid var(--rule); background:var(--bg); }
+.universe-title { margin:0; font-size:12px; font-weight:500; letter-spacing:.06em; }
+.universe-filters { display:flex; flex-wrap:wrap; gap:4px; }
+.universe-head button,.universe-tools button,.universe-card button { min-width:44px; min-height:44px; border:1px solid transparent; padding:10px 12px; background:transparent; font-size:11px; border-radius:4px; }
+.universe-filters button[aria-pressed="true"] { border-color:var(--lilac); background:var(--lilac-tint); color:var(--lilac-ink); }
+.universe-viewport { position:relative; flex:1; min-height:0; overflow:hidden; touch-action:none; cursor:grab; background-image:radial-gradient(circle at 20% 40%,color-mix(in srgb,var(--lilac) 7%,transparent),transparent 38%),radial-gradient(circle at 85% 70%,color-mix(in srgb,var(--green) 6%,transparent),transparent 35%); }
+.universe-viewport.is-dragging { cursor:grabbing; }
+.universe-world { position:absolute; left:0; top:0; width:2400px; height:1400px; transform-origin:0 0; will-change:transform; }
+.universe-star { position:absolute; width:3px; height:3px; border-radius:50%; background:var(--lilac-ink); opacity:.24; pointer-events:none; box-shadow:0 0 9px var(--lilac); }
+.universe-system { position:absolute; width:800px; height:800px; --system-color:var(--lilac); }
+.universe-orbit { position:absolute; border:1px solid color-mix(in srgb,var(--system-color) 35%,var(--rule)); border-radius:50%; pointer-events:none; }
+.universe-sun { position:absolute; left:370px; top:370px; width:60px; height:60px; border:0; border-radius:50%; background:var(--system-color); box-shadow:0 0 24px color-mix(in srgb,var(--system-color) 45%,transparent),0 0 80px color-mix(in srgb,var(--system-color) 23%,transparent); animation:universe-glow 6s ease-in-out infinite alternate; }
+.universe-system-title { position:absolute; left:290px; top:435px; width:220px; text-align:center; font-size:20px; font-weight:500; pointer-events:none; }
+.universe-system-count { display:block; margin-top:8px; color:var(--muted); font-size:12px; }
+.universe-planet { position:absolute; left:0; top:0; width:44px; height:44px; padding:0; border:0; border-radius:50%; background:transparent; }
+.universe-planet-dot { display:block; width:21px; height:21px; margin:auto; background:var(--planet-color); border-radius:50%; box-shadow:0 0 14px color-mix(in srgb,var(--planet-color) 65%,transparent),inset -5px -4px 0 rgba(39,35,44,.12); transition:box-shadow .2s; }
+.universe-planet:hover .universe-planet-dot,.universe-planet:focus-visible .universe-planet-dot,.universe-planet[aria-pressed="true"] .universe-planet-dot { box-shadow:0 0 0 7px color-mix(in srgb,var(--planet-color) 20%,transparent),0 0 28px var(--planet-color); }
+.universe-planet.is-planned .universe-planet-dot { background:var(--bg); border:2px dashed var(--planet-color); box-shadow:none; }
+.universe-planet-label { position:absolute; top:44px; left:50%; transform:translateX(-50%); width:max-content; max-width:180px; padding:4px 6px; border-radius:3px; color:var(--ink); background:var(--bg); font-size:13px; line-height:1.5; text-align:center; }
+.universe-planet-label small { display:block; color:var(--muted); font-size:10px; }
+.universe-foot { position:relative; z-index:3; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px 24px; padding:10px 4%; border-top:1px solid var(--rule); background:var(--bg); }
+.universe-hint { font-size:10px; color:var(--muted); margin:0; }
+.universe-tools { display:flex; flex-wrap:wrap; align-items:center; gap:4px; }
+.universe-tools output { font-size:10px; min-width:42px; text-align:center; }
+.universe-card { position:absolute; z-index:4; right:24px; bottom:90px; width:310px; max-width:calc(100% - 32px); padding:20px; border:1px solid var(--rule); border-radius:6px; background:var(--bg); box-shadow:var(--shadow); }
+.universe-card[hidden] { display:none; }
+.universe-card h3 { margin:8px 0 12px; font-size:16px; line-height:1.5; }
+.universe-card p { margin:0 0 12px; color:var(--muted); font-size:12px; line-height:1.8; }
+.universe-card a { display:inline-flex; align-items:center; min-height:44px; color:var(--lilac-ink); font-size:12px; }
+.universe-card-close { float:right; }
+.universe-list { position:absolute; z-index:5; left:24px; top:100px; width:340px; max-width:calc(100% - 48px); max-height:65dvh; overflow:auto; padding:16px; border:1px solid var(--rule); background:var(--bg); border-radius:6px; }
+.universe-list summary { cursor:pointer; font-size:11px; min-height:28px; }
+.universe-list:not([open]) { width:auto; }
+.universe-list button { display:block; width:100%; text-align:left; padding:12px 4px; min-height:44px; border:0; border-top:1px solid var(--rule); background:transparent; font-size:12px; line-height:1.6; }
+.universe-list small { color:var(--muted); }
+.universe.is-paused .universe-sun,.universe:has(.universe-planet:hover) .universe-sun { animation-play-state:paused; }
+@keyframes universe-glow { to { box-shadow:0 0 36px color-mix(in srgb,var(--system-color) 55%,transparent),0 0 100px color-mix(in srgb,var(--system-color) 28%,transparent); } }
+@media(max-width:600px) { .universe-head { padding:10px 16px; gap:6px; }.universe-title { font-size:10px; }.universe-filters { order:3; width:100%; }.universe-head button { padding:8px; font-size:10px; }.universe-foot { padding:8px 12px; }.universe-hint { font-size:9px; }.universe-tools button { padding:8px; font-size:10px; }.universe-list { top:120px; left:16px; }.universe-card { right:16px; bottom:130px; padding:16px; }.universe-launch { top:-36px; } }
+@media(prefers-reduced-motion:reduce) { .universe-sun { animation:none; }.universe-planet-dot { transition:none; } }
+
+/* Uzak görünümde sistem adları okunabilir kalır; ayrıntılar yaklaşınca açılır. */
+.universe-system-title { left:400px; width:calc(170px / var(--map-scale,1)); transform:translateX(-50%); font-size:clamp(20px,calc(13px / var(--map-scale,1)),90px); line-height:1.5; }
+.universe-system-count { font-size:clamp(12px,calc(9px / var(--map-scale,1)),60px); }
+.universe-planet-label { font-size:18px; }
+.universe-world.is-distant .universe-planet-label { visibility:hidden; }
+
+/* Seyrek, ekrana yayılan yıldızlar; yörüngeler arka planda kalır. */
+.universe-starfield { position:absolute; inset:0; overflow:hidden; pointer-events:none; }
+.universe-starfield .universe-star { color:var(--lilac-ink); background:currentColor; box-shadow:0 0 5px color-mix(in srgb,var(--lilac) 35%,transparent); }
+.universe-starfield .universe-star:nth-child(4n) { color:var(--muted); }
+.universe-starfield .universe-star:nth-child(7n) { color:var(--orange-ink); }
+.universe-orbit { opacity:.25; border-color:color-mix(in srgb,var(--system-color) 40%,transparent); }
+.universe-planet-label { background:color-mix(in srgb,var(--bg) 75%,transparent); }
+@media(prefers-reduced-motion:reduce) { .universe-starfield .universe-star { transform:none!important; } }
+
+/* Etiketlerin konumu çakışma denetimiyle belirlenir. */
+.universe-planet-label { top:50%; pointer-events:auto; background:var(--bg); }
+.universe-label-line { position:absolute; left:50%; top:50%; height:1px; transform-origin:0 50%; background:var(--planet-color); opacity:.24; pointer-events:none; }
+.universe-label-line[hidden] { display:none; }
+.universe-world.is-distant .universe-label-line { visibility:hidden; }
+
+/* Açık zeminde yakınlaştırmadan bağımsız okunabilirlik. */
+html[data-theme="light"] .universe-planet-label { font-size:clamp(16px,calc(12px / var(--map-scale,1)),44px); max-width:calc(150px / var(--map-scale,1)); font-weight:500; line-height:1.55; color:var(--ink); background:var(--bg); border:1px solid color-mix(in srgb,var(--ink) 16%,var(--bg)); padding:6px 9px; }
+html[data-theme="light"] .universe-planet-label small { font-size:.8em; color:var(--muted); }
+html[data-theme="light"] .universe-label-line { height:calc(1px / var(--map-scale,1)); background:color-mix(in srgb,var(--planet-color) 45%,var(--ink)); opacity:.55; }
+html[data-theme="light"] .universe-orbit { border-color:color-mix(in srgb,var(--system-color) 60%,var(--ink)); border-width:calc(.8px / var(--map-scale,1)); opacity:.24; }
+html[data-theme="light"] .universe-planet-dot { outline:1px solid color-mix(in srgb,var(--planet-color) 55%,var(--ink)); }
+html[data-theme="light"] .universe-system-title { font-weight:600; }
+html[data-theme="light"] .universe-system-count { color:var(--ink); font-weight:400; }
+html[data-theme="light"] .universe-starfield .universe-star { filter:brightness(.75); box-shadow:none; }
+html[data-theme="light"] .universe-viewport { background-image:radial-gradient(circle at 20% 40%,color-mix(in srgb,var(--lilac) 3%,transparent),transparent 38%),radial-gradient(circle at 85% 70%,color-mix(in srgb,var(--green) 3%,transparent),transparent 35%); }

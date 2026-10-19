@@ -134,3 +134,59 @@ body[data-classic-part] .scene { position:relative; inset:auto; min-width:0; }.c
 
 .lesson-article h1 { margin:0; max-width:900px; font-size:clamp(30px,3vw,48px); line-height:1.25; font-weight:600; letter-spacing:-.065em; color:var(--ink); }
 @media(max-width:800px) { .lesson-article h1 { font-size:clamp(27px,5vw,38px); } }
+
+/* Deney alanı: gezinme sabit, içerik ayrılan alanda okunabilir kalır. */
+body.lesson-enhanced[data-classic-part] .classic-series { width:92%; padding:8px 0; flex:none; display:flex; align-items:center; gap:20px; }
+body.lesson-enhanced[data-classic-part] .classic-series>span { white-space:nowrap; }
+body.lesson-enhanced[data-classic-part] .classic-series ol { margin:0; gap:4px 20px; }
+body.lesson-enhanced[data-classic-part] .classic-series a { font-size:10px; }
+body.lesson-enhanced[data-classic-part] .lesson-summary { padding:10px 4%; gap:18px; }
+body.lesson-enhanced[data-classic-part] .lesson-summary p { font-size:11px; line-height:1.7; }
+body.lesson-enhanced[data-classic-part] .classic-copy h2 { font-size:clamp(26px,2.5vw,40px); line-height:1.18; letter-spacing:-.055em; }
+body.lesson-enhanced[data-classic-part] .classic-copy .eyebrow { font-size:10px; margin-bottom:14px!important; }
+body.lesson-enhanced[data-classic-part] .classic-caption { font-size:12px; line-height:1.75; margin-top:14px!important; }
+body.lesson-enhanced[data-classic-part] .classic-controls { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px 18px; max-width:none; margin-top:18px; }
+body.lesson-enhanced[data-classic-part] .classic-field { min-width:0; margin:0; font-size:10px; }
+body.lesson-enhanced[data-classic-part] .classic-field>span { min-height:24px; }
+body.lesson-enhanced[data-classic-part] .classic-field input[type="range"] { margin:0; }
+body.lesson-enhanced[data-classic-part] .classic-field select { margin-top:0; padding:8px; }
+body.lesson-enhanced[data-classic-part] .classic-check { margin:0; font-size:10px; }
+body.lesson-enhanced[data-classic-part] .classic-actions { grid-column:1/-1; }
+body.lesson-enhanced[data-classic-part] .bench-header { padding:10px 16px; }
+body.lesson-enhanced[data-classic-part] .classic-result { padding:12px 16px 8px; font-size:13px; }
+body.lesson-enhanced[data-classic-part] .classic-detail { padding:0 16px 12px; }
+body.lesson-enhanced[data-classic-part] .classic-limit { padding:10px 16px; }
+@media(min-width:901px) {
+ body.lesson-enhanced[data-classic-part] .app { height:100dvh!important; min-height:0; overflow:hidden!important; }
+ body.lesson-enhanced[data-classic-part] .masthead { flex-basis:64px; padding-inline:4%; }
+ body.lesson-enhanced[data-classic-part] .presentation { display:flex!important; flex-direction:column; flex:1 1 0!important; min-height:0!important; overflow:hidden!important; }
+ body.lesson-enhanced[data-classic-part] .lesson-summary { flex:none; }
+ body.lesson-enhanced[data-classic-part] .lesson-stage { flex:1 1 0; height:auto; min-height:0; grid-template-columns:minmax(0,1fr) minmax(0,1.05fr); align-items:stretch; gap:28px; padding:20px 4%; overflow:hidden; }
+ body.lesson-enhanced[data-classic-part] .lesson-stage>.scene.active,body.lesson-enhanced[data-classic-part] .classic-bench { height:100%; min-height:0; overflow-y:auto; overscroll-behavior:contain; scrollbar-width:thin; scrollbar-gutter:stable; }
+ body.lesson-enhanced[data-classic-part] .classic-copy { max-width:none; padding-bottom:12px; padding-right:8px; }
+ body.lesson-enhanced[data-classic-part] #classicPlot { max-height:clamp(180px,30dvh,310px); }
+ body.lesson-enhanced[data-classic-part] .navigation { position:relative; flex:0 0 64px; min-height:64px; padding:8px 4%; }
+ body.lesson-enhanced[data-classic-part] .classic-next { display:none; }
+
+}
+@media(max-width:900px) {
+ body.lesson-enhanced[data-classic-part] .classic-series { display:block; }
+ body.lesson-enhanced[data-classic-part] .classic-series ol { display:flex; gap:4px 16px; margin-top:6px; }
+ body.lesson-enhanced[data-classic-part] .classic-series a { font-size:9px; min-height:36px; }
+ body.lesson-enhanced[data-classic-part] .lesson-stage { display:block; height:auto; min-height:0; padding:24px 5%; overflow:visible; }
+ body.lesson-enhanced[data-classic-part] .classic-bench { max-width:none; margin-top:24px; }
+ body.lesson-enhanced[data-classic-part] .navigation { position:relative; }
+ body.lesson-enhanced[data-classic-part] .classic-copy { max-width:none; }
+ body.lesson-enhanced[data-classic-part] .classic-copy h2 { font-size:clamp(27px,5vw,36px); }
+ body.lesson-enhanced[data-classic-part] .lesson-summary { padding-inline:5%; }
+}
+@media(max-width:400px) {
+ body.lesson-enhanced[data-classic-part] .classic-controls { gap:12px; }
+ body.lesson-enhanced[data-classic-part] .classic-field>span { min-height:36px; }
+}
+@media print {
+ body.lesson-enhanced[data-classic-part] .app { height:auto!important; overflow:visible!important; }
+ body.lesson-enhanced[data-classic-part] .presentation { display:block!important; overflow:visible!important; }
+}
+
+@media(min-width:1101px) { body.lesson-enhanced[data-classic-part] .lesson-panel { top:64px; bottom:64px; } }
