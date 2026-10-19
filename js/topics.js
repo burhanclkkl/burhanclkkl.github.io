@@ -50,5 +50,23 @@ window.SITE_TOPICS = [
     description: 'Modelin elinde hangi veri veya geri bildirim var?',
     category: 'ai', categoryLabel: 'ML / TEMELLER',
     accent: 'lilac', status: 'published', href: 'topics/ogrenme-turleri/index.html'
+  },
+  {
+    id: '09', title: 'Klasik ML: Tahmin ve Sınıflandırma',
+    description: 'Bir sayı mı tahmin ediyoruz, bir sınıf mı seçiyoruz?',
+    category: 'ai', categoryLabel: 'ML / KLASİK · 1/3',
+    accent: 'lilac', status: 'published', href: 'topics/klasik-ml-tahmin-siniflandirma/index.html'
+  },
+  {
+    id: '10', title: 'Klasik ML: Ağaçlar ve Topluluklar',
+    description: 'Tek bir ağacın kararından birlikte çalışan modellere.',
+    category: 'ai', categoryLabel: 'ML / KLASİK · 2/3',
+    accent: 'orange', status: 'published', href: 'topics/klasik-ml-agaclar-topluluklar/index.html'
+  },
+  {
+    id: '11', title: 'Klasik ML: Kümeleme ve Boyut İndirgeme',
+    description: 'Etiket yokken yapı bulmakla temsili küçültmek aynı mı?',
+    category: 'ai', categoryLabel: 'ML / KLASİK · 3/3',
+    accent: 'green', status: 'published', href: 'topics/klasik-ml-kumeleme-boyut-indirgeme/index.html'
   }
 ];
