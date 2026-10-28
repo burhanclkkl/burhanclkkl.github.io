@@ -25,7 +25,7 @@ window.SITE_TOPICS = [
     id: '04', title: 'MCP Nedir?',
     description: 'Modeller ve araçlar arasında ortak bir bağlam protokolü.',
     category: 'system', categoryLabel: 'SİSTEM / PROTOKOL',
-    accent: 'lilac', status: 'planned', href: ''
+    accent: 'lilac', status: 'published', href: 'topics/mcp-nedir/index.html'
   },
   {
     id: '05', title: 'API Gateway',
