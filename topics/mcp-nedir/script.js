@@ -15,26 +15,22 @@
     llm:'LLM, dil modelidir. Soru ve araç tanımlarından bir çağrı önerisi üretebilir; gelen araç sonucuyla son yanıtı oluşturabilir. MCP mesajını doğrudan bu kutu göndermez.',
     client:'MCP Client, Host içindeki protokol bileşenidir. Araç listesini ister, tools/call mesajını gönderir ve sonucu Host’a iletir.',
     server:'MCP Server, araç tanımlarını sunar ve çağrılan işlevi çalıştırır. Kendi API, dosya veya veritabanı bağlantısını kullanabilir.',
-    source:'Bu düğüm yalnızca kurgusal örnek menü dosyasını temsil eder. Server’ın kaynağı okuması, Client–Server arasındaki MCP protokol hattından ayrı bir işlemdir.'
+    source:'Bu düğüm yalnızca örnek alisveris.txt dosyasını temsil eder. Server’ın kaynağı okuması, Client–Server arasındaki MCP protokol hattından ayrı bir işlemdir.'
   };
-  const TITLES = ['Yapay zekâ bugünkü menüyü nereden bilir?', 'Aralarında kim var?', 'Önce, hangi araçlar var?', 'Bu soruya hangi araç ulaşır?', 'Bir çağrı nelerden geçer?', 'Veri gelir. Yanıtı model kurar.', 'Hata nerede oluştu?'];
+  const TITLES = ['Yapay zekâ dosyamı nasıl okur?', 'Aralarında kim var?', 'Önce, hangi araçlar var?', 'Bu soruya hangi araç ulaşır?', 'Bir çağrı nelerden geçer?', 'Veri gelir. Yanıtı model kurar.', 'Hata nerede oluştu?'];
   const CATEGORIES = ['BİR SORU','MİMARİ','ARAÇ KEŞFİ','ARAÇ SEÇİMİ','CANLI AKIŞ','YANIT','HATA LABORATUVARI'];
-  const CUES = ['Güncel bilgi, modelin içinde her zaman bulunmaz.', 'MCP bir model değil, ortak bir bağlantı protokolüdür.', 'tools/list → ad + açıklama + girdi şeması', 'Kararı model önerebilir; çağrıyı uygulama yürütür.', 'Client → Server: MCP. Server → dosya: kendi okuma işlemi.', 'Araç sonucu, kullanıcının gördüğü son yanıt değildir.', 'Yetki, girdi doğrulaması ve araç hatası farklı katmanlardadır.'];
+  const CUES = ['Model dosyanı kendiliğinden göremez; içeriğini bir araç getirebilir.', 'MCP bir model değil, ortak bir bağlantı protokolüdür.', 'tools/list → ad + açıklama + girdi şeması', 'Kararı model önerebilir; çağrıyı uygulama yürütür.', 'Client → Server: MCP. Server → dosya: kendi okuma işlemi.', 'Araç sonucu, kullanıcının gördüğü son yanıt değildir.', 'Yetki, girdi doğrulaması ve araç hatası farklı katmanlardadır.'];
   const SECONDS = [20,45,50,70,60,35,20];
-  const dateParts = new Intl.DateTimeFormat('en-CA', {timeZone:'Europe/Istanbul',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());
-  const part = key => dateParts.find(p => p.type === key).value;
-  const demoDate = `${part('year')}-${part('month')}-${part('day')}`;
-  const dateLabel = new Intl.DateTimeFormat('tr-TR', {timeZone:'Europe/Istanbul',day:'numeric',month:'long',year:'numeric'}).format(new Date());
-  const argumentsForTool = { istenen_tarih:demoDate, lokasyon:'Saraçhane', kaynak_turu:'ornek_dosya' };
-  const MENU = 'Mercimek Çorbası, Sebzeli Pilav, Mevsim Salata';
-  const tool = { name:'yemek_listesini_getir', description:'İstenen tarih ve lokasyon için yalnızca örnek dosyadaki demo menüyü döndürür.', inputSchema:{ type:'object', properties:{ istenen_tarih:{type:'string',format:'date',pattern:'^\\d{4}-\\d{2}-\\d{2}$'}, lokasyon:{type:'string',enum:['Saraçhane']}, kaynak_turu:{type:'string',enum:['ornek_dosya']} },required:['istenen_tarih','lokasyon','kaynak_turu'],additionalProperties:false } };
+  const argumentsForTool = { dosya_adi:'alisveris.txt' };
+  const FILE_CONTENT = 'Süt, Ekmek, Yumurta';
+  const tool = { name:'dosya_oku', description:'Adı verilen örnek dosyanın içeriğini okur.', inputSchema:{ type:'object', properties:{ dosya_adi:{type:'string',minLength:1,description:'Okunacak dosyanın adı. Örnek: alisveris.txt'} },required:['dosya_adi'],additionalProperties:false } };
   const meta = { 'io.modelcontextprotocol/protocolVersion':PROTOCOL, 'io.modelcontextprotocol/clientInfo':{name:'open-notes-demo',version:'1.0'}, 'io.modelcontextprotocol/clientCapabilities':{} };
   const request = (method, id, params={}) => ({jsonrpc:'2.0',id,method,params:{...params,_meta:meta}});
   const toolsListRequest = request('tools/list',3);
-  const toolsListResponse = {jsonrpc:'2.0',id:3,result:{resultType:'complete',tools:[tool,{name:'kurum_duyurulari_getir',description:'Kurgusal duyuru örneklerini getirir.',inputSchema:{type:'object',properties:{},additionalProperties:false}}],ttlMs:300000,cacheScope:'public'}};
+  const toolsListResponse = {jsonrpc:'2.0',id:3,result:{resultType:'complete',tools:[tool,{name:'dosyalari_listele',description:'Örnek dosyaların adlarını listeler; içeriklerini okumaz.',inputSchema:{type:'object',properties:{},additionalProperties:false}}],ttlMs:300000,cacheScope:'public'}};
   const callRequest = request('tools/call',7,{name:tool.name,arguments:argumentsForTool});
-  const callResponse = {jsonrpc:'2.0',id:7,result:{resultType:'complete',content:[{type:'text',text:`DEMO — ${demoDate} / Saraçhane: ${MENU}. Gerçek kurum menüsü değildir.`}],isError:false}};
-  const errorResponse = {jsonrpc:'2.0',id:7,result:{resultType:'complete',content:[{type:'text',text:'DEMO: Örnek menü dosyası okunamadı.'}],isError:true}};
+  const callResponse = {jsonrpc:'2.0',id:7,result:{resultType:'complete',content:[{type:'text',text:FILE_CONTENT}],isError:false}};
+  const errorResponse = {jsonrpc:'2.0',id:7,result:{resultType:'complete',content:[{type:'text',text:'DEMO: alisveris.txt dosyası okunamadı.'}],isError:true}};
   const proposal = {layer:'host',kind:'model_tool_call_proposal',name:tool.name,arguments:argumentsForTool,note:'MCP isteği değildir; sağlayıcıya özgü biçimler değişebilir.'};
   const event = (label,from,to,tone,payload,done,options={}) => ({label,from,to,tone,payload,done,...options});
   const ROUTES = new Set(['user:llm','llm:user','llm:client','client:llm','client:server','server:client','server:source','source:server']);
@@ -45,18 +41,18 @@
   const text = (selector,value) => { $(selector).textContent = value; };
   function sceneEvents(scene=state.scene) {
     const sent = event('tools/call','client','server','lilac',callRequest,'Server isteği aldı; bu örnekte girdiler doğrulandı.',{rpc:true});
-    const reading = event('Dosyayı oku','server','source','orange',{layer:'server',operation:'read_example_file',source:'ornek_dosya',arguments:argumentsForTool},'Server kendi örnek dosyasına erişti. Bu hat MCP değildir.');
-    const fileResult = event('Dosya verisi','source','server','green',{layer:'data_source',mode:'demo',menu:MENU},'Kurgusal menü dosyası okundu; sonuç Server’a döndü.');
+    const reading = event('Dosyayı oku','server','source','orange',{layer:'server',operation:'read_example_file',arguments:argumentsForTool},'Server kendi örnek dosyasına erişti. Bu hat MCP değildir.');
+    const fileResult = event('Dosya verisi','source','server','green',{layer:'data_source',mode:'demo',file:argumentsForTool.dosya_adi,content:FILE_CONTENT},'Örnek alışveriş dosyası okundu; sonuç Server’a döndü.');
     const result = event('Araç sonucu','server','client','green',callResponse,'Client araç sonucunu aldı; son kullanıcı yanıtı henüz yazılmadı.',{rpc:true});
     const hostResult = event('Host’a araç sonucu','client','llm','green',{layer:'host',tool_result:callResponse.result},'Host, araç sonucunu modele sundu.');
-    if (scene===0) return [event('Kullanıcı sorusu','user','llm','orange',{layer:'user',message:'Saraçhane’de bugün yemekte ne var?'},'Host soruyu aldı. Yanıt için harici bilgi gerekiyor.')];
+    if (scene===0) return [event('Kullanıcı sorusu','user','llm','orange',{layer:'user',message:'Alışveriş listemde neler var?'},'Host soruyu aldı. Yanıt için harici bilgi gerekiyor.')];
     if (scene===1) return [event('MCP protokol hattı','client','server','lilac',{kind:'architecture',note:'Client–Server bağlantısı; henüz araç çağrısı yok.'},'Vurgulanan hat MCP Client ile MCP Server arasındadır.',{connection:true})];
     if (scene===2) return [event('tools/list','client','server','lilac',toolsListRequest,'Server tools/list isteğini aldı.',{rpc:true}),event('Araç kataloğu','server','client','green',toolsListResponse,'Katalog Client’a geldi. Host, araç tanımlarını modele sunabilir.',{rpc:true})];
-    if (scene===3) return [event('Modelin araç seçimi','llm','llm','orange',proposal,'Yemek aracı seçildi; bu henüz bir MCP isteği değildir.'),event('Host içi öneri','llm','client','orange',proposal,'Host izin ve girdi kontrollerinden sonra öneriyi Client’a aktardı.')];
+    if (scene===3) return [event('Modelin araç seçimi','llm','llm','orange',proposal,'Dosya okuma aracı seçildi; bu henüz bir MCP isteği değildir.'),event('Host içi öneri','llm','client','orange',proposal,'Host izin ve girdi kontrollerinden sonra öneriyi Client’a aktardı.')];
     if (scene===4) return [sent,reading,fileResult,result,hostResult];
-    if (scene===5) return [event('Son kullanıcı yanıtı','llm','user','green',{layer:'host',final_answer:`Saraçhane örnek menüsünde ${MENU} var. Bu menü örnektir; canlı kurum verisi değildir.`},'Örnek son yanıt kullanıcıya ulaştı. Demo uyarısı korunur.')];
+    if (scene===5) return [event('Son kullanıcı yanıtı','llm','user','green',{layer:'host',final_answer:'Alışveriş listende süt, ekmek ve yumurta var. Bu liste örnektir.'},'Örnek son yanıt kullanıcıya ulaştı. Demo uyarısı korunur.')];
     if (state.failure==='access_denied') return [event('Host izin engeli','client','client','red',{layer:'host',status:'access_denied',sent_to_server:false},'Host işlemi durdurdu. Server’a veya kaynağa paket gönderilmedi.')];
-    if (state.failure==='invalid_args') return [event('Host girdi doğrulaması','client','client','red',{layer:'host',status:'invalid_date',field:'istenen_tarih',value:'28/10/2026',expected:'YYYY-MM-DD',sent_to_server:false},'Bu demoda tarih Host katmanında reddedildi. Server’a paket gitmedi.')];
+    if (state.failure==='invalid_args') return [event('Host girdi doğrulaması','client','client','red',{layer:'host',status:'invalid_arguments',field:'dosya_adi',value:'',expected:'En az bir karakter içeren dosya adı',sent_to_server:false},'Boş dosya adı Host katmanında reddedildi. Server’a paket gitmedi.')];
     return [sent,reading,event('Okuma başarısız','source','server','red',{layer:'server',operation:'read_example_file',status:'failed',mode:'demo'},'Örnek dosya okunamadı; Server araç hatası oluşturuyor.'),event('isError: true','server','client','red',errorResponse,'Araç çalıştırma hatası Client’a döndü. Bu, JSON-RPC error nesnesi değildir.',{rpc:true})];
   }
   function currentEvent() { return sceneEvents()[state.step-1] || null; }
@@ -123,7 +119,7 @@
     makeNode('llm',boxes.llm,'LLM','önerir / yanıtlar',host);
     makeNode('client',boxes.client,'MCP Client','protokol mesajı',host);
     makeNode('server',boxes.server,'MCP Server','aracı çalıştırır',$('#diagramNodes'));
-    makeNode('source',boxes.source,'Örnek dosya','canlı kurum verisi değil',$('#diagramNodes'));
+    makeNode('source',boxes.source,'Örnek dosya','alisveris.txt',$('#diagramNodes'));
     paintTransfer();
   }
   function paintTransfer() {
@@ -248,8 +244,8 @@
   $('#scenePicker').addEventListener('change',event=>goScene(Number(event.target.value)-1));
   $$('[data-failure]').forEach(button=>button.addEventListener('click',()=>{stop();state.failure=button.dataset.failure;state.step=0;progress=1;render();}));
   $$('[data-output]').forEach(button=>button.addEventListener('click',()=>{if(button.dataset.output==='raw')reset();else{stop();state.step=0;advance();}}));
-  $('#menuTool').addEventListener('click',event=>{
-    stop();renderPacket();text('#packetTitle','yemek_listesini_getir');text('#payloadLabel','Araç tanımı / inputSchema');text('#packetJSON',JSON.stringify(tool,null,2));text('#packetDescription','Bu tanım, modelin uygun aracı seçebilmesi için Host tarafından modele sunulabilir.');openDialog($('#packetDialog'),event.currentTarget);
+  $('#fileTool').addEventListener('click',event=>{
+    stop();renderPacket();text('#packetTitle',tool.name);text('#payloadLabel','Araç tanımı / inputSchema');text('#packetJSON',JSON.stringify(tool,null,2));text('#packetDescription','Bu tanım, modelin uygun aracı seçebilmesi için Host tarafından modele sunulabilir.');openDialog($('#packetDialog'),event.currentTarget);
   });
   packet.addEventListener('click',()=>inspect(packet));packet.addEventListener('keydown',event=>{if(event.key==='Enter'||event.code==='Space'){event.preventDefault();event.stopPropagation();inspect(packet);}});
   function showNode(target){const id=target?.dataset.node;if(!id)return;text('#nodeTitle',NAMES[id]);text('#nodeDescription',NODE_DESCRIPTIONS[id]);openDialog($('#nodeDialog'),target);}
@@ -285,7 +281,6 @@
   reduced.addEventListener('change',()=>{if(reduced.matches&&animation)complete();else paintTransfer();});
   document.addEventListener('visibilitychange',()=>{if(document.hidden)pause();});
   new ResizeObserver(()=>layoutDiagram()).observe(figure);
-  $$('[data-demo-date]').forEach(el=>{el.dateTime=demoDate;el.textContent=dateLabel;});
   svg.setAttribute('role','group');
   const hash=location.hash.match(/^#0?([1-7])$/);if(hash)state.scene=Number(hash[1])-1;
   // Ortak paneli değiştirmeden bu konuya ait kısa tanımı kullan.

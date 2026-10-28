@@ -84,8 +84,8 @@ select { border:1px solid var(--line); border-radius:5px; min-height:44px; paddi
 .tool-catalog>span { flex-basis:100%; font-size:9px; color:var(--muted); letter-spacing:.06em; }
 .tool-catalog button,.tool-catalog>div { min-height:52px; padding:10px 0; border:0; background:transparent; font-family:inherit; font-size:12px; text-align:left; color:var(--ink); }
 .tool-catalog small { display:block; font-size:10px; color:var(--muted); margin-top:8px; }
-.tool-catalog.is-selected #menuTool { color:var(--orange-ink); }.tool-catalog.is-selected #otherTool { opacity:.4; }
-#menuTool { text-decoration:underline; text-underline-offset:5px; text-decoration-color:var(--lilac); }
+.tool-catalog.is-selected #fileTool { color:var(--orange-ink); }.tool-catalog.is-selected #otherTool { opacity:.4; }
+#fileTool { text-decoration:underline; text-underline-offset:5px; text-decoration-color:var(--lilac); }
 .response-lab,.failure-lab { display:flex; flex-direction:column; gap:14px; }
 .response-lab [role="group"],.failure-lab [role="group"] { display:flex; flex-wrap:wrap; gap:8px; }
 .response-lab [aria-pressed="true"],.failure-lab [aria-pressed="true"] { color:var(--lilac-ink); border-color:var(--lilac); background:var(--lilac-tint); }
