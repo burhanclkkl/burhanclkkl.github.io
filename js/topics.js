@@ -68,5 +68,11 @@ window.SITE_TOPICS = [
     description: 'Etiket yokken yapı bulmakla temsili küçültmek aynı mı?',
     category: 'ai', categoryLabel: 'ML / KLASİK · 3/3',
     accent: 'green', status: 'published', href: 'topics/klasik-ml-kumeleme-boyut-indirgeme/index.html'
+  },
+  {
+    id: '12', title: 'İlk Yerel Yapay Zekân',
+    description: 'Ollama ile modelini indir, ilk sohbetini aç ve offline kullanımı öğren.',
+    category: 'ai', categoryLabel: 'LLM / YEREL AI',
+    accent: 'green', status: 'published', href: 'topics/ilk-yerel-yapay-zeka/index.html'
   }
 ];
