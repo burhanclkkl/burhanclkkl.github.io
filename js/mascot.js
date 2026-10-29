@@ -59,7 +59,7 @@
   ellipse(160,164,62,44,dark?'#AE91E819':'#AE91E81C',dark?'#8D77AD':'#C2A9EA',1.5);
   ellipse(160,171,75,13,dark?'#211D29':'#E8E0F1',ink,2);
   if(peek>0){ctx.save();ctx.beginPath();ctx.rect(60,0,200,175);ctx.clip();
-   window.NoteMascot.draw(ctx,{x:160,y:137+(1-peek)*112,scale:.59,yaw:0,time,expression:peek>.8?'happy':'curious',action:moving&&['welcome','peek'].includes(phase)&&peek>.85&&!reduced.matches?'wave':'idle',texture:true,particle:peek>.85});ctx.restore();}
+   window.NoteMascot.draw(ctx,{x:160,y:137+(1-peek)*112,scale:.59,yaw:0,time,bodyColor:dark?'#DDB459':window.NoteMascot.palette.body,expression:peek>.8?'happy':'curious',action:moving&&['welcome','peek'].includes(phase)&&peek>.85&&!reduced.matches?'wave':'idle',texture:true,particle:peek>.85});ctx.restore();}
   // Two small fins and the round saucer body cover the lower half of the mascot.
   ctx.beginPath();ctx.moveTo(93,174);ctx.quadraticCurveTo(70,166,59,186);ctx.lineTo(99,192);ctx.closePath();ctx.fillStyle=underside;ctx.fill();ctx.strokeStyle=ink;ctx.lineWidth=2;ctx.stroke();
   ctx.beginPath();ctx.moveTo(227,174);ctx.quadraticCurveTo(250,166,261,186);ctx.lineTo(221,192);ctx.closePath();ctx.fill();ctx.stroke();

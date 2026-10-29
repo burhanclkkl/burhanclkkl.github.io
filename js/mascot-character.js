@@ -1,7 +1,7 @@
 /* OPEN / NOTES mascot v1 — procedural 2.5D Canvas rig, no external assets. */
 (function(global){
 'use strict';
-const palette={background:'#FAF9F7',ink:'#27232C',body:'#AE91E8',shade:'#7957B0',pale:'#F0EBF8',green:'#51BA93',orange:'#FF975E'};
+const palette={background:'#FAF9F7',ink:'#27232C',body:'#8A630C',shade:'#694A09',pale:'#F0EBF8',green:'#51BA93',orange:'#FF975E'};
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 // The seeded paper texture is static. Rasterize it once, not 500 dots per frame.
 const textureCache=new Map();
@@ -49,8 +49,8 @@ body.lineTo(width*.24,-74);body.lineTo(width*.37,-79);
 body.bezierCurveTo(width*.76,-64,width*.83,-20,width*.94,23);
 body.bezierCurveTo(width*1.17,71,width*.70,91,width*.12,91);
 body.bezierCurveTo(-width*.25,94,-width*.68,89,-width*.82,67);body.closePath();
-ctx.fillStyle=palette.body;ctx.fill(body);
-ctx.save();ctx.clip(body);ctx.fillStyle='#7957B024';ctx.beginPath();ctx.ellipse(-width*.9+si*10,13,width*.32,99,-.13,0,7);ctx.fill();
+ctx.fillStyle=o.bodyColor||palette.body;ctx.fill(body);
+ctx.save();ctx.clip(body);ctx.fillStyle=palette.shade+'24';ctx.beginPath();ctx.ellipse(-width*.9+si*10,13,width*.32,99,-.13,0,7);ctx.fill();
 if(o.texture){
 const texture=bodyTexture(width);
 if(texture)ctx.drawImage(texture.bitmap,texture.x,texture.y,texture.width,texture.height);
