@@ -111,7 +111,12 @@
   backdrop.addEventListener('click', () => setOpen(false));
   narrow.addEventListener('change', modalState);
   window.addEventListener('keydown', event => {
-    if (!opened || document.querySelector('dialog[open]') || app.classList.contains('notes-open')) return;
+    // Diyalog içindeki oklar sayfayı okur; arka plandaki sunumu ilerletmez.
+    if (document.querySelector('dialog[open]')) {
+      if ([' ','ArrowUp','ArrowDown','ArrowLeft','ArrowRight','PageUp','PageDown','Home','End','f','F'].includes(event.key)) event.stopImmediatePropagation();
+      return;
+    }
+    if (!opened || app.classList.contains('notes-open')) return;
     if (event.key === 'Escape') {
       event.preventDefault();
       event.stopImmediatePropagation();
@@ -119,7 +124,7 @@
       return;
     }
     if (narrow.matches && event.key === 'Tab') {
-      const focusable = [...panel.querySelectorAll('button,a[href],input,select,textarea,[tabindex="0"]')].filter(el => !el.closest('[hidden]') && !el.disabled);
+      const focusable = [...panel.querySelectorAll('button,a[href],input,select,textarea,[tabindex="0"]')].filter(el => !el.closest('[hidden],[inert]') && !el.disabled && el.tabIndex >= 0 && el.getClientRects().length > 0 && getComputedStyle(el).visibility !== 'hidden');
       const first = focusable[0], last = focusable.at(-1);
       if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
       else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }

@@ -35,6 +35,8 @@ let strategy = null;
 let gpuLong = false;
 let notesOpen = false;
 let lastFocus = null;
+let notesBodyOverflow = '';
+const notesInertState = new Map();
 let animationHandle = 0;
 let displayedCount = DEMO_TOTALS[0];
 
@@ -217,7 +219,20 @@ function updateNotes() {
 function showNotes(open) {
   if (open === notesOpen) return;
   notesOpen = open;
-  if (open) lastFocus = document.activeElement;
+  if (open) {
+    lastFocus = document.activeElement;
+    notesBodyOverflow = document.body.style.overflow;
+    const background = [...app.children, ...document.body.children].filter(element => element !== app && element !== notesDrawer && element.id !== 'drawerShade' && element.tagName !== 'SCRIPT');
+    for (const element of background) { notesInertState.set(element, element.inert); element.inert = true; }
+    document.body.style.overflow = 'hidden';
+  } else {
+    for (const [element, inert] of notesInertState) element.inert = inert;
+    notesInertState.clear();
+    document.body.style.overflow = notesBodyOverflow;
+  }
+  notesDrawer.setAttribute('role','dialog');
+  if (open) notesDrawer.setAttribute('aria-modal','true');
+  else notesDrawer.removeAttribute('aria-modal');
   app.classList.toggle('notes-open',open);
   notesToggle.setAttribute('aria-expanded',String(open));
   notesToggle.setAttribute('aria-label',open ? 'Konuşmacı notlarını kapat (N)' : 'Konuşmacı notlarını aç (N)');
@@ -316,6 +331,7 @@ $('#fullscreenToggle').addEventListener('click',async() => {
 });
 
 window.addEventListener('keydown',event => {
+  if (event.defaultPrevented || $('#lesson-panel')?.contains(event.target) || $('.lesson-panel[aria-modal="true"]')) return;
   if ($('#contextExperiment').open) return;
   if (event.altKey || event.ctrlKey || event.metaKey) return;
   const publication = $('#publicationDetails');
@@ -329,6 +345,15 @@ window.addEventListener('keydown',event => {
   if (event.key === 'Escape') { if (notesOpen) showNotes(false); return; }
   const key = event.key.toLowerCase();
   if (key === 'n') {event.preventDefault();showNotes(!notesOpen);return;}
+  if (notesOpen) {
+    if (event.key === 'Tab') {
+      const focusable = $$('button,a[href],input,select,textarea,[tabindex="0"]', notesDrawer).filter(element => !element.disabled && element.tabIndex >= 0 && element.getClientRects().length && getComputedStyle(element).visibility !== 'hidden');
+      const first = focusable[0], last = focusable.at(-1);
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+    }
+    return;
+  }
   if (key === 'f') {event.preventDefault();$('#fullscreenToggle').click();return;}
   if (key === 'home') {event.preventDefault();directScene(0);return;}
   if (key === 'end') {event.preventDefault();directScene(6);return;}
