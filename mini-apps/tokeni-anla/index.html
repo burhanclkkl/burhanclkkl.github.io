@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#FAF9F7">
+  <meta name="description" content="Metnini gerçek cl100k_base tokenizer ile parçalara ayır. Kelime, karakter ve token sayılarını karşılaştır; token kimliklerini ve UTF-8 baytlarını keşfet.">
+  <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../assets/apple-touch-icon.png">
+  <meta property="og:locale" content="tr_TR">
+  <meta property="og:site_name" content="OPEN / NOTES">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Tokenı Anla — Gerçek Token Sayacı · OPEN / NOTES">
+  <meta property="og:description" content="Metnini gerçek cl100k_base tokenizer ile parçalara ayır. Kelime, karakter ve token sayılarını karşılaştır; token kimliklerini ve UTF-8 baytlarını keşfet.">
+  <meta property="og:image" content="https://burhanclkkl.github.io/assets/social-card.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="OPEN / NOTES — Merak et. Derinine in. Yapay zekâ, yazılım ve sistemler.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Tokenı Anla — Gerçek Token Sayacı · OPEN / NOTES">
+  <meta name="twitter:description" content="Metnini gerçek cl100k_base tokenizer ile parçalara ayır. Kelime, karakter ve token sayılarını karşılaştır; token kimliklerini ve UTF-8 baytlarını keşfet.">
+  <meta name="twitter:image" content="https://burhanclkkl.github.io/assets/social-card.png">
+  <meta name="twitter:image:alt" content="OPEN / NOTES — Merak et. Derinine in.">
+  <link rel="canonical" href="https://burhanclkkl.github.io/mini-apps/tokeni-anla/index.html">
+  <meta property="og:url" content="https://burhanclkkl.github.io/mini-apps/tokeni-anla/index.html">
+  <title>Tokenı Anla — Gerçek Token Sayacı · OPEN / NOTES</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+  <script>
+    (function () {
+      try {
+        const saved = localStorage.getItem('open-notes-theme');
+        const theme = saved === 'light' || saved === 'dark' ? saved : (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.dataset.theme = theme;
+      } catch (e) { document.documentElement.dataset.theme = 'light'; }
+    }());
+  </script>
+<link rel="stylesheet" href="./styles.css"><script defer src="./app.js"></script><script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","@id":"https://burhanclkkl.github.io/mini-apps/tokeni-anla/index.html#app","name":"Tokenı Anla","alternateName":"cl100k_base Token Sayacı","url":"https://burhanclkkl.github.io/mini-apps/tokeni-anla/index.html","description":"Metnini gerçek cl100k_base tokenizer ile parçalara ayır. Kelime, karakter ve token sayılarını karşılaştır; token kimliklerini ve UTF-8 baytlarını keşfet.","inLanguage":"tr-TR","applicationCategory":"EducationalApplication","operatingSystem":"Web browser","browserRequirements":"JavaScript, Web Workers","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"TRY"},"creator":{"@type":"Person","@id":"https://burhanclkkl.github.io/#person","name":"Burhan Çelikkol","url":"https://burhanclkkl.github.io/#about"},"publisher":{"@id":"https://burhanclkkl.github.io/#person"},"datePublished":"2026-10-31","dateModified":"2026-10-31","featureList":["Gerçek cl100k_base token sayımı","Kelime ve görünen karakter karşılaştırması","Token kimliği ve bayt incelemesi"]},{"@type":"WebPage","@id":"https://burhanclkkl.github.io/mini-apps/tokeni-anla/index.html#page","url":"https://burhanclkkl.github.io/mini-apps/tokeni-anla/index.html","name":"Tokenı Anla — Gerçek Token Sayacı","description":"Metnini gerçek cl100k_base tokenizer ile parçalara ayır. Kelime, karakter ve token sayılarını karşılaştır; token kimliklerini ve UTF-8 baytlarını keşfet.","inLanguage":"tr-TR","isPartOf":{"@id":"https://burhanclkkl.github.io/#website"},"mainEntity":{"@id":"https://burhanclkkl.github.io/mini-apps/tokeni-anla/index.html#app"},"breadcrumb":{"@id":"https://burhanclkkl.github.io/mini-apps/tokeni-anla/index.html#breadcrumb"}},{"@type":"BreadcrumbList","@id":"https://burhanclkkl.github.io/mini-apps/tokeni-anla/index.html#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Mini araçlar","item":"https://burhanclkkl.github.io/#mini-apps"},{"@type":"ListItem","position":2,"name":"Tokenı Anla","item":"https://burhanclkkl.github.io/mini-apps/tokeni-anla/index.html"}]}]}</script><meta name="author" content="Burhan Çelikkol"><meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+</head>
+<body class="token-app-page"><a href="#token-input" class="skip-link">Metin alanına geç</a>
+<div class="site-shell token-shell">
+<header class="site-header"><a class="brand" href="../../index.html#mini-apps" aria-label="Mini araçlara dön"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span><span>OPEN<span class="brand-sep">/</span>NOTES<span class="brand-stop">.</span></span></a>
+<nav class="header-nav" aria-label="Araç gezinmesi"><a href="#token-guide">Neden böyle?</a><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Temayı değiştir">◐ <span>Tema</span></button>
+</nav>
+</header>
+<main>
+<section class="token-intro" aria-labelledby="tool-title">
+<div><a class="back-link" href="../../index.html#mini-apps">← Mini araçlar</a>
+<p class="overline">MİNİ ARAÇLAR / 03 · TOKEN DENEYİ</p>
+<h1 id="tool-title">Tokenı anla<span>.</span>
+</h1>
+<p>Metnini yaz. Parçalarını keşfet.</p>
+</div>
+<div class="encoding-note"><span class="micro-label">KULLANILAN TOKENIZER</span><strong>cl100k_base</strong><span>Gerçek sayım · Yalnızca yazdığın metin</span><a href="#token-guide">Bu sayı neyi anlatıyor? ↓</a>
+</div>
+</section>
+<section class="token-workspace" aria-label="Canlı token deneyi">
+<div class="input-side">
+<div class="pane-heading">
+<h2>Senin metnin</h2><button type="button" class="text-button" id="clear-input">Temizle</button>
+</div><label class="sr-only" for="token-input">Tokenlara ayırmak istediğin metin</label><textarea id="token-input" spellcheck="false" aria-describedby="input-hint" placeholder="Bir cümle yaz veya hazır örnekleri dene…">Merhaba Dünya!</textarea>
+<p id="input-hint" class="small-note">Bir boşluk ekle, kelimeyi değiştir, sayının nasıl değiştiğini gör. Bu deney kısa metinler içindir. Metnin çok uzunsa kısaltman istenir; metnin kesilmez.</p>
+<div class="sample-buttons" role="group" aria-label="Hazır metin örnekleri"><button type="button" data-sample="hello">Merhaba Dünya!</button><button type="button" data-sample="suffix">Kitaplarımızdan</button><button type="button" data-sample="emoji">Bir emoji dene</button><button type="button" data-sample="code">Kısa bir kod</button><button type="button" data-sample="english">İngilizce bir cümle</button>
+</div>
+<p class="privacy-note">Metnin tarayıcında işlenir; bir modele veya sunucuya gönderilmez. Tokenizer yalnız bu araç açılınca yüklenir.</p>
+<div class="selection-context" id="selection-context"><span class="micro-label">METİNDEKİ YERİ</span>
+<p id="selected-context">Bir token seçtiğinde metindeki karşılığını burada görebilirsin.</p>
+</div>
+</div>
+<div class="output-side">
+<dl class="token-counts">
+<div>
+<dt>Kelime</dt>
+<dd id="word-count">—</dd>
+</div>
+<div>
+<dt id="char-label">Görünen karakter</dt>
+<dd id="char-count">—</dd>
+</div>
+<div>
+<dt>Token</dt>
+<dd id="token-count">—</dd>
+</div>
+</dl>
+<div class="pieces-heading">
+<h2>Modelin kullandığı parçalar</h2>
+<div class="piece-options"><label><input type="checkbox" id="show-spaces" checked> Boşlukları göster</label><label><input type="checkbox" id="show-ids"> Kimlikleri göster</label>
+</div>
+</div>
+<p class="token-status" id="token-status" role="status" aria-live="polite">Tokenizer yükleniyor… Metnini bu sırada yazabilirsin.</p><button type="button" id="retry-worker" class="text-button" hidden>Tokenizer’ı yeniden yükle ↻</button>
+<div id="token-pieces" class="token-pieces" role="listbox" aria-label="Metnin tokenları" aria-describedby="piece-hint" aria-busy="true">
+</div>
+<p id="piece-hint" class="small-note">Bir parçaya dokun. Klavyeyle sağ/sol ok, Home ve End tuşlarını kullanabilirsin. ␠ boşluk, ↵ satır sonu, ⇥ sekme işaretidir.</p>
+<div class="pagination" id="pagination" hidden><button type="button" id="previous-page">← Önceki parçalar</button><span id="page-label"></span><button type="button" id="next-page">Sonraki parçalar →</button>
+</div>
+<section class="token-inspector" aria-labelledby="inspector-title">
+<div class="inspector-heading">
+<h3 id="inspector-title">Bir parçayı yakından incele</h3><span id="selected-position"></span>
+</div>
+<dl>
+<div>
+<dt>Token kimliği</dt>
+<dd id="selected-id">—</dd>
+</div>
+<div>
+<dt>Parçanın metni</dt>
+<dd id="selected-text">Bir parça seç.</dd>
+</div>
+<div>
+<dt>UTF-8 baytları</dt>
+<dd id="selected-bytes">—</dd>
+</div>
+</dl>
+<p id="selected-explanation">Kimlik bir sözlük adresi gibidir; büyük bir numara daha önemli bir token anlamına gelmez.</p>
+</section>
+</div>
+</section>
+<section class="token-guide" id="token-guide" aria-labelledby="guide-title">
+<p class="overline">DENEYDEN ÇIKARIM / NEDEN BÖYLE?</p>
+<h2 id="guide-title">Kelime, karakter, token<span>.</span>
+</h2>
+<div class="guide-columns">
+<section>
+<h3>Üç sayaç neyi sayıyor?</h3>
+<p id="counting-method">Kelime sayacı dil kurallarına göre sözcükleri ayırır; noktalama ve emoji kelime sayılmayabilir. Görünen karakter sayacı, ekranda birlikte görünen karakter kümelerini sayar. Örneğin birleşik bir emoji tek görünen karakter olabilir.</p>
+<p>Token sayacı ise metnin cl100k_base sözlüğüyle kodlanmış parça sayısıdır. Aynı kelime bir veya birkaç token olabilir. Tek bir karakterin baytları da farklı tokenlara dağılabilir.</p>
+</section>
+<section>
+<h3>Boşluk ve emoji neden etkiliyor?</h3>
+<p>Boşluklar ve noktalama, metnin bilgisayardaki temsilinin parçasıdır. Bir boşluk komşu sözcükle aynı tokenın içinde olabilir. Tokenlar dilbilgisindeki kelime veya ek sınırlarını takip etmek zorunda değildir.</p>
+<p>Bir token tek başına geçerli bir UTF-8 karakteri oluşturmuyorsa onu <code>0x…</code> baytlarıyla gösteriyoruz. Seçtiğinde metinde ilgili görünen karakterin tamamı vurgulanır; bu, o karakterin tek token olduğu anlamına gelmez.</p>
+</section>
+<section>
+<h3>Bu sayı nerede geçerli?</h3>
+<p>Burada tek bir tokenizer var: cl100k_base. Bu, bütün modellerin sözlüğü değildir. Model veya tokenizer değişirse aynı metnin token sayısı değişebilir.</p>
+<p>Sayım yalnızca yazdığın metni kapsar; sohbet rolleri, uygulama talimatları, araç verileri veya üretilecek yanıt dahil değildir. Bu ekran bir fiyat hesabı veya gerçek bir sohbet isteğinin toplam token ölçümü değildir.</p>
+</section>
+</div>
+<div class="learning-link">
+<div><span class="micro-label">KONUNUN DERİNİNE İN</span><a href="../../topics/token-nedir/index.html">Token Nedir? — Mekanizmasını öğren ↗</a>
+</div><a href="../../topics/context-window/index.html">Bu parçalar bağlamı nasıl doldurur? ↗</a>
+</div>
+<p class="source-note">Kaynaklar: <a href="https://github.com/openai/tiktoken" target="_blank" rel="noopener noreferrer">OpenAI / tiktoken</a> ve <a href="https://github.com/dqbd/tiktoken/tree/main/js" target="_blank" rel="noopener noreferrer">js-tiktoken</a>. Yerel sürüm: js-tiktoken 1.0.21, cl100k_base. Sözlük, resmî dağıtımdaki SHA-256 değeriyle doğrulandı. <time datetime="2026-10-31">31 Ekim 2026</time>.</p>
+</section>
+</main>
+<footer class="tool-footer"><a href="../../index.html#mini-apps">← Mini araçlara dön</a><span>OPEN / NOTES · Merak et. Derinine in.</span>
+</footer>
+</div>
+<noscript><style>.token-workspace{display:none}</style>
+<p class="noscript-note">Canlı sayım için JavaScript gerekir. Yukarıdaki açıklamaları okuyabilir veya <a href="../../topics/token-nedir/index.html">Token Nedir?</a> anlatımını açabilirsin.</p>
+</noscript>
+</body>
+</html>
