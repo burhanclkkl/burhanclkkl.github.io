@@ -1,19 +1,20 @@
 /* Ana sayfanın küçük yol arkadaşı. Sayfa yerleşimine katılmaz. */
-.note-mascot{position:fixed;left:max(10px,env(safe-area-inset-left));bottom:max(8px,env(safe-area-inset-bottom));width:192px;height:156px;z-index:24;pointer-events:none;isolation:isolate;transform-origin:50% 80%;contain:layout style}
+.note-mascot{position:fixed;left:max(10px,env(safe-area-inset-left));bottom:max(8px,env(safe-area-inset-bottom));width:196px;height:194px;z-index:24;pointer-events:none;isolation:isolate;transform-origin:50% 80%;contain:layout style}
 .note-mascot[hidden]{display:none!important}
-.note-mascot canvas{display:block;width:100%;height:100%;pointer-events:none}
-.note-mascot-hit{position:absolute;left:17%;bottom:11%;width:66%;min-height:44px;height:30%;border:0;border-radius:50%;background:transparent;padding:0;pointer-events:auto;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.note-mascot-art{display:block;width:100%;height:100%;pointer-events:none;transform-origin:50% 50%}
+.note-mascot-art>svg{width:100%;height:100%}
+.note-mascot-hit{position:absolute;left:15%;bottom:13%;width:70%;min-height:44px;height:42%;border:0;border-radius:50%;background:transparent;padding:0;pointer-events:auto;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .note-mascot-hit:hover{background:transparent}
 .note-mascot-hit:focus-visible{outline:2px solid var(--lilac-ink,#7957B0);outline-offset:4px}
-.note-mascot-close{position:absolute;right:0;top:19px;width:44px;height:44px;display:grid;place-items:center;padding:0;border:0;border-radius:50%;background:transparent;color:var(--muted,#67616C);font:17px 'JetBrains Mono',monospace;pointer-events:auto;cursor:pointer;opacity:.65}
+.note-mascot-close{position:absolute;right:0;top:0;width:44px;height:44px;display:grid;place-items:center;padding:0;border:0;border-radius:50%;background:transparent;color:var(--muted,#67616C);font:17px 'JetBrains Mono',monospace;pointer-events:auto;cursor:pointer;opacity:.65}
 .note-mascot-close:hover,.note-mascot-close:focus-visible{opacity:1;background:var(--surface-soft,#F4F1F4)}
 .note-mascot-close:focus-visible{outline:2px solid var(--lilac-ink,#7957B0);outline-offset:1px}
-.note-mascot-bubble{position:absolute;bottom:calc(100% - 25px);left:15px;width:max-content;max-width:min(205px,calc(100vw - 48px));padding:12px 15px;margin:0;border:1px solid var(--rule,#EAE5ED);border-radius:10px 10px 10px 2px;background:var(--surface,#FFF);color:var(--ink,#27232C);font:11px/1.75 'JetBrains Mono',monospace;box-shadow:0 5px 18px #27232C08;pointer-events:none}
+.note-mascot-bubble{position:absolute;bottom:calc(100% - 8px);left:8px;width:max-content;max-width:min(205px,calc(100vw - 48px));padding:12px 15px;margin:0;border:1px solid var(--rule,#EAE5ED);border-radius:10px 10px 10px 2px;background:var(--surface,#FFF);color:var(--ink,#27232C);font:11px/1.75 'JetBrains Mono',monospace;box-shadow:0 5px 18px #27232C08;pointer-events:none}
 .note-mascot-bubble[hidden]{display:none}
 .note-mascot-toggle{font:inherit;font-size:10px;line-height:1.6;min-height:44px;padding:8px 0;border:0;background:transparent;color:var(--muted,#67616C);text-decoration:underline;text-decoration-color:var(--rule,#EAE5ED);text-underline-offset:5px;cursor:pointer}
 .note-mascot-toggle:hover{color:var(--lilac-ink,#7957B0)}
 .note-mascot-toggle:focus-visible{outline:2px solid var(--lilac-ink,#7957B0);outline-offset:4px}
-@media(max-width:600px){.note-mascot{width:144px;height:117px;left:max(4px,env(safe-area-inset-left));bottom:max(4px,env(safe-area-inset-bottom))}.note-mascot-close{top:2px;right:-1px}.note-mascot-bubble{bottom:calc(100% - 13px);left:12px;max-width:min(190px,calc(100vw - 40px));font-size:10px;padding:10px 13px}.note-mascot-hit{bottom:9%;height:38%}}
+@media(max-width:600px){.note-mascot{width:150px;height:148px;left:max(4px,env(safe-area-inset-left));bottom:max(4px,env(safe-area-inset-bottom))}.note-mascot-close{top:2px;right:-1px}.note-mascot-bubble{bottom:calc(100% - 8px);left:8px;max-width:min(190px,calc(100vw - 40px));font-size:10px;padding:10px 13px}.note-mascot-hit{bottom:13%;height:42%}}
 @media print{.note-mascot,.note-mascot-toggle{display:none!important}}
 
 .note-mascot.is-yielding .note-mascot-hit{pointer-events:none}
@@ -24,3 +25,14 @@
 /* Promote only during a finite flight; controls underneath remain clickable. */
 .note-mascot.is-moving{will-change:transform}
 .note-mascot.is-moving .note-mascot-hit,.note-mascot-hit:disabled{pointer-events:none}
+
+/* The drawing keeps its proportions; only the supplied clothing/limbs are slimmed. */
+.note-mascot{--mascot-hull:#F0EBF8;--mascot-recess:#E8E0F1;--mascot-glass:#AE91E80C;--mascot-canopy:#C2A9EA;--mascot-gold:#8A630C;--mascot-outline:#27232C}
+html[data-theme="dark"] .note-mascot{--mascot-hull:#393240;--mascot-recess:#29232F;--mascot-glass:#AE91E80A;--mascot-canopy:#8D77AD;--mascot-gold:#DDB459;--mascot-outline:#95899E}
+.note-mascot [data-part="jacket"],.note-mascot [data-part="craft"]{stroke:var(--mascot-outline)}
+.note-mascot.is-right .note-mascot-art{transform:scaleX(-1)}
+.note-mascot [data-part="thrusters"]{opacity:0}
+.note-mascot[data-phase="arrival"] [data-part="thrusters"],.note-mascot[data-phase="roam"] [data-part="thrusters"]{opacity:.8}
+.note-mascot.is-greeting [data-part="greeting-arm"]{transform-box:fill-box;transform-origin:0 100%;animation:note-mascot-wave .75s ease-in-out 3}
+@keyframes note-mascot-wave{0%,100%{transform:rotate(0)}30%{transform:rotate(-7deg)}65%{transform:rotate(5deg)}}
+@media(prefers-reduced-motion:reduce){.note-mascot.is-greeting [data-part="greeting-arm"]{animation:none}}

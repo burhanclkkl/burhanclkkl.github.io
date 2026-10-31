@@ -16,10 +16,10 @@ window.SITE_TOPICS = [
     accent: 'green', status: 'published', href: 'topics/rag-mimarisi/index.html'
   },
   {
-    id: '03', title: 'AI Agents',
-    description: 'Bir model ne zaman araç kullanan bir sisteme dönüşür?',
+    id: '03', title: 'Agent ile Chatbot Farkı',
+    description: 'Yanıt vermekle araç kullanıp bir hedefi takip etmek arasındaki fark.',
     category: 'ai', categoryLabel: 'AI / AJANLAR',
-    accent: 'orange', status: 'planned', href: ''
+    accent: 'orange', status: 'published', href: 'topics/agent-chatbot-farki/index.html'
   },
   {
     id: '04', title: 'MCP Nedir?',
